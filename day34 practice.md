@@ -1,12 +1,12 @@
-# 🌙 Day 2 — Practice Problems
+# Day 3 and Day 4 -- Practice Problems
 
-## 25 Must-Do Problems — Advanced Data Structures & Algorithms
+## 25 Must-Do Problems -- Sorting, Searching, Recursion, Trees, Graphs, Greedy, and DP
 
-> **How to practice:** Spend 15-20 min per problem. If stuck for 10 min, read the hint. If still stuck, study the solution, then re-solve from scratch.
+**How to practice:** Spend 15-20 minutes per problem. If stuck for 10 minutes, read the hint. If still stuck, study the solution, then re-solve from scratch.
 
 ---
 
-## 🟢 Warm-Up — 10 min each
+## Warm-Up
 
 | # | Problem | LeetCode | Pattern | Topic |
 |---|---------|----------|---------|-------|
@@ -18,9 +18,9 @@
 
 ---
 
-## 🟡 Core Practice — 15 min each
+## Core Practice
 
-### Trees & BST
+### Trees and BST
 | # | Problem | LeetCode | Pattern | Topic |
 |---|---------|----------|---------|-------|
 | 6 | Binary Tree Level Order Traversal | [#102](https://leetcode.com/problems/binary-tree-level-order-traversal/) | Tree BFS | Trees |
@@ -41,7 +41,7 @@
 | 13 | Rotting Oranges | [#994](https://leetcode.com/problems/rotting-oranges/) | Multi-source BFS | Graphs |
 | 14 | Clone Graph | [#133](https://leetcode.com/problems/clone-graph/) | BFS/DFS + HashMap | Graphs |
 
-### Greedy & Intervals
+### Greedy and Intervals
 | # | Problem | LeetCode | Pattern | Topic |
 |---|---------|----------|---------|-------|
 | 15 | Jump Game | [#55](https://leetcode.com/problems/jump-game/) | Greedy (farthest reach) | Greedy |
@@ -57,7 +57,7 @@
 
 ---
 
-## 🔴 Challenge — 20 min each
+## Challenge
 
 | # | Problem | LeetCode | Pattern | Topic |
 |---|---------|----------|---------|-------|
@@ -69,12 +69,12 @@
 
 ---
 
-## 📝 Approach Hints
+## Approach Hints
 
 <details>
 <summary><b>Hint 5: Subsets (#78)</b></summary>
 
-For each element, make TWO recursive calls: one including it, one excluding it. This creates a binary decision tree with 2ⁿ leaves.
+For each element, make two recursive calls: one including it, one excluding it. This creates a binary decision tree with 2^n leaves.
 
 </details>
 
@@ -95,7 +95,7 @@ Build a directed graph. Detect cycle using DFS with 3 states: unvisited(0), visi
 <details>
 <summary><b>Hint 15: Jump Game (#55)</b></summary>
 
-Track the farthest position you can reach. At each index, update `farthest = max(farthest, i + nums[i])`. If you ever can't reach the current index, return False.
+Track the farthest position you can reach. At each index, update `farthest = max(farthest, i + nums[i])`. If you ever cannot reach the current index, return False.
 
 </details>
 
@@ -122,7 +122,7 @@ Build a Trie from all words. DFS through the grid, following Trie branches. When
 
 ---
 
-## ✅ Final Self-Check: Are You Interview-Ready?
+## Final Self-Check: Are You Interview-Ready?
 
 ### Data Structures
 - [ ] Can you implement a Trie from scratch?
@@ -133,7 +133,7 @@ Build a Trie from all words. DFS through the grid, following Trie branches. When
 ### Algorithms
 - [ ] Can you write BFS and DFS from memory?
 - [ ] Can you solve any DP problem using the 4-step recipe?
-- [ ] Can you detect cycles in both linked lists AND directed graphs?
+- [ ] Can you detect cycles in both linked lists and directed graphs?
 - [ ] Can you explain when Greedy works and when you need DP instead?
 - [ ] Can you implement topological sort?
 
@@ -143,11 +143,11 @@ Build a Trie from all words. DFS through the grid, following Trie branches. When
 - [ ] Can you analyze the time and space complexity of your solution?
 - [ ] Can you handle edge cases (empty input, single element, large input)?
 
-*If you checked most boxes — you're ready! 🎉*
+If you checked most boxes, you are ready.
 
 ---
 
-## 🚀 What's Next?
+## What's Next?
 
 1. **Practice 5-10 problems daily** on LeetCode
 2. **Read the [Cheatsheet](cheatsheet.md)** before each practice session
@@ -157,4 +157,4 @@ Build a Trie from all words. DFS through the grid, following Trie branches. When
 
 ---
 
-[← Day 2 Course](day2-2hrs.md) | [Back to Schedule](README.md) | [Next: Cheatsheet →](cheatsheet.md)
+[Back to Day 3](day3.md) | [Back to Day 4](day4.md) | [Back to Course](README.md) | [Cheatsheet](cheatsheet.md)

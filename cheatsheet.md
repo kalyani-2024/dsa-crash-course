@@ -1,59 +1,59 @@
-# 📋 DSA Cheatsheet — Complete Quick Reference
+# DSA Cheatsheet -- Complete Quick Reference
 
-> **Print this out or keep it open** while practicing. Covers every data structure, every pattern, and every complexity.
-
----
-
-## 🕐 Time Complexity Quick Reference
-
-```
-O(1)       → Hash lookup, array access, stack push/pop
-O(log n)   → Binary search, balanced BST, heap insert/remove
-O(n)       → Single loop, linear scan, BFS/DFS
-O(n log n) → Merge sort, quick sort, heap sort
-O(n²)      → Nested loops, brute force pairs
-O(2ⁿ)      → Subsets, recursion without memoization
-O(n!)      → Permutations
-```
-
-### Constraint → Complexity Guide
-
-```
-n ≤ 10      → O(n!) OK         → Brute force, backtracking
-n ≤ 20      → O(2ⁿ) OK        → Bitmask, backtracking
-n ≤ 500     → O(n³) OK         → 3 nested loops
-n ≤ 5,000   → O(n²) OK         → 2 nested loops
-n ≤ 100,000 → O(n log n) needed → Sort, binary search, heap
-n ≤ 10⁷     → O(n) needed      → Single pass, HashMap
-n > 10⁷     → O(log n) needed  → Math, binary search
-```
+Keep this open while practicing. Covers every data structure, every pattern, and every complexity.
 
 ---
 
-## 📊 Data Structures at a Glance
+## Time Complexity Quick Reference
+
+```
+O(1)       -> Hash lookup, array access, stack push/pop
+O(log n)   -> Binary search, balanced BST, heap insert/remove
+O(n)       -> Single loop, linear scan, BFS/DFS
+O(n log n) -> Merge sort, quick sort, heap sort
+O(n^2)     -> Nested loops, brute force pairs
+O(2^n)     -> Subsets, recursion without memoization
+O(n!)      -> Permutations
+```
+
+### Constraint to Complexity Guide
+
+```
+n <= 10      -> O(n!) OK         -> Brute force, backtracking
+n <= 20      -> O(2^n) OK        -> Bitmask, backtracking
+n <= 500     -> O(n^3) OK        -> 3 nested loops
+n <= 5,000   -> O(n^2) OK        -> 2 nested loops
+n <= 100,000 -> O(n log n) needed -> Sort, binary search, heap
+n <= 10^7    -> O(n) needed      -> Single pass, HashMap
+n > 10^7     -> O(log n) needed  -> Math, binary search
+```
+
+---
+
+## Data Structures at a Glance
 
 | Data Structure | Access | Search | Insert | Delete | Best Use Case |
 |---------------|--------|--------|--------|--------|---------------|
 | **Array** | O(1) | O(n) | O(n) | O(n) | Random access, cache-friendly |
 | **String** | O(1) | O(n) | O(n)* | O(n)* | Text processing (*immutable: creates new) |
-| **HashMap** | — | O(1)† | O(1)† | O(1)† | Counting, lookup, caching |
-| **HashSet** | — | O(1)† | O(1)† | O(1)† | Unique elements, membership |
-| **Linked List** | O(n) | O(n) | O(1)‡ | O(1)‡ | Frequent insert/delete (‡at known pos) |
+| **HashMap** | -- | O(1)+ | O(1)+ | O(1)+ | Counting, lookup, caching |
+| **HashSet** | -- | O(1)+ | O(1)+ | O(1)+ | Unique elements, membership |
+| **Linked List** | O(n) | O(n) | O(1)++ | O(1)++ | Frequent insert/delete (++at known pos) |
 | **Stack** | O(n) | O(n) | O(1) | O(1) | Undo, matching, DFS |
 | **Queue** | O(n) | O(n) | O(1) | O(1) | BFS, task scheduling |
 | **BST** | O(log n) | O(log n) | O(log n) | O(log n) | Ordered data, range queries |
-| **Heap (PQ)** | O(1)§ | O(n) | O(log n) | O(log n) | Top-K, scheduling (§min/max only) |
-| **Trie** | — | O(L) | O(L) | O(L) | Prefix search, autocomplete |
-| **Graph** | — | O(V+E) | O(1) | O(V+E) | Networks, paths, cycles |
-| **Union-Find** | — | O(α) | — | — | Connected components, merging |
+| **Heap (PQ)** | O(1)* | O(n) | O(log n) | O(log n) | Top-K, scheduling (*min/max only) |
+| **Trie** | -- | O(L) | O(L) | O(L) | Prefix search, autocomplete |
+| **Graph** | -- | O(V+E) | O(1) | O(V+E) | Networks, paths, cycles |
+| **Union-Find** | -- | O(a) | -- | -- | Connected components, merging |
 
-†Average case | ‡At known position | §Min/Max only | L = word length | α ≈ constant
++Average case | ++At known position | *Min/Max only | L = word length | a is nearly constant
 
 ---
 
-## 🧩 All Patterns — Complete Lookup
+## All Patterns -- Complete Lookup
 
-### Day 1: Fundamental Patterns
+### Day 1 and Day 2: Fundamental Patterns
 
 | # | Pattern | Key Idea | When to Use | Template |
 |---|---------|----------|-------------|----------|
@@ -65,19 +65,19 @@ n > 10⁷     → O(log n) needed  → Math, binary search
 | 6 | **Palindrome Expand** | Expand from center | Palindromic substrings | `while s[l]==s[r]: l--,r++` |
 | 7 | **HashMap Lookup** | O(1) existence check | "Have I seen X?" | `if X in seen` |
 | 8 | **Slow/Fast Ptrs** | Different speeds | Cycle, middle of list | `slow=1step, fast=2steps` |
-| 9 | **Reverse LL** | 3-pointer swap | Restructuring linked lists | `save→reverse→advance` |
+| 9 | **Reverse LL** | 3-pointer swap | Restructuring linked lists | `save, reverse, advance` |
 | 10 | **Stack Matching** | Push open, pop close | Nesting, brackets | `push/pop with match` |
 | 11 | **Monotonic Stack** | Maintain sorted order | Next greater/smaller | `while violates: pop` |
-| 12 | **Binary Search** | Halve search space | Sorted data, answer range | `while lo<=hi: mid` |
 
-### Day 2: Advanced Patterns
+### Day 3 and Day 4: Advanced Patterns
 
 | # | Pattern | Key Idea | When to Use | Template |
 |---|---------|----------|-------------|----------|
+| 12 | **Binary Search** | Halve search space | Sorted data, answer range | `while lo<=hi: mid` |
 | 13 | **Subsets** | Include or exclude | All subsets/combinations | `take; recurse; undo` |
 | 14 | **Permutations** | Choose from remaining | All orderings | `for x in remaining: try` |
 | 15 | **Tree Traversal** | DFS (in/pre/post) + BFS | Explore tree structure | `recurse(left); process; recurse(right)` |
-| 16 | **Recursive Tree** | Left + right → combine | Tree properties | `return f(solve(L), solve(R))` |
+| 16 | **Recursive Tree** | Left + right, combine | Tree properties | `return f(solve(L), solve(R))` |
 | 17 | **Heap / Top-K** | Min/max for streaming | Top-K, merge streams | `heappush/heappop` |
 | 18 | **Trie** | Prefix tree for strings | Prefix match, autocomplete | `node.children[c]` |
 | 19 | **BFS** | Level-by-level | Shortest path, levels | `queue + visited` |
@@ -90,65 +90,65 @@ n > 10⁷     → O(log n) needed  → Math, binary search
 
 ---
 
-## 🎯 Pattern Recognition Flowchart
+## Pattern Recognition Flowchart
 
 ```
 GIVEN A PROBLEM, ASK:
 
  1. Is the input SORTED or can I SORT it?
-    → Binary Search, Two Pointers, Merge
+    -> Binary Search, Two Pointers, Merge
 
  2. Does it ask about SUBARRAY / SUBSTRING?
-    → Sliding Window (contiguous), Prefix Sum (sum queries)
+    -> Sliding Window (contiguous), Prefix Sum (sum queries)
 
  3. Does it ask about FREQUENCY / COUNTING / LOOKUP?
-    → HashMap / HashSet
+    -> HashMap / HashSet
 
  4. Does it ask about PALINDROMES?
-    → Expand Around Center, Two Pointers, DP
+    -> Expand Around Center, Two Pointers, DP
 
  5. Does it ask about TOP K / MIN / MAX from streaming data?
-    → Heap (Priority Queue)
+    -> Heap (Priority Queue)
 
  6. Does it ask about VALID SEQUENCE / MATCHING?
-    → Stack
+    -> Stack
 
  7. Does it ask about NEXT GREATER / SMALLER?
-    → Monotonic Stack
+    -> Monotonic Stack
 
  8. Does it ask about TREE traversal / properties?
-    → DFS (recursive) or BFS (level-order)
+    -> DFS (recursive) or BFS (level-order)
 
  9. Does it ask about SHORTEST PATH or LEVEL-BY-LEVEL?
-    → BFS (unweighted), Dijkstra (weighted)
+    -> BFS (unweighted), Dijkstra (weighted)
 
 10. Does it ask about ALL PATHS / CONNECTIVITY / CYCLES?
-    → DFS (directed), Union-Find (undirected)
+    -> DFS (directed), Union-Find (undirected)
 
 11. Does it ask about CONNECTED COMPONENTS / GROUPING?
-    → Union-Find or BFS/DFS
+    -> Union-Find or BFS/DFS
 
 12. Does it ask about OPTIMIZATION (min/max) with choices?
-    → Dynamic Programming
+    -> Dynamic Programming
 
 13. Does it ask about ALL COMBINATIONS / SUBSETS / PERMUTATIONS?
-    → Backtracking
+    -> Backtracking
 
 14. Does it ask about ORDERING / DEPENDENCIES?
-    → Topological Sort (DFS postorder)
+    -> Topological Sort (DFS postorder)
 
 15. Does it ask about SCHEDULING / INTERVALS?
-    → Sort + Greedy, or Heap
+    -> Sort + Greedy, or Heap
 
 16. Does it ask about PREFIX MATCHING / AUTOCOMPLETE?
-    → Trie
+    -> Trie
 ```
 
 ---
 
-## 🔥 Top 30 Must-Know Problems
+## Top 30 Must-Know Problems
 
-### 🟢 Easy (10) — Absolute Must-Know
+### Easy (10) -- Absolute Must-Know
 
 ```
 #1    Two Sum                (HashMap)
@@ -163,7 +163,7 @@ GIVEN A PROBLEM, ASK:
 #206  Reverse Linked List    (Three Pointers)
 ```
 
-### 🟡 Medium (15) — Core Interview Questions
+### Medium (15) -- Core Interview Questions
 
 ```
 #3    Longest Substring No Repeat  (Sliding Window)
@@ -183,7 +183,7 @@ GIVEN A PROBLEM, ASK:
 #322  Coin Change                  (DP)
 ```
 
-### 🔴 Hard (5) — Stand Out
+### Hard (5) -- Stand Out
 
 ```
 #23   Merge K Sorted Lists   (Heap + LL)
@@ -195,7 +195,7 @@ GIVEN A PROBLEM, ASK:
 
 ---
 
-## 📏 Common Python Tricks
+## Common Python Tricks
 
 ```python
 # Infinity
@@ -237,16 +237,16 @@ for i, val in enumerate(arr):
 # Zip
 for a, b in zip(arr1, arr2):
 
-# String building (O(n) not O(n²))
-result = ''.join(char_list)  # ✅
-# NOT: result += char         # ❌ O(n²)
+# String building (O(n) not O(n^2))
+result = ''.join(char_list)  # correct
+# NOT: result += char         # slow, O(n^2)
 
 # Ceiling division
 import math
 math.ceil(a / b)
 # Or: (a + b - 1) // b
 
-# Binary — useful for bit manipulation
+# Binary -- useful for bit manipulation
 bin(10)     # '0b1010'
 10 & 1      # 0 (even)
 10 | 1      # 11
@@ -260,4 +260,4 @@ bin(10)     # '0b1010'
 
 ---
 
-[← Day 2 Practice](day2-practice.md) | [Back to Schedule](README.md) | [Next: Interview Playbook →](interview-playbook.md)
+[Back to Course](README.md) | [Interview Playbook](interview-playbook.md)

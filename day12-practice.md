@@ -1,15 +1,15 @@
-# 🌙 Day 1 — Practice Problems
+# Day 1 and Day 2 -- Practice Problems
 
-## 20 Must-Do Problems — Fundamental Data Structures
+## 20 Must-Do Problems -- Arrays, Strings, HashMaps, Linked Lists, Stacks, and Queues
 
-> **How to practice:** Spend 15-20 min per problem. If stuck for 10 min, read the hint. If still stuck, study the solution, then re-solve from scratch.
+**How to practice:** Spend 15-20 minutes per problem. If stuck for 10 minutes, read the hint. If still stuck, study the solution, then re-solve from scratch.
 
 ---
 
-## 🟢 Warm-Up — 10 min each
+## Warm-Up
 
 | # | Problem | LeetCode | Pattern | Structure |
-|---|---------|----------|---------|-----------|
+|---|---------|----------|---------|-----------| 
 | 1 | Two Sum | [#1](https://leetcode.com/problems/two-sum/) | HashMap Lookup | Arrays + HashMap |
 | 2 | Valid Palindrome | [#125](https://leetcode.com/problems/valid-palindrome/) | Two Pointers | Strings |
 | 3 | Reverse Linked List | [#206](https://leetcode.com/problems/reverse-linked-list/) | 3-Pointer Swap | Linked Lists |
@@ -18,10 +18,10 @@
 
 ---
 
-## 🟡 Core Practice — 15 min each
+## Core Practice
 
 | # | Problem | LeetCode | Pattern | Structure |
-|---|---------|----------|---------|-----------|
+|---|---------|----------|---------|-----------| 
 | 6 | Maximum Subarray | [#53](https://leetcode.com/problems/maximum-subarray/) | Kadane's Algorithm | Arrays |
 | 7 | Longest Substring Without Repeating | [#3](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Sliding Window | Strings + HashSet |
 | 8 | Group Anagrams | [#49](https://leetcode.com/problems/group-anagrams/) | Char Frequency | Strings + HashMap |
@@ -35,10 +35,10 @@
 
 ---
 
-## 🔴 Challenge — 20 min each
+## Challenge
 
 | # | Problem | LeetCode | Pattern | Structure |
-|---|---------|----------|---------|-----------|
+|---|---------|----------|---------|-----------| 
 | 16 | Trapping Rain Water | [#42](https://leetcode.com/problems/trapping-rain-water/) | Two Pointers | Arrays |
 | 17 | Minimum Window Substring | [#76](https://leetcode.com/problems/minimum-window-substring/) | Sliding Window | Strings + HashMap |
 | 18 | Largest Rectangle in Histogram | [#84](https://leetcode.com/problems/largest-rectangle-in-histogram/) | Monotonic Stack | Stacks |
@@ -47,7 +47,7 @@
 
 ---
 
-## 📝 Approach Hints
+## Approach Hints
 
 <details>
 <summary><b>Hint 1: Two Sum (#1)</b></summary>
@@ -66,7 +66,7 @@ Sliding window with a set. When you see a duplicate, shrink from the left until 
 <details>
 <summary><b>Hint 8: Group Anagrams (#49)</b></summary>
 
-Sort the letters of each word — all anagrams produce the same sorted key. Group by that key in a HashMap.
+Sort the letters of each word -- all anagrams produce the same sorted key. Group by that key in a HashMap.
 
 </details>
 
@@ -100,7 +100,7 @@ Sliding window: expand right until all characters of `t` are present, then shrin
 
 ---
 
-## ✅ Self-Check: Day 1
+## Self-Check: Days 1 and 2
 
 ### Data Structures
 - [ ] Can you explain the difference between Array, Linked List, Stack, and Queue?
@@ -114,8 +114,8 @@ Sliding window: expand right until all characters of `t` are present, then shrin
 - [ ] Can you explain two pointers on sorted vs unsorted data?
 - [ ] Can you explain when to use a monotonic stack?
 
-*If you checked most boxes, you're ready for Day 2! 🎉*
+If you checked most boxes, you are ready for Day 3.
 
 ---
 
-[← Day 1 Course](day1-2hrs.md) | [Back to Schedule](README.md) | [Next: Day 2 →](day2-2hrs.md)
+[Back to Day 1](day1-2hrs.md) | [Back to Day 2](day2-2hrs.md) | [Back to Course](README.md)
