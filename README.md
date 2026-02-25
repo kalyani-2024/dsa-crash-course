@@ -4,7 +4,7 @@
 
 > **Who is this for?** Complete beginners, college students preparing for placements, anyone who wants to crack coding interviews at top tech companies.
 >
-> **What you'll learn:** Every major DSA concept, 17 core LeetCode patterns, interview strategies, and — most importantly — how to *think* algorithmically.
+> **What you'll learn:** Every major data structure, every core algorithm pattern, interview strategies, and — most importantly — how to *think* algorithmically.
 >
 > **Prerequisites:** Basic programming knowledge in any language (Python/C++/Java). We use Python in examples, but concepts apply to all languages.
 
@@ -19,57 +19,57 @@ Every topic follows a concept-first approach:
 ```
 1. 🧠 WHAT is it?       — Plain-English explanation & real-world analogy
 2. 🤔 WHY does it work? — The intuition behind the pattern
-3. 🎯 WHEN do I use it? — Clear signals to recognize the pattern in new problems
+3. 🎯 WHEN do I use it? — Clear signals to recognize the pattern
 4. 💻 HOW to code it    — Clean implementation with inline explanations
 5. 🔍 WALKTHROUGH       — Step-by-step trace through an example
 ```
-
-> If you understand the *why*, you'll never need to memorize the *what*.
 
 ---
 
 ## 📅 2-Day Schedule
 
-### 🌅 Day 1 — Foundations & Core Techniques (2 hours)
+### 🌅 Day 1 — Fundamental Data Structures & Core Techniques
 
-| Session | File | Topics Covered |
-|---------|------|----------------|
-| **Full Day 1** | [day1-2hrs.md](day1-2hrs.md) | Big-O & Thinking, Arrays, Hashing, Two Pointers, Sliding Window, Sorting, Binary Search, Strings, Bits, Recursion & Backtracking |
-| **Evening Practice** | [day1-practice.md](day1-practice.md) | 20 Must-Do Problems for Day 1 |
+*Learn every building block — what each data structure IS, when to use it, and the patterns built on top of it.*
 
-**Patterns you'll learn:**
+| Session | File | Topics |
+|---------|------|--------|
+| **Full Day 1** | [day1-2hrs.md](day1-2hrs.md) | Big-O, Arrays, Strings, HashMaps, Linked Lists, Stacks, Queues, Sorting, Binary Search, Bit Manipulation |
+| **Practice** | [day1-practice.md](day1-practice.md) | 20 Must-Do Problems for Day 1 |
 
-| # | Pattern | Core Insight |
-|---|---------|-------------|
-| 1 | **HashMap** | Trade space for O(1) lookup — "Have I seen X before?" |
-| 2 | **Prefix Sum** | Pre-compute cumulative sums for instant range queries |
-| 3 | **Kadane's Algorithm** | "Extend or restart?" — maximum subarray in one pass |
-| 4 | **Two Pointers** | Converge from both ends to avoid nested loops |
-| 5 | **Sliding Window** | Expand right, shrink left — optimize subarrays/substrings |
-| 6 | **Binary Search** | Halve the search space every step |
-| 7 | **Backtracking** | Choose → Explore → Undo — generate all possibilities |
+**Data Structures Covered:**
 
-### 🌅 Day 2 — Data Structures & Advanced Algorithms (2 hours)
+| Structure | Key Concept | Core Pattern |
+|-----------|------------|--------------|
+| **Arrays** | Contiguous memory, O(1) index access | Two Pointers, Sliding Window, Prefix Sum, Kadane's |
+| **Strings** | Array of characters, immutable | Frequency counting, palindromes, pattern matching |
+| **Hash Maps/Sets** | O(1) lookup via hashing | Existence checks, frequency counting, grouping |
+| **Linked Lists** | Pointer-connected nodes | Slow/fast pointers, reversal, merge |
+| **Stacks** | LIFO — last in, first out | Bracket matching, monotonic stack |
+| **Queues** | FIFO — first in, first out | BFS, level-by-level processing |
 
-| Session | File | Topics Covered |
-|---------|------|----------------|
-| **Full Day 2** | [day2-2hrs.md](day2-2hrs.md) | Linked Lists, Stacks & Queues, Trees & BST, Heaps, Graphs (BFS/DFS), Dynamic Programming |
-| **Evening Practice** | [day2-practice.md](day2-practice.md) | 20 Must-Do Problems for Day 2 |
+### 🌅 Day 2 — Advanced Data Structures & Algorithms
 
-**Patterns you'll learn:**
+*Build on fundamentals with advanced structures and algorithm paradigms.*
 
-| # | Pattern | Core Insight |
-|---|---------|-------------|
-| 8 | **Slow/Fast Pointers** | Different speeds reveal cycles and midpoints |
-| 9 | **Reverse Linked List** | Save → Reverse → Advance (the 3-pointer trick) |
-| 10 | **Stack Matching** | Push open, pop close — handles nesting naturally |
-| 11 | **Monotonic Stack** | Maintain sorted order, violations reveal answers |
-| 12 | **Tree Traversal** | DFS (3 orders) + BFS — four ways to visit every node |
-| 13 | **Recursive Tree** | Solve left + right → combine — the universal template |
-| 14 | **BFS (Graphs)** | Queue + visited = shortest path, level-by-level |
-| 15 | **DFS (Graphs)** | Go deep, 3-state tracking detects cycles |
-| 16 | **1D DP** | dp[i] depends on a few previous values |
-| 17 | **2D DP** | dp[i][j] for grids and string comparison |
+| Session | File | Topics |
+|---------|------|--------|
+| **Full Day 2** | [day2-2hrs.md](day2-2hrs.md) | Recursion, Backtracking, Trees, BST, Heaps, Tries, Graphs, Union-Find, Greedy, Dynamic Programming |
+| **Practice** | [day2-practice.md](day2-practice.md) | 20 Must-Do Problems for Day 2 |
+
+**Data Structures & Algorithms Covered:**
+
+| Topic | Key Concept | Core Pattern |
+|-------|------------|--------------|
+| **Recursion** | Function calls itself on smaller input | Base case + recursive case |
+| **Backtracking** | Recursion with undo | Choose → Explore → Undo |
+| **Trees / BST** | Hierarchical nodes, left < root < right | DFS traversals, recursive properties |
+| **Heaps** | Min/max at root, O(log n) insert/remove | Top-K, merge K sorted, median |
+| **Tries** | Prefix tree for strings | Autocomplete, word search |
+| **Graphs** | Nodes + edges, relationships | BFS (shortest path), DFS (cycles) |
+| **Union-Find** | Track connected components | Group merging, cycle detection |
+| **Greedy** | Local optimal → global optimal | Interval scheduling, jump games |
+| **Dynamic Programming** | Cache overlapping subproblems | 1D, 2D, knapsack patterns |
 
 ### 📋 Reference Materials
 
@@ -80,26 +80,46 @@ Every topic follows a concept-first approach:
 
 ---
 
-## 🔗 Visual Learning Tools (Bookmark These!)
+## 📊 Complete Topic Coverage
 
-These websites let you **see algorithms in action** — use them alongside this course:
+```
+Day 1 — FUNDAMENTALS                    Day 2 — ADVANCED
+┌─────────────────────────┐              ┌─────────────────────────┐
+│ ✅ Arrays               │              │ ✅ Recursion             │
+│ ✅ Strings              │              │ ✅ Backtracking          │
+│ ✅ Hash Maps / Sets     │              │ ✅ Trees (Binary, BST)   │
+│ ✅ Linked Lists         │              │ ✅ Heaps / Priority Q    │
+│ ✅ Stacks               │              │ ✅ Tries (Prefix Trees)  │
+│ ✅ Queues               │              │ ✅ Graphs (BFS/DFS)      │
+│ ✅ Sorting              │              │ ✅ Union-Find            │
+│ ✅ Binary Search        │              │ ✅ Greedy Algorithms     │
+│ ✅ Bit Manipulation     │              │ ✅ Dynamic Programming   │
+│                         │              │ ✅ Intervals             │
+│ Patterns: 12            │              │ ✅ Topological Sort      │
+│ Problems: 25+           │              │ ✅ Dijkstra's Algorithm  │
+└─────────────────────────┘              │                         │
+                                         │ Patterns: 11+           │
+                                         │ Problems: 30+           │
+                                         └─────────────────────────┘
+```
+
+---
+
+## 🔗 Visual Learning Tools (Bookmark These!)
 
 | Tool | URL | Best For |
 |------|-----|----------|
-| 🎬 **VisuAlgo** | [visualgo.net](https://visualgo.net/) | Sorting, Trees, Graphs, DP — animated step-by-step |
-| 🎬 **Algorithm Visualizer** | [algorithm-visualizer.org](https://algorithm-visualizer.org/) | Interactive code + animation side-by-side |
-| 🎬 **USFCA Visualizations** | [cs.usfca.edu/~galles/visualization](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) | BST, Heaps, Hash Tables, B-Trees |
-| 🎬 **Pathfinding Visualizer** | [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/) | BFS, DFS, Dijkstra, A* on grids |
-| 🎬 **Sorting Visualizer** | [toptal.com/sorting](https://www.toptal.com/developers/sorting-algorithms) | Compare all sorting algorithms side-by-side |
-| 🎬 **Binary Search Interactive** | [LeetCode Binary Search Card](https://leetcode.com/explore/learn/card/binary-search/) | LeetCode's own binary search tutorial |
-| 📝 **Python Tutor** | [pythontutor.com](https://pythontutor.com/) | Visualize YOUR code execution step-by-step |
-| 📝 **NeetCode Roadmap** | [neetcode.io/roadmap](https://neetcode.io/roadmap) | Problem roadmap with video explanations |
+| 🎬 **VisuAlgo** | [visualgo.net](https://visualgo.net/) | Sorting, Trees, Graphs, DP — animated |
+| 🎬 **Algorithm Visualizer** | [algorithm-visualizer.org](https://algorithm-visualizer.org/) | Interactive code + animation |
+| 🎬 **USFCA Visualizations** | [cs.usfca.edu/~galles](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) | BST, Heaps, Hash Tables, Tries |
+| 🎬 **Pathfinding Visualizer** | [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/) | BFS, DFS, Dijkstra on grids |
+| 🎬 **Sorting Visualizer** | [toptal.com/sorting](https://www.toptal.com/developers/sorting-algorithms) | Compare sorting algorithms |
+| 📝 **Python Tutor** | [pythontutor.com](https://pythontutor.com/) | Visualize YOUR code step-by-step |
+| 📝 **NeetCode Roadmap** | [neetcode.io/roadmap](https://neetcode.io/roadmap) | Problem roadmap with videos |
 
 ---
 
 ## 🧠 The 5-Step Problem Solving Framework
-
-Use this for EVERY problem you encounter. **The thinking process matters more than the code.**
 
 ```
 ┌─────────────────────────────────────────┐
@@ -133,72 +153,76 @@ Use this for EVERY problem you encounter. **The thinking process matters more th
 
 ---
 
-## 🗺️ The Complete DSA Pattern Map
-
-This shows how topics build on each other. Follow this order for the smoothest learning path:
-
-```
-                    ┌──────────────────┐
-                    │   START HERE     │
-                    │   (Big-O, Arrays)│
-                    └────────┬─────────┘
-                             │
-              ┌──────────────┼──────────────┐
-              ▼              ▼              ▼
-      ┌───────────┐  ┌───────────┐  ┌───────────┐
-      │  Hashing  │  │Two Pointer│  │  Sorting  │
-      │  (Maps)   │  │  Sliding  │  │           │
-      │           │  │  Window   │  │           │
-      └─────┬─────┘  └─────┬─────┘  └─────┬─────┘
-            │               │              │
-            ▼               ▼              ▼
-      ┌───────────┐  ┌───────────┐  ┌───────────┐
-      │  Strings  │  │  Stacks   │  │  Binary   │
-      │           │  │  Queues   │  │  Search   │
-      └─────┬─────┘  └─────┬─────┘  └─────┬─────┘
-            │               │              │
-            └───────────────┼──────────────┘
-                            ▼
-                    ┌───────────────┐
-                    │   Recursion   │
-                    │  Backtracking │
-                    └───────┬───────┘
-                            │
-              ┌─────────────┼─────────────┐
-              ▼             ▼             ▼
-      ┌───────────┐  ┌───────────┐  ┌───────────┐
-      │  Linked   │  │   Trees   │  │   Heaps   │
-      │  Lists    │  │    BST    │  │           │
-      └───────────┘  └─────┬─────┘  └───────────┘
-                            │
-              ┌─────────────┼─────────────┐
-              ▼             ▼             ▼
-      ┌───────────┐  ┌───────────┐  ┌───────────┐
-      │  Graphs   │  │  Dynamic  │  │   Greedy  │
-      │  BFS/DFS  │  │Programming│  │           │
-      └───────────┘  └───────────┘  └───────────┘
-```
-
----
-
-## 🎯 Quick Pattern Recognition — When You See...
-
-Before diving in, here's a sneak peek at how pattern recognition works. This is the **most important skill** you'll develop:
+## 🎯 Quick Pattern Recognition
 
 ```
 "Find pair with property X"          → HashMap or Two Pointers
 "Longest/shortest subarray"          → Sliding Window
 "Find in sorted data"               → Binary Search
+"Search answer range"               → Binary Search on Answer
 "All subsets/combos/perms"           → Backtracking
 "Cycle in linked list"              → Slow/Fast Pointers
 "Matching brackets/nesting"          → Stack
 "Next greater/smaller"              → Monotonic Stack
 "Level-by-level / shortest path"    → BFS
 "All paths / cycle detection"       → DFS
+"Connected components"              → Union-Find
+"Schedule/select intervals"         → Greedy
 "Min/max with overlapping choices"  → Dynamic Programming
+"Prefix matching / autocomplete"    → Trie
+"Top K / streaming min/max"         → Heap
 ```
 
-> You'll learn the *why* behind every one of these in the course materials.
+---
+
+## 🗺️ Learning Path Map
+
+```
+                    ┌──────────────────┐
+                    │   START HERE     │
+                    │   (Big-O)        │
+                    └────────┬─────────┘
+                             │
+         ┌───────────────────┼───────────────────┐
+         ▼                   ▼                   ▼
+   ┌───────────┐      ┌───────────┐      ┌───────────┐
+   │  Arrays   │      │  Strings  │      │  HashMap  │
+   │Two Pointer│      │Palindrome │      │ Frequency │
+   │Sliding Win│      │ Matching  │      │  Lookup   │
+   └─────┬─────┘      └─────┬─────┘      └─────┬─────┘
+         │                   │                   │
+         ▼                   ▼                   ▼
+   ┌───────────┐      ┌───────────┐      ┌───────────┐
+   │  Linked   │      │  Stacks   │      │  Sorting  │
+   │  Lists    │      │  Queues   │      │ Bin Search │
+   └─────┬─────┘      └─────┬─────┘      └─────┬─────┘
+         │                   │                   │
+         └───────────────────┼───────────────────┘
+                             ▼
+                    ┌───────────────┐
+                    │  Recursion &  │
+                    │  Backtracking │
+                    └───────┬───────┘
+                            │
+         ┌──────────────────┼──────────────────┐
+         ▼                  ▼                  ▼
+   ┌───────────┐     ┌───────────┐     ┌───────────┐
+   │   Trees   │     │   Heaps   │     │   Tries   │
+   │    BST    │     │  Top-K    │     │  Prefix   │
+   └─────┬─────┘     └───────────┘     └───────────┘
+         │
+         ▼
+   ┌───────────┐     ┌───────────┐     ┌───────────┐
+   │  Graphs   │     │  Greedy   │     │ Union-Find│
+   │  BFS/DFS  │     │ Intervals │     │Components │
+   └─────┬─────┘     └───────────┘     └───────────┘
+         │
+         ▼
+   ┌───────────────┐
+   │    Dynamic    │
+   │  Programming  │
+   └───────────────┘
+```
 
 ---
 

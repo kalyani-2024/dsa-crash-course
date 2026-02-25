@@ -1,364 +1,208 @@
-# ⚡ Day 2 — DSA Crash Course (2 Hours)
+# ⚡ Day 2 — Advanced Data Structures & Algorithms
 
-## Linked Lists → Stacks → Trees → Graphs → Dynamic Programming
+## Recursion → Trees → Heaps → Tries → Graphs → Union-Find → Greedy → DP → Intervals
 
-> **Goal:** After this session + Day 1, you can tackle 80% of Easy, 50% of Medium, and understand every major DSA topic asked in interviews.
+> **Goal:** Master every advanced topic asked in interviews. After Day 1 + Day 2, you're equipped to tackle 80%+ of coding interview problems.
 
 ---
 
 ## ⏱ Schedule
 
-| Time | Topic | Key Pattern |
-|------|-------|-------------|
-| 0:00 - 0:20 | Linked Lists | Slow/fast pointers, reversal |
-| 0:20 - 0:40 | Stacks & Queues | Matching, monotonic stack |
-| 0:40 - 1:10 | Trees & BST | DFS, BFS, recursive properties |
-| 1:10 - 1:30 | Graphs | BFS, DFS, topological sort |
-| 1:30 - 2:00 | Dynamic Programming | 1D, 2D, subsequences |
+| Time | Topic | What You'll Learn |
+|------|-------|-------------------|
+| 0:00 - 0:15 | Recursion & Backtracking | Base case thinking, generate all possibilities |
+| 0:15 - 0:40 | Trees & BST | Traversals, recursive properties, validation |
+| 0:40 - 0:55 | Heaps / Priority Queues | Top-K, merge K sorted, median |
+| 0:55 - 1:05 | Tries (Prefix Trees) | Prefix matching, autocomplete, word search |
+| 1:05 - 1:25 | Graphs | BFS, DFS, topological sort, Dijkstra |
+| 1:25 - 1:35 | Union-Find | Connected components, cycle detection |
+| 1:35 - 1:45 | Greedy Algorithms | Local optimal = global optimal, intervals |
+| 1:45 - 2:00 | Dynamic Programming | 1D, 2D, knapsack, subsequences |
 
 ---
 
-# 🔗 0:00 — Linked Lists (20 min)
+# 🔁 0:00 — Recursion & Backtracking (15 min)
 
-## What is a Linked List?
+## What is Recursion?
 
-Unlike arrays, where elements sit next to each other in memory (like houses on a street with consecutive addresses), a linked list stores elements **scattered across memory**, connected by pointers (like a treasure hunt where each clue tells you where the next one is).
+Recursion is when a function **calls itself** to solve a smaller version of the same problem. It's not a data structure — it's a **way of thinking**.
 
-```
-Array:   [10][20][30][40]  ← elements are contiguous, accessed by index
-                           ← arr[2] is instant (O(1)) because you calculate the address
+Every recursive solution has:
+1. **Base case** — when to stop (prevents infinite loops)
+2. **Recursive case** — break the problem into a smaller identical problem
 
-Linked:  10→ 20→ 30→ 40→ None  ← elements are scattered, connected by "next" pointers
-                                ← to reach element 3, you MUST walk through 1 and 2 (O(n))
-```
+**Analogy:** Russian nesting dolls — open one, find another inside, open that one... until you reach the smallest (base case). Then work back up.
 
-### Why Use Linked Lists?
+### How to Think Recursively
 
-- **Insertion/deletion at known position is O(1)** — just re-wire pointers, no shifting needed
-- **No fixed size** — grows dynamically, no pre-allocation
-- **Used extensively in interview problems** because pointer manipulation tests your understanding of references
-
-### The Node Definition
+> **"Assume the recursive call works perfectly. How do I use its result to solve the current problem?"**
 
 ```python
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val    # the data
-        self.next = next  # pointer to the next node (or None if last)
+def factorial(n):
+    if n <= 1: return 1        # base case
+    return n * factorial(n-1)  # trust that factorial(n-1) works
 ```
 
-> 🎬 Visualize: [visualgo.net/list](https://visualgo.net/en/list) — watch insertions, deletions, and reversal step by step
+> 🎬 Visualize YOUR recursive code: [pythontutor.com](https://pythontutor.com/)
 
 ---
 
-## Pattern 8: Slow & Fast Pointers (Floyd's Tortoise and Hare)
+## What is Backtracking?
+
+Backtracking is recursion with **undo**. You make a choice, explore it fully, then **undo** and try the next option. It systematically explores all possibilities.
+
+**Analogy:** Solving a maze — at each fork, pick a path. Dead end? Walk BACK and try another.
+
+```
+Backtracking Template:
+1. Make a CHOICE (add element, place queen)
+2. RECURSE with the choice
+3. UNDO the choice (backtrack)
+4. Try the NEXT choice
+```
+
+---
+
+## Pattern 1: Subsets — Include or Exclude
 
 ### The Core Idea
 
-> **"Use two pointers moving at different speeds. The fast pointer reaches the end in half the time, which means when fast is done, slow is at the middle."**
-
-**Analogy:** Imagine two runners on a circular track. If one runs at double speed, the fast runner will eventually lap the slow runner — proving the track is circular (has a cycle). On a straight track, the fast runner reaches the end while the slow runner is at the midpoint.
-
-### This Pattern Solves Three Types of Problems:
-
-1. **Finding the middle** of a linked list
-2. **Detecting cycles** in a linked list
-3. **Finding the start of a cycle** (Floyd's full algorithm)
-
-### Middle of Linked List (LeetCode #876)
-
-**The Concept:** Slow moves 1 step, fast moves 2 steps. When fast reaches the end, slow is exactly at the middle.
+> **"For each element: include it or skip it. This creates 2ⁿ subsets."**
 
 ```
-1 → 2 → 3 → 4 → 5 → None
+Elements: [1, 2, 3]
 
-Step 0: slow=1, fast=1
-Step 1: slow=2, fast=3
-Step 2: slow=3, fast=5 (fast.next is None → stop)
-Answer: slow = 3 ✅ (the middle)
+             []
+          /      \
+       [1]        []           ← include 1 or skip?
+      /    \    /    \
+  [1,2]  [1]  [2]   []        ← include 2 or skip?
+  / \    / \   / \   / \
+[123][12][13][1][23][2][3][]   ← include 3 or skip?
 ```
+
+### Subsets (LeetCode #78)
 
 ```python
-def middleNode(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next           # 1 step
-        fast = fast.next.next      # 2 steps
-    return slow                    # slow is now at the middle
-```
-
-### Linked List Cycle (LeetCode #141)
-
-**The Concept:** If there's a cycle, the fast pointer will eventually "lap" the slow pointer (they meet). If there's no cycle, the fast pointer hits `None` (reaches the end).
-
-```python
-def hasCycle(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-        if slow == fast: return True   # they met → cycle exists!
-    return False                       # fast reached end → no cycle
-```
-
----
-
-## Pattern 9: Reverse a Linked List — The 3-Pointer Technique
-
-### The Core Idea
-
-> **"Walk through the list, and at each node, reverse its arrow to point backwards instead of forwards."**
-
-You need three pointers because to reverse a link, you need to know:
-- **Where you came from** (`prev`) — the new target for the reversed arrow
-- **Where you are** (`curr`) — the node whose arrow you're reversing
-- **Where you're going** (`nxt`) — saved before you reverse, so you don't lose it
-
-### ⭐ Reverse Linked List (LeetCode #206) — Top 5 Interview Question
-
-**Step-by-step visualization:**
-```
-Starting:  prev=None   curr=1 → 2 → 3 → None
-
-Step 1:  Save nxt=2.  Point 1→None.   Move prev=1, curr=2
-         None ← 1   2 → 3 → None
-
-Step 2:  Save nxt=3.  Point 2→1.      Move prev=2, curr=3
-         None ← 1 ← 2   3 → None
-
-Step 3:  Save nxt=None. Point 3→2.    Move prev=3, curr=None
-         None ← 1 ← 2 ← 3
-
-Result: 3 → 2 → 1 → None ✅
-```
-
-```python
-def reverseList(head):
-    prev = None
-    curr = head
-    while curr:
-        nxt = curr.next     # 1. SAVE the next node
-        curr.next = prev    # 2. REVERSE the arrow
-        prev = curr         # 3. ADVANCE prev
-        curr = nxt          # 4. ADVANCE curr
-    return prev             # prev is the new head
-# O(n) time, O(1) space — MEMORIZE THIS
-```
-
-### Merge Two Sorted Lists (LeetCode #21)
-
-**The Concept:** Compare the heads of both lists. Take the smaller one, attach it to your result, and advance that list's pointer. Repeat. When one list is empty, attach the remainder of the other.
-
-**Key technique — the Dummy Node:** Create a fake "dummy" node at the start so you don't need special logic for the first element.
-
-```python
-def mergeTwoLists(l1, l2):
-    dummy = curr = ListNode(0)     # dummy simplifies edge cases
-    while l1 and l2:
-        if l1.val <= l2.val:
-            curr.next = l1; l1 = l1.next
-        else:
-            curr.next = l2; l2 = l2.next
-        curr = curr.next
-    curr.next = l1 or l2           # attach whatever's left
-    return dummy.next              # skip the dummy
-```
-
-### Reorder List (LeetCode #143)
-
-**The Concept:** This beautifully combines THREE linked list techniques:
-
-1. **Find the middle** (slow/fast pointers)
-2. **Reverse the second half** (3-pointer reversal)
-3. **Interleave the two halves** (merge)
-
-This is why interviewers love it — it tests three patterns in one problem.
-
-```python
-def reorderList(head):
-    # Step 1: Find middle using slow/fast
-    slow = fast = head
-    while fast.next and fast.next.next:
-        slow = slow.next
-        fast = fast.next.next
-    
-    # Step 2: Reverse the second half
-    prev, curr = None, slow.next
-    slow.next = None               # cut the list in half
-    while curr:
-        nxt = curr.next
-        curr.next = prev
-        prev = curr
-        curr = nxt
-    
-    # Step 3: Interleave first and reversed-second
-    first, second = head, prev
-    while second:
-        tmp1, tmp2 = first.next, second.next
-        first.next = second
-        second.next = tmp1
-        first, second = tmp1, tmp2
-```
-
-> **💡 Linked List Recipe:** Find middle → Reverse half → Merge/Compare
-
----
-
-# 📚 0:20 — Stacks & Queues (20 min)
-
-## Stacks vs Queues — Two Ways to Organize Data
-
-Think of these as two types of containers:
-
-### Stack = LIFO (Last In, First Out)
-
-**Analogy:** A stack of plates. You can only add/remove from the **top**. The last plate you put on is the first one you take off.
-
-**Used for:** Undo operations, matching brackets, DFS, evaluating expressions, function call stack.
-
-### Queue = FIFO (First In, First Out)
-
-**Analogy:** A line at a movie theater. The first person in line is the first one served.
-
-**Used for:** BFS, task scheduling, level-by-level processing.
-
-```python
-# Stack — use a Python list
-stack = []
-stack.append(x)   # push: add to top     O(1)
-stack.pop()       # pop: remove from top  O(1)
-stack[-1]         # peek: look at top     O(1)
-
-# Queue — use collections.deque (NOT a list! list.pop(0) is O(n))
-from collections import deque
-q = deque()
-q.append(x)       # enqueue: add to back  O(1)
-q.popleft()       # dequeue: remove front  O(1)
-```
-
----
-
-## Pattern 10: Stack for Matching
-
-### The Core Idea
-
-> **"When you see an 'opening' element, push it. When you see a 'closing' element, pop and check if they match."**
-
-This works because stacks naturally handle **nesting** — the most recently opened bracket must be the first to close.
-
-### Valid Parentheses (LeetCode #20)
-
-**The Concept:** Push every opening bracket. When you see a closing bracket, pop and check if it matches. If the stack is empty when you try to pop (nothing to match), or if it's not empty at the end (unclosed brackets), the answer is false.
-
-```python
-def isValid(s):
-    stack = []
-    match = {')':'(', '}':'{', ']':'['}
-    for c in s:
-        if c in '({[':
-            stack.append(c)            # opening: push
-        elif not stack or stack.pop() != match[c]:
-            return False               # nothing to match, or wrong match
-    return not stack                    # stack should be empty (all matched)
-```
-
----
-
-## Pattern 11: Monotonic Stack — "Next Greater Element"
-
-### The Core Idea
-
-> **"Maintain a stack where elements are always in increasing (or decreasing) order. When a new element violates this order, pop — the popped element just found its 'answer'."**
-
-**Analogy:** People standing in line for a rollercoaster, arranged by height. When a taller person joins, all shorter people in front "see" the taller person as their "next greater element" and step out.
-
-### Why is this O(n)?
-
-Even though there's a while loop inside a for loop, each element is pushed **at most once** and popped **at most once**. So the total work is O(2n) = O(n). This is a common amortized analysis pattern.
-
-### Daily Temperatures (LeetCode #739)
-
-**The Concept:** For each day, find how many days until a warmer temperature. Maintain a stack of indices with decreasing temperatures. When a warmer day arrives, pop all cooler days — they've found their answer.
-
-```python
-def dailyTemperatures(temps):
-    n = len(temps)
-    res = [0] * n
-    stack = []                         # indices of decreasing temps
-    for i in range(n):
-        while stack and temps[i] > temps[stack[-1]]:
-            j = stack.pop()            # day j just found a warmer day
-            res[j] = i - j            # how many days apart
-        stack.append(i)
+def subsets(nums):
+    res = []
+    def bt(i, curr):
+        if i == len(nums):
+            res.append(curr[:])
+            return
+        curr.append(nums[i])    # include
+        bt(i + 1, curr)
+        curr.pop()              # UNDO (backtrack)
+        bt(i + 1, curr)         # exclude
+    bt(0, [])
     return res
-# O(n) — each element pushed and popped at most once
+# O(2^n)
 ```
 
-### ⭐ Largest Rectangle in Histogram (LeetCode #84) — Hard
+### Combination Sum (LeetCode #39)
 
-**The Concept:** For each bar, the largest rectangle using that bar extends left and right until a shorter bar is hit. A monotonic increasing stack efficiently finds these boundaries.
+**The Concept:** Find combinations summing to target. Can **reuse** elements. At each step, try each candidate, recurse with reduced target, backtrack.
 
 ```python
-def largestRectangleArea(heights):
-    stack = []
-    best = 0
-    for i in range(len(heights) + 1):
-        h = heights[i] if i < len(heights) else 0  # sentinel: force pop at end
-        while stack and heights[stack[-1]] > h:
-            height = heights[stack.pop()]
-            width = i if not stack else i - stack[-1] - 1
-            best = max(best, height * width)
-        stack.append(i)
-    return best
-# O(n) — elegant and efficient
+def combinationSum(candidates, target):
+    res = []
+    def bt(start, curr, remain):
+        if remain == 0: res.append(curr[:]); return
+        if remain < 0: return
+        for i in range(start, len(candidates)):
+            curr.append(candidates[i])
+            bt(i, curr, remain - candidates[i])  # i not i+1: reuse OK
+            curr.pop()
+    bt(0, [], target)
+    return res
 ```
 
-### Min Stack (LeetCode #155)
+### Permutations (LeetCode #46)
 
-**The Concept:** Support push, pop, top, AND getMin — all in O(1). The trick: at each level of the stack, store both the value AND the minimum value at that point. When you pop, the minimum is automatically correct.
+**The Concept:** Order matters. For each position, choose from remaining elements. n! total.
 
 ```python
-class MinStack:
-    def __init__(self):
-        self.stack = []               # stores (value, current_min) pairs
-    def push(self, val):
-        mn = min(val, self.stack[-1][1]) if self.stack else val
-        self.stack.append((val, mn))  # snapshot the min at this level
-    def pop(self):
-        self.stack.pop()
-    def top(self):
-        return self.stack[-1][0]
-    def getMin(self):
-        return self.stack[-1][1]      # min is always up-to-date
-# All operations O(1) — the key insight is storing the min as metadata
+def permute(nums):
+    res = []
+    def bt(curr, remaining):
+        if not remaining:
+            res.append(curr[:])
+            return
+        for i in range(len(remaining)):
+            curr.append(remaining[i])
+            bt(curr, remaining[:i] + remaining[i+1:])
+            curr.pop()
+    bt([], nums)
+    return res
+```
+
+### ⭐ N-Queens (LeetCode #51)
+
+**The Concept:** Place n queens so none attack each other. Row by row — at each row, try each column. Track attacks using sets for columns (`col`), diagonals (`row-col`), anti-diagonals (`row+col`).
+
+```python
+def solveNQueens(n):
+    res = []
+    cols, diag, anti = set(), set(), set()
+    board = [['.']*n for _ in range(n)]
+    def bt(row):
+        if row == n:
+            res.append([''.join(r) for r in board]); return
+        for col in range(n):
+            if col in cols or row-col in diag or row+col in anti: continue
+            board[row][col] = 'Q'
+            cols.add(col); diag.add(row-col); anti.add(row+col)
+            bt(row + 1)
+            board[row][col] = '.'
+            cols.discard(col); diag.discard(row-col); anti.discard(row+col)
+    bt(0)
+    return res
+```
+
+### Word Search (LeetCode #79)
+
+**The Concept:** DFS + backtracking on a grid. At each cell, try all 4 directions. Mark visited cells to avoid reuse; unmark on backtrack.
+
+```python
+def exist(board, word):
+    R, C = len(board), len(board[0])
+    def dfs(r, c, k):
+        if k == len(word): return True
+        if r < 0 or r >= R or c < 0 or c >= C: return False
+        if board[r][c] != word[k]: return False
+        tmp, board[r][c] = board[r][c], '#'  # mark visited
+        found = any(dfs(r+dr, c+dc, k+1) for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)])
+        board[r][c] = tmp                     # unmark (backtrack)
+        return found
+    return any(dfs(r, c, 0) for r in range(R) for c in range(C))
 ```
 
 ---
 
-# 🌳 0:40 — Trees & BST (30 min)
+# 🌳 0:15 — Trees & BST (25 min)
 
 ## What is a Tree?
 
-A tree is a **hierarchical** data structure where each node has zero or more children. Think of it like a family tree or an organizational chart:
+A tree is a **hierarchical** data structure — nodes connected by parent-child relationships. Think of a family tree or folder structure.
 
 ```
-        CEO (root)
-       /    \
-     CTO     CFO
-    / \       \
-  Dev1 Dev2   Accountant
+        1  (root)
+       / \
+      2   3
+     / \
+    4   5  (leaves)
 ```
 
-### Key Terminology (You MUST Know These)
+### Key Terminology
 
-- **Root:** The topmost node (no parent)
-- **Leaf:** A node with no children (the bottom)
-- **Depth:** How far a node is from the root (root = depth 0)
-- **Height:** The longest path from a node down to a leaf
-- **Binary Tree:** Each node has at most 2 children (left and right)
-- **Binary Search Tree (BST):** A binary tree where `left < node < right` for every node
-
-### The Node Definition
+| Term | Meaning |
+|------|---------|
+| **Root** | Topmost node (no parent) |
+| **Leaf** | Node with no children |
+| **Depth** | Distance from root (root = 0) |
+| **Height** | Longest path from node to a leaf |
+| **Binary Tree** | Each node has at most 2 children |
+| **BST** | Binary tree where `left < node < right` ALWAYS |
 
 ```python
 class TreeNode:
@@ -368,52 +212,39 @@ class TreeNode:
         self.right = right
 ```
 
-> 🎬 Visualize: [visualgo.net/bst](https://visualgo.net/en/bst) — build trees and watch traversals live
+> 🎬 Visualize: [visualgo.net/bst](https://visualgo.net/en/bst)
 
 ---
 
-## Pattern 12: Tree Traversals — The Four Ways to Visit Nodes
+## Pattern 2: Tree Traversals — Four Ways to Visit Nodes
 
-There are four fundamental ways to visit every node in a tree. Understanding when to use each is crucial:
-
-### DFS (Depth-First Search) — Go Deep First
-
-DFS explores as far down as possible before backtracking. Three variations based on *when* you process the current node:
+### DFS (Depth-First) — Go deep before going wide
 
 ```
-Example Tree:    1
-                / \
-               2   3
-              / \
-             4   5
-
-Inorder   (Left, Root, Right):  4, 2, 5, 1, 3  ← Gives SORTED order for BST!
-Preorder  (Root, Left, Right):  1, 2, 4, 5, 3  ← Useful for copying/serializing
-Postorder (Left, Right, Root):  4, 5, 2, 3, 1  ← Useful for deletion/evaluation
+Tree:       1             Inorder   (L, Root, R): 4,2,5,1,3  ← SORTED for BST!
+           / \            Preorder  (Root, L, R): 1,2,4,5,3  ← copy/serialize
+          2   3           Postorder (L, R, Root): 4,5,2,3,1  ← delete/evaluate
+         / \
+        4   5
 ```
 
-### BFS (Breadth-First Search) — Go Level by Level
-
-BFS visits all nodes at depth 0, then depth 1, then depth 2, etc.
+### BFS (Breadth-First) — Go level by level
 
 ```
-Level Order:    [1], [2, 3], [4, 5]  ← Useful for level-based questions
+Level Order: [1], [2, 3], [4, 5]  ← level-based questions, shortest path
 ```
 
-### When to Use Which?
+### When to Use Which
 
 ```
-Need SORTED data from BST?          → Inorder DFS
-Need to process LEVELS?             → BFS
-Need to process CHILDREN before PARENT? → Postorder DFS
-Need to process PARENT before CHILDREN? → Preorder DFS
-Need SHORTEST PATH in a tree?       → BFS
+Sorted data from BST?              → Inorder
+Process levels?                     → BFS
+Process children before parent?     → Postorder
+Process parent before children?     → Preorder
 ```
-
-### Implementation
 
 ```python
-# DFS — Recursive (most natural for trees)
+# DFS — Recursive
 def inorder(root):
     if not root: return []
     return inorder(root.left) + [root.val] + inorder(root.right)
@@ -425,7 +256,7 @@ def levelOrder(root):
     res, q = [], deque([root])
     while q:
         level = []
-        for _ in range(len(q)):        # process entire level at once
+        for _ in range(len(q)):
             node = q.popleft()
             level.append(node.val)
             if node.left:  q.append(node.left)
@@ -436,27 +267,21 @@ def levelOrder(root):
 
 ---
 
-## Pattern 13: Recursive Tree Properties — The Template That Solves Everything
+## Pattern 3: Recursive Tree Properties
 
 ### The Core Idea
 
-> **"Almost every tree problem follows the same template: solve it for the left subtree, solve it for the right subtree, then combine the results."**
-
-This is the **divide-and-conquer** approach applied to trees. The recursion naturally follows the tree structure.
-
-### The Universal Template
+> **"Almost every tree problem: solve for left, solve for right, combine."**
 
 ```python
 def solve(root):
-    if not root: return BASE_CASE      # leaf boundary
-    left_result  = solve(root.left)    # trust that this works
-    right_result = solve(root.right)   # trust that this works
-    return COMBINE(root.val, left_result, right_result)
+    if not root: return BASE_CASE
+    left  = solve(root.left)
+    right = solve(root.right)
+    return COMBINE(root.val, left, right)
 ```
 
 ### Max Depth (LeetCode #104)
-
-**The Concept:** The depth of a tree = 1 + max(depth of left, depth of right). Base case: empty tree has depth 0.
 
 ```python
 def maxDepth(root):
@@ -466,9 +291,7 @@ def maxDepth(root):
 
 ### Diameter of Binary Tree (LeetCode #543)
 
-**The Concept:** The longest path may or may not pass through the root. At each node, the longest path *through* that node is `left_height + right_height`. Track the global maximum.
-
-**Why this is tricky:** The answer isn't the height — it's the longest path, which could bend through any node. So we track the answer as a side effect while computing heights.
+**The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
 
 ```python
 def diameterOfBinaryTree(root):
@@ -476,57 +299,48 @@ def diameterOfBinaryTree(root):
     def height(node):
         nonlocal diameter
         if not node: return 0
-        L = height(node.left)
-        R = height(node.right)
-        diameter = max(diameter, L + R)  # path through this node
-        return 1 + max(L, R)             # height (for parent's use)
+        L, R = height(node.left), height(node.right)
+        diameter = max(diameter, L + R)
+        return 1 + max(L, R)
     height(root)
     return diameter
 ```
 
-### ⭐ Lowest Common Ancestor — LCA (LeetCode #236)
+### Invert Binary Tree (LeetCode #226)
 
-**The Concept:** The LCA of two nodes `p` and `q` is the deepest node that has both `p` and `q` in its subtree. The elegant recursive insight:
+```python
+def invertTree(root):
+    if not root: return None
+    root.left, root.right = invertTree(root.right), invertTree(root.left)
+    return root
+```
 
-- If `root` is `p` or `q`, return it (found one!)
-- Recurse left and right
-- If both sides found something → this root is the LCA
-- If only one side found something → pass it upward
+### ⭐ Lowest Common Ancestor (LeetCode #236)
+
+**The Concept:** If both children return a result → this node is the LCA. If only one returns → pass it up.
 
 ```python
 def lowestCommonAncestor(root, p, q):
-    if not root or root == p or root == q:
-        return root                    # base: null or found target
+    if not root or root == p or root == q: return root
     L = lowestCommonAncestor(root.left, p, q)
     R = lowestCommonAncestor(root.right, p, q)
-    if L and R: return root            # p and q on different sides → LCA!
-    return L or R                      # both on same side → pass upward
+    if L and R: return root
+    return L or R
 ```
 
 ### Validate BST (LeetCode #98)
 
-**The Concept:** A BST requires `left < node < right`, but this must hold for the ENTIRE subtree, not just immediate children. Solution: pass down valid bounds.
-
-```
-        5
-       / \
-      3   7      ← 3 < 5 < 7 ✅
-     / \
-    1   4        ← 1 < 3 < 4 ✅, AND 1 > -∞ ✅, AND 4 < 5 ✅
-```
+**The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
 
 ```python
 def isValidBST(root, lo=float('-inf'), hi=float('inf')):
     if not root: return True
-    if root.val <= lo or root.val >= hi:
-        return False                   # violates bounds
+    if root.val <= lo or root.val >= hi: return False
     return isValidBST(root.left, lo, root.val) and \
            isValidBST(root.right, root.val, hi)
 ```
 
 ### ⭐ Maximum Path Sum (LeetCode #124) — Hard
-
-**The Concept:** A "path" can start and end at any node. At each node, the maximum path *through* that node uses `node.val + best_from_left + best_from_right`. But when passing the result upward, you can only go in ONE direction (a path can't fork).
 
 ```python
 def maxPathSum(root):
@@ -534,121 +348,341 @@ def maxPathSum(root):
     def helper(node):
         nonlocal best
         if not node: return 0
-        L = max(0, helper(node.left))    # ignore negative branches
+        L = max(0, helper(node.left))
         R = max(0, helper(node.right))
-        best = max(best, node.val + L + R)  # path through this node
-        return node.val + max(L, R)      # pass ONE direction upward
+        best = max(best, node.val + L + R)
+        return node.val + max(L, R)
     helper(root)
     return best
 ```
 
-### Top-K with Heaps (LeetCode #215)
+### Serialize & Deserialize (LeetCode #297)
 
-**The Concept:** A heap (priority queue) efficiently gives you the minimum (or maximum) element. For "Kth largest," maintain a min-heap of size k. The root is always the kth largest.
-
-**Why a heap?** Keeping a sorted structure where you can efficiently insert and remove elements. A heap does both in O(log n).
+**The Concept:** Convert tree ↔ string. Use preorder traversal with "null" markers for missing nodes.
 
 ```python
-import heapq
-def findKthLargest(nums, k):
-    return heapq.nlargest(k, nums)[-1]
-# Under the hood: maintains a min-heap of size k → O(n log k)
+class Codec:
+    def serialize(self, root):
+        if not root: return "null"
+        return f"{root.val},{self.serialize(root.left)},{self.serialize(root.right)}"
+    
+    def deserialize(self, data):
+        nodes = iter(data.split(","))
+        def build():
+            val = next(nodes)
+            if val == "null": return None
+            node = TreeNode(int(val))
+            node.left = build()
+            node.right = build()
+            return node
+        return build()
 ```
 
 ---
 
-# 🗺️ 1:10 — Graphs (20 min)
+# 📊 0:40 — Heaps / Priority Queues (15 min)
+
+## What is a Heap?
+
+A heap is a **complete binary tree** where every parent is smaller (min-heap) or larger (max-heap) than its children. The root is always the min (or max).
+
+```
+Min-Heap:       1          → root is always the minimum
+               / \
+              3   2        → parent ≤ children at every level
+             / \
+            7   5
+```
+
+### Why Use a Heap?
+
+| Need | Alternative | Heap |
+|------|------------|------|
+| Get min/max | Sort first O(n log n) | O(1) peek |
+| Insert new element | Re-sort O(n log n) | O(log n) |
+| Remove min/max | O(n) scan | O(log n) |
+
+**Use heaps when you need the min/max element repeatedly as data changes.**
+
+### Python's `heapq` — Min-Heap by Default
+
+```python
+import heapq
+
+heap = []
+heapq.heappush(heap, 5)       # insert: O(log n)
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 7)
+min_val = heapq.heappop(heap)  # remove min: O(log n) → returns 3
+peek = heap[0]                 # see min without removing: O(1)
+
+# Max-heap trick: negate values
+heapq.heappush(heap, -val)     # insert negated
+max_val = -heapq.heappop(heap) # negate back
+```
+
+---
+
+## Pattern 4: Top-K Problems
+
+### The Core Idea
+
+> **"Maintain a heap of size K. The root gives you the Kth element."**
+
+### Kth Largest Element (LeetCode #215)
+
+```python
+def findKthLargest(nums, k):
+    # Min-heap of size k: root = kth largest
+    heap = nums[:k]
+    heapq.heapify(heap)
+    for num in nums[k:]:
+        if num > heap[0]:
+            heapq.heapreplace(heap, num)
+    return heap[0]
+# O(n log k) — much better than sorting O(n log n)
+```
+
+### Merge K Sorted Lists (LeetCode #23) — Hard
+
+**The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
+
+```python
+def mergeKLists(lists):
+    heap = []
+    for i, l in enumerate(lists):
+        if l: heapq.heappush(heap, (l.val, i, l))
+    dummy = curr = ListNode(0)
+    while heap:
+        val, i, node = heapq.heappop(heap)
+        curr.next = node
+        curr = curr.next
+        if node.next:
+            heapq.heappush(heap, (node.next.val, i, node.next))
+    return dummy.next
+# O(N log K) where N = total nodes, K = number of lists
+```
+
+### Task Scheduler (LeetCode #621)
+
+**The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
+
+```python
+def leastInterval(tasks, n):
+    freq = list(Counter(tasks).values())
+    max_heap = [-f for f in freq]
+    heapq.heapify(max_heap)
+    cooldown = deque()  # (remaining_count, available_time)
+    time = 0
+    while max_heap or cooldown:
+        time += 1
+        if max_heap:
+            remaining = heapq.heappop(max_heap) + 1  # negated
+            if remaining < 0:
+                cooldown.append((remaining, time + n))
+        if cooldown and cooldown[0][1] == time:
+            heapq.heappush(max_heap, cooldown.popleft()[0])
+    return time
+```
+
+### Find Median from Data Stream (LeetCode #295)
+
+**The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
+
+```python
+class MedianFinder:
+    def __init__(self):
+        self.lo = []  # max-heap (negated) — smaller half
+        self.hi = []  # min-heap — larger half
+    
+    def addNum(self, num):
+        heapq.heappush(self.lo, -num)
+        heapq.heappush(self.hi, -heapq.heappop(self.lo))
+        if len(self.hi) > len(self.lo):
+            heapq.heappush(self.lo, -heapq.heappop(self.hi))
+    
+    def findMedian(self):
+        if len(self.lo) > len(self.hi):
+            return -self.lo[0]
+        return (-self.lo[0] + self.hi[0]) / 2
+```
+
+---
+
+# 🔤 0:55 — Tries (Prefix Trees) (10 min)
+
+## What is a Trie?
+
+A Trie (pronounced "try") is a tree where each node represents a **character**, and paths from root to nodes spell out **prefixes**. It's the ultimate data structure for prefix-based operations.
+
+```
+Insert: "cat", "car", "card", "dog"
+
+         (root)
+        /      \
+       c        d
+       |        |
+       a        o
+      / \       |
+     t   r      g*
+     *   |
+         d*
+
+* = end of a valid word
+```
+
+### Why Use a Trie?
+
+| Operation | HashMap | Trie |
+|-----------|---------|------|
+| Exact word lookup | O(L) ✅ | O(L) ✅ |
+| Find all words with prefix "car" | O(n) scan all ❌ | O(L + matches) ✅ |
+| Autocomplete | Expensive | Natural ✅ |
+| Spell checker | Expensive | Natural ✅ |
+
+### Trie Implementation
+
+```python
+class TrieNode:
+    def __init__(self):
+        self.children = {}            # char → TrieNode
+        self.is_end = False           # does a word end here?
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+    
+    def insert(self, word):
+        node = self.root
+        for c in word:
+            if c not in node.children:
+                node.children[c] = TrieNode()
+            node = node.children[c]
+        node.is_end = True
+    
+    def search(self, word):
+        node = self._find(word)
+        return node is not None and node.is_end
+    
+    def startsWith(self, prefix):
+        return self._find(prefix) is not None
+    
+    def _find(self, word):
+        node = self.root
+        for c in word:
+            if c not in node.children: return None
+            node = node.children[c]
+        return node
+```
+
+### ⭐ Word Search II (LeetCode #212) — Hard
+
+**The Concept:** Build a Trie from all target words, then DFS through the grid. At each cell, follow the Trie — if the Trie has no branch for a character, prune that search path.
+
+```python
+def findWords(board, words):
+    trie = {}
+    for w in words:
+        node = trie
+        for c in w:
+            node = node.setdefault(c, {})
+        node['#'] = w              # mark end with the full word
+    
+    R, C = len(board), len(board[0])
+    res = set()
+    
+    def dfs(r, c, node):
+        if '#' in node:
+            res.add(node['#'])
+        if r < 0 or r >= R or c < 0 or c >= C: return
+        ch = board[r][c]
+        if ch not in node: return
+        board[r][c] = '.'          # mark visited
+        for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)]:
+            dfs(r+dr, c+dc, node[ch])
+        board[r][c] = ch           # backtrack
+    
+    for r in range(R):
+        for c in range(C):
+            dfs(r, c, trie)
+    return list(res)
+```
+
+---
+
+# 🗺️ 1:05 — Graphs (20 min)
 
 ## What is a Graph?
 
-A graph is the most general data structure — it models **relationships between things**. Trees are actually a special case of graphs (connected, acyclic graphs).
+A graph models **relationships** between things. It's the most general data structure — trees, linked lists, and even arrays can be viewed as special cases of graphs.
 
 ### Real-World Examples
 
-- **Social network** — people are nodes, friendships are edges
-- **Map/GPS** — intersections are nodes, roads are edges (weighted by distance)
-- **Course prerequisites** — courses are nodes, "must take before" are directed edges
-- **Internet** — web pages are nodes, hyperlinks are edges
+- **Social network** — people = nodes, friendships = edges
+- **GPS/Maps** — intersections = nodes, roads = edges (weighted)
+- **Course prerequisites** — courses = nodes, "must take before" = directed edges
 
-### Types of Graphs
+### Types
 
 ```
-Undirected:  A — B   (friendship: mutual)
-Directed:    A → B   (Twitter follow: one-way)
+Undirected:  A — B    (friendship: mutual)
+Directed:    A → B    (follow: one-way)
 Weighted:    A —5— B  (road with distance 5)
-Unweighted:  A — B    (all edges same cost)
-Cyclic:      A → B → C → A  (can go in circles)
-Acyclic:     A → B → C      (no circles; trees are acyclic)
+Cyclic:      A → B → C → A  (loops exist)
+Acyclic:     A → B → C      (no loops; a tree is acyclic)
 ```
 
-### How to Represent a Graph
-
-The most common representation is an **adjacency list** — a dictionary where each node maps to its neighbors:
+### Representation — Adjacency List
 
 ```python
-# Build adjacency list from edge list
 from collections import defaultdict
 graph = defaultdict(list)
 for u, v in edges:
     graph[u].append(v)
-    graph[v].append(u)     # remove this line for directed graphs
+    graph[v].append(u)     # remove for directed
 ```
 
-> 🎬 Visualize: [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/) — watch BFS vs DFS explore grids in real-time
+> 🎬 Visualize: [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/)
 
 ---
 
-## Pattern 14: BFS — Shortest Path & Level-by-Level
+## Pattern 5: BFS — Shortest Path & Level-by-Level
 
 ### The Core Idea
 
-> **"Explore all neighbors at distance 1 first, then distance 2, then distance 3... This naturally finds the shortest path."**
+> **"Explore ALL neighbors at distance 1 first, then distance 2, then 3... Naturally finds shortest path."**
 
-**Analogy:** Drop a stone in a pond. Ripples expand outward in circles, reaching closer points first. BFS explores exactly like these ripples.
-
-### The BFS Template
+**Analogy:** Ripples in a pond — expanding outward uniformly.
 
 ```python
-from collections import deque
 def bfs(graph, start):
     visited = {start}
     q = deque([start])
     while q:
-        node = q.popleft()            # process nearest unvisited node
-        for neighbor in graph[node]:
-            if neighbor not in visited:
-                visited.add(neighbor)  # mark BEFORE adding to queue
-                q.append(neighbor)
-```
-
-### When to Use BFS
-
-```
-✅ Shortest path in UNWEIGHTED graphs
-✅ Level-by-level processing
-✅ Nearest/closest queries
-✅ Multi-source: start BFS from MULTIPLE points simultaneously
+        node = q.popleft()
+        for nb in graph[node]:
+            if nb not in visited:
+                visited.add(nb)
+                q.append(nb)
 ```
 
 ### Number of Islands (LeetCode #200)
 
-**The Concept:** Each '1' cell is land, each '0' is water. An "island" is a group of connected '1's. Scan the grid; when you find an unvisited '1', BFS outward to mark the entire island, and increment your counter.
-
 ```python
 def numIslands(grid):
-    rows, cols = len(grid), len(grid[0])
+    R, C = len(grid), len(grid[0])
     count = 0
-    for r in range(rows):
-        for c in range(cols):
+    for r in range(R):
+        for c in range(C):
             if grid[r][c] == '1':
-                count += 1             # found a new island!
+                count += 1
                 q = deque([(r, c)])
-                grid[r][c] = '0'       # mark as visited
+                grid[r][c] = '0'
                 while q:
                     row, col = q.popleft()
                     for dr, dc in [(0,1),(0,-1),(1,0),(-1,0)]:
                         nr, nc = row+dr, col+dc
-                        if 0<=nr<rows and 0<=nc<cols and grid[nr][nc]=='1':
+                        if 0<=nr<R and 0<=nc<C and grid[nr][nc]=='1':
                             grid[nr][nc] = '0'
                             q.append((nr, nc))
     return count
@@ -656,7 +690,7 @@ def numIslands(grid):
 
 ### Rotting Oranges (LeetCode #994) — Multi-source BFS
 
-**The Concept:** Multiple rotten oranges spread rot simultaneously. This is **multi-source BFS**: start with ALL rotten oranges in the queue at once. Each "level" of BFS represents one minute of rotting.
+**The Concept:** Start BFS from ALL rotten oranges simultaneously. Each "level" = 1 minute.
 
 ```python
 def orangesRotting(grid):
@@ -665,7 +699,7 @@ def orangesRotting(grid):
     fresh = 0
     for r in range(R):
         for c in range(C):
-            if grid[r][c] == 2: q.append((r, c, 0))   # all rotten → queue
+            if grid[r][c] == 2: q.append((r, c, 0))
             elif grid[r][c] == 1: fresh += 1
     time = 0
     while q:
@@ -674,73 +708,84 @@ def orangesRotting(grid):
             nr, nc = r+dr, c+dc
             if 0<=nr<R and 0<=nc<C and grid[nr][nc] == 1:
                 grid[nr][nc] = 2
-                fresh -= 1
-                time = t + 1
+                fresh -= 1; time = t + 1
                 q.append((nr, nc, t + 1))
     return time if fresh == 0 else -1
 ```
 
 ---
 
-## Pattern 15: DFS — All Paths & Cycle Detection
+## Pattern 6: DFS — All Paths & Cycle Detection
 
 ### The Core Idea
 
-> **"Go as deep as possible down one path before backtracking and trying another. Keep track of the state of each node to detect cycles."**
-
-### Three States for Cycle Detection
-
-This is a crucial concept for directed graphs:
+> **"Go as deep as possible, then backtrack. Use 3 states to detect cycles in directed graphs."**
 
 ```
-0 = UNVISITED   — haven't touched this node yet
-1 = VISITING    — currently exploring this node's subtree (on the current path)
-2 = VISITED     — fully processed, all descendants explored
+Three states:
+0 = UNVISITED
+1 = VISITING (currently exploring — on current path)
+2 = VISITED  (fully explored)
 
-If you reach a node in state 1 → CYCLE FOUND! (you've come back to where you currently are)
+Reaching a node in state 1 → CYCLE!
 ```
 
 ### Course Schedule (LeetCode #207)
 
-**The Concept:** Can you finish all courses given prerequisites? This is really asking: **does the prerequisite graph have a cycle?** If courses form a cycle (A requires B, B requires C, C requires A), it's impossible.
-
 ```python
 def canFinish(n, prereqs):
     graph = defaultdict(list)
-    for course, prereq in prereqs:
-        graph[prereq].append(course)
-    state = [0] * n                    # 0=unvisited, 1=visiting, 2=done
-    
+    for c, p in prereqs: graph[p].append(c)
+    state = [0] * n
     def has_cycle(node):
-        if state[node] == 1: return True     # back edge → CYCLE!
-        if state[node] == 2: return False    # already fully explored
-        state[node] = 1                      # mark as "currently exploring"
-        for neighbor in graph[node]:
-            if has_cycle(neighbor): return True
-        state[node] = 2                      # mark as "fully done"
+        if state[node] == 1: return True
+        if state[node] == 2: return False
+        state[node] = 1
+        for nb in graph[node]:
+            if has_cycle(nb): return True
+        state[node] = 2
         return False
-    
     return not any(has_cycle(i) for i in range(n))
 ```
 
-### Dijkstra's Algorithm — Shortest Path in Weighted Graphs
+### Course Schedule II (LeetCode #210) — Topological Sort
 
-**The Concept:** BFS finds shortest paths in unweighted graphs, but what about weighted edges? Dijkstra's algorithm uses a **priority queue (min-heap)** to always process the node with the smallest known distance first.
-
-**Why a heap?** You always want to expand the closest unprocessed node — a heap gives you the minimum in O(log n).
+**The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when DONE), then reverse.
 
 ```python
-import heapq
+def findOrder(n, prereqs):
+    graph = defaultdict(list)
+    for c, p in prereqs: graph[p].append(c)
+    state = [0] * n
+    order = []
+    def dfs(node):
+        if state[node] == 1: return False
+        if state[node] == 2: return True
+        state[node] = 1
+        for nb in graph[node]:
+            if not dfs(nb): return False
+        state[node] = 2
+        order.append(node)
+        return True
+    if not all(dfs(i) for i in range(n)): return []
+    return order[::-1]
+```
+
+### Dijkstra's Algorithm — Weighted Shortest Path
+
+**The Concept:** BFS finds shortest path in unweighted graphs. Dijkstra uses a **min-heap** to always process the closest unvisited node.
+
+```python
 def dijkstra(graph, start, n):
     dist = [float('inf')] * n
     dist[start] = 0
-    heap = [(0, start)]                # (distance, node)
+    heap = [(0, start)]
     while heap:
         d, u = heapq.heappop(heap)
-        if d > dist[u]: continue       # stale entry, skip
-        for v, weight in graph[u]:
-            if dist[u] + weight < dist[v]:
-                dist[v] = dist[u] + weight
+        if d > dist[u]: continue
+        for v, w in graph[u]:
+            if dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
                 heapq.heappush(heap, (dist[v], v))
     return dist
 # O((V + E) log V)
@@ -748,174 +793,341 @@ def dijkstra(graph, start, n):
 
 ---
 
-# 🧮 1:30 — Dynamic Programming (30 min)
+# 🔗 1:25 — Union-Find (Disjoint Set Union) (10 min)
 
-## What is Dynamic Programming? (The Hardest Concept to Learn)
+## What is Union-Find?
 
-DP is arguably the most feared interview topic, but at its core, it's a simple idea:
+Union-Find tracks **groups of connected elements**. It answers two questions instantly:
+- **Find:** Which group does element X belong to?
+- **Union:** Merge two groups together.
 
-> **"If you're solving the same subproblem multiple times, solve it ONCE and save the answer for later."**
+**Analogy:** Social groups at a party. Initially everyone is standalone. When two people become friends, their friend groups merge. Union-Find efficiently tracks who's in whose group.
 
-### DP = Recursion + Caching (Memoization)
+### Key Operations
 
-**Without DP:**
+| Operation | Naive | With Optimizations |
+|-----------|-------|-------------------|
+| Find (which group?) | O(n) | O(α(n)) ≈ O(1) |
+| Union (merge groups) | O(n) | O(α(n)) ≈ O(1) |
+
+### Implementation with Path Compression + Union by Rank
+
+```python
+class UnionFind:
+    def __init__(self, n):
+        self.parent = list(range(n))  # everyone is their own parent
+        self.rank = [0] * n
+        self.components = n           # track number of groups
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])  # path compression
+        return self.parent[x]
+    
+    def union(self, a, b):
+        ra, rb = self.find(a), self.find(b)
+        if ra == rb: return False      # already connected
+        # union by rank: attach smaller tree to larger
+        if self.rank[ra] < self.rank[rb]: ra, rb = rb, ra
+        self.parent[rb] = ra
+        if self.rank[ra] == self.rank[rb]: self.rank[ra] += 1
+        self.components -= 1
+        return True
+    
+    def connected(self, a, b):
+        return self.find(a) == self.find(b)
 ```
-fib(5) calls fib(4) and fib(3)
-fib(4) calls fib(3) and fib(2)      ← fib(3) computed TWICE!
-fib(3) calls fib(2) and fib(1)      ← fib(2) computed THREE times!
-Total calls: exponential O(2ⁿ) 💀
-```
 
-**With DP:**
-```
-fib(5): compute fib(1)=1, fib(2)=1, fib(3)=2, fib(4)=3, fib(5)=5
-Each fib(i) computed ONCE → O(n) ✅
-```
-
-### Two Approaches to DP
-
-1. **Top-down (Memoization):** Write the natural recursive solution, then add a cache
-2. **Bottom-up (Tabulation):** Fill a table from the base case forward (usually preferred in interviews — no recursion depth issues)
-
-### The 4-Step DP Recipe
-
-This works for ANY DP problem:
+### When to Use Union-Find
 
 ```
-1. DEFINE STATE  → What info uniquely describes a subproblem?
-                   (usually: index, remaining capacity, length so far)
-2. RECURRENCE  → How does dp[i] relate to previous values?
-                   dp[i] = some function of dp[i-1], dp[i-2], etc.
-3. BASE CASE   → What are the trivially known answers?
-                   dp[0] = ?, dp[1] = ?
-4. DIRECTION   → Fill from base case forward (bottom-up)
-                   OR recurse from the answer backward (top-down)
+✅ "Number of connected components"
+✅ "Are X and Y connected?"
+✅ "Merge/connect groups"
+✅ "Detect cycles in undirected graphs"
+✅ Problems where relationships grow over time
 ```
 
-> 🎬 Visualize: [visualgo.net/dp](https://visualgo.net/en/recursion) — watch DP table filling step by step
+### Number of Connected Components (LeetCode #323)
+
+```python
+def countComponents(n, edges):
+    uf = UnionFind(n)
+    for u, v in edges:
+        uf.union(u, v)
+    return uf.components
+```
+
+### Redundant Connection (LeetCode #684)
+
+**The Concept:** Find the edge that creates a cycle. Add edges one by one — if union returns False (already connected), that edge is redundant.
+
+```python
+def findRedundantConnection(edges):
+    uf = UnionFind(len(edges) + 1)
+    for u, v in edges:
+        if not uf.union(u, v):
+            return [u, v]              # this edge created a cycle!
+```
+
+### Accounts Merge (LeetCode #721)
+
+**The Concept:** Union-Find to group accounts by shared emails.
+
+```python
+def accountsMerge(accounts):
+    uf = UnionFind(len(accounts))
+    email_to_id = {}
+    for i, acc in enumerate(accounts):
+        for email in acc[1:]:
+            if email in email_to_id:
+                uf.union(i, email_to_id[email])
+            email_to_id[email] = i
+    # Group emails by root account
+    groups = defaultdict(set)
+    for email, i in email_to_id.items():
+        groups[uf.find(i)].add(email)
+    return [[accounts[i][0]] + sorted(emails) for i, emails in groups.items()]
+```
 
 ---
 
-## Pattern 16: 1D DP — Linear Sequence Optimization
+# 💰 1:35 — Greedy Algorithms (10 min)
 
-### The Core Idea
+## What is Greedy?
 
-> **"The answer for position `i` depends on the answers for a few previous positions."**
+A greedy algorithm makes the **locally optimal choice** at each step, hoping it leads to a globally optimal solution. Unlike DP, greedy doesn't reconsider past choices.
 
-### Climbing Stairs (LeetCode #70) — The Gateway to DP
+> **"At each step, take the best available option. Never look back."**
 
-**The Concept:** You can climb 1 or 2 stairs at a time. How many ways to reach step `n`? At step `n`, you either came from step `n-1` (took 1 step) or step `n-2` (took 2 steps). So:
+### When Does Greedy Work?
+
+Greedy works when the problem has **optimal substructure** AND the **greedy choice property** (local best → global best). It's often used for:
 
 ```
-dp[n] = dp[n-1] + dp[n-2]   ← This is literally Fibonacci!
+✅ Interval scheduling (start/end times)
+✅ Activity selection
+✅ Minimum coins (specific cases)
+✅ Huffman coding
+✅ Jump/reach problems
 ```
 
-**Walkthrough:**
-```
-Stairs: 1  2  3  4  5
-Ways:   1  2  3  5  8
+### How to Verify Greedy Is Correct
 
-Step 3: could come from step 2 (2 ways) or step 1 (1 way) = 3 ways
-Step 4: could come from step 3 (3 ways) or step 2 (2 ways) = 5 ways
+1. Can you prove that the greedy choice is always part of an optimal solution?
+2. Or: Does choosing the "best now" ever prevent a better future choice? If no → greedy works.
+
+---
+
+## Key Greedy Problems
+
+### Jump Game (LeetCode #55)
+
+**The Concept:** Track the farthest position you can reach. If you can ever reach the end, return True.
+
+```python
+def canJump(nums):
+    farthest = 0
+    for i in range(len(nums)):
+        if i > farthest: return False
+        farthest = max(farthest, i + nums[i])
+    return True
+# O(n), O(1)
 ```
+
+### Jump Game II (LeetCode #45)
+
+**The Concept:** BFS-style: track the farthest you can reach in each "jump." When you exhaust the current jump range, increment jumps.
+
+```python
+def jump(nums):
+    jumps = curr_end = farthest = 0
+    for i in range(len(nums) - 1):
+        farthest = max(farthest, i + nums[i])
+        if i == curr_end:
+            jumps += 1
+            curr_end = farthest
+    return jumps
+```
+
+### Non-overlapping Intervals (LeetCode #435)
+
+**The Concept:** Sort by END time. Greedily keep intervals that end earliest (leave maximum room for future intervals).
+
+```python
+def eraseOverlapIntervals(intervals):
+    intervals.sort(key=lambda x: x[1])  # sort by end time
+    count = 0
+    prev_end = float('-inf')
+    for s, e in intervals:
+        if s >= prev_end:
+            prev_end = e               # no overlap → keep it
+        else:
+            count += 1                 # overlap → remove it
+    return count
+```
+
+### Meeting Rooms II (LeetCode #253)
+
+**The Concept:** Sort by start time. Use a min-heap of end times. If the earliest-ending meeting ends before the current start, reuse that room.
+
+```python
+def minMeetingRooms(intervals):
+    intervals.sort()
+    heap = []                          # end times of active meetings
+    for s, e in intervals:
+        if heap and heap[0] <= s:
+            heapq.heappop(heap)        # reuse room (meeting ended)
+        heapq.heappush(heap, e)
+    return len(heap)                   # heap size = rooms needed
+```
+
+### Gas Station (LeetCode #134)
+
+```python
+def canCompleteCircuit(gas, cost):
+    if sum(gas) < sum(cost): return -1
+    tank = start = 0
+    for i in range(len(gas)):
+        tank += gas[i] - cost[i]
+        if tank < 0:
+            start = i + 1
+            tank = 0
+    return start
+```
+
+---
+
+# 🧮 1:45 — Dynamic Programming (15 min)
+
+## What is DP?
+
+DP is the most feared interview topic, but at its core:
+
+> **"If you're solving the same subproblem multiple times, solve it ONCE and save the answer."**
+
+### DP = Recursion + Caching
+
+```
+Without DP: fib(5) → fib(3) computed TWICE, fib(2) THREE times → O(2ⁿ) 💀
+With DP:    each fib(i) computed ONCE → O(n) ✅
+```
+
+### The 4-Step DP Recipe
+
+```
+1. DEFINE STATE   → What info describes a subproblem? (index, capacity, etc.)
+2. RECURRENCE    → dp[i] = f(dp[i-1], dp[i-2], ...)
+3. BASE CASE     → dp[0] = ?, dp[1] = ?
+4. DIRECTION     → Fill from base case forward (bottom-up)
+```
+
+### How to Know It's DP
+
+```
+1. Asks for OPTIMAL (min/max) or COUNT of ways
+2. Making a sequence of CHOICES
+3. Same subproblems solved REPEATEDLY in brute force
+4. GREEDY doesn't work (local ≠ global optimal)
+```
+
+---
+
+## Pattern 7: 1D DP — Linear Optimization
+
+### Climbing Stairs (LeetCode #70)
+
+**The Concept:** `dp[n] = dp[n-1] + dp[n-2]` — literally Fibonacci!
 
 ```python
 def climbStairs(n):
     if n <= 2: return n
-    a, b = 1, 2                        # dp[1]=1, dp[2]=2
+    a, b = 1, 2
     for _ in range(3, n+1):
-        a, b = b, a + b               # dp[i] = dp[i-1] + dp[i-2]
+        a, b = b, a + b
     return b
-# O(n) time, O(1) space — only need the last two values!
 ```
 
 ### House Robber (LeetCode #198)
 
-**The Concept:** You can't rob two adjacent houses. At each house, you choose: **rob it** (get its value + best from two houses ago) or **skip it** (keep the best from the previous house).
-
-```
-dp[i] = max(dp[i-1],          ← skip this house
-             dp[i-2] + nums[i])  ← rob this house + best before adjacent
-```
+**The Concept:** At each house: rob it (value + best from 2 ago) or skip it (best from previous).
 
 ```python
 def rob(nums):
     if len(nums) <= 2: return max(nums)
     a, b = nums[0], max(nums[0], nums[1])
     for i in range(2, len(nums)):
-        a, b = b, max(b, a + nums[i])   # skip or rob?
+        a, b = b, max(b, a + nums[i])
     return b
 ```
 
 ### Coin Change (LeetCode #322)
 
-**The Concept:** Find the minimum number of coins to make the target amount. For each amount `i`, try every coin denomination — `dp[i] = min(dp[i - coin] + 1)` across all coins.
-
-**Analogy:** Making change. To make \$11 with coins [1, 5, 6]: the answer for \$11 = 1 + min(answer for \$10, answer for \$6, answer for \$5). Try each coin and take the best.
+**The Concept:** `dp[amount] = 1 + min(dp[amount - coin])` for each coin.
 
 ```python
 def coinChange(coins, amount):
     dp = [float('inf')] * (amount + 1)
-    dp[0] = 0                          # base case: 0 coins for amount 0
+    dp[0] = 0
     for i in range(1, amount + 1):
         for c in coins:
             if c <= i:
-                dp[i] = min(dp[i], dp[i - c] + 1)
+                dp[i] = min(dp[i], dp[i-c] + 1)
     return dp[amount] if dp[amount] != float('inf') else -1
-# O(amount × number_of_coins)
 ```
 
-### Longest Increasing Subsequence — LIS (LeetCode #300)
-
-**The Concept:** `dp[i]` = length of the longest increasing subsequence *ending at index i*. For each `i`, check all previous `j < i` — if `nums[j] < nums[i]`, you can extend that subsequence.
+### Longest Increasing Subsequence (LeetCode #300)
 
 ```python
 def lengthOfLIS(nums):
-    dp = [1] * len(nums)               # every element is a subsequence of length 1
+    dp = [1] * len(nums)
     for i in range(1, len(nums)):
         for j in range(i):
             if nums[j] < nums[i]:
-                dp[i] = max(dp[i], dp[j] + 1)  # extend j's subsequence
+                dp[i] = max(dp[i], dp[j] + 1)
     return max(dp)
-# O(n²) — can be optimized to O(n log n) with binary search (patience sorting)
+# O(n²) — optimizable to O(n log n) with binary search
+```
+
+### Word Break (LeetCode #139)
+
+```python
+def wordBreak(s, wordDict):
+    words = set(wordDict)
+    dp = [False] * (len(s) + 1)
+    dp[0] = True
+    for i in range(1, len(s) + 1):
+        for j in range(i):
+            if dp[j] and s[j:i] in words:
+                dp[i] = True
+                break
+    return dp[len(s)]
 ```
 
 ---
 
-## Pattern 17: 2D DP — Grids & Two-Sequence Comparison
-
-### The Core Idea
-
-> **"When the state needs two variables (two indices, grid position, etc.), use a 2D table where `dp[i][j]` represents the answer for the subproblem defined by `i` and `j`."**
+## Pattern 8: 2D DP — Grids & Two-Sequence Comparison
 
 ### Unique Paths (LeetCode #62)
 
-**The Concept:** On a grid, you can only move right or down. The number of ways to reach cell (i,j) = ways to reach from above + ways to reach from the left.
-
-```
-dp[i][j] = dp[i-1][j] + dp[i][j-1]
-```
-
 ```python
 def uniquePaths(m, n):
-    dp = [[1]*n for _ in range(m)]     # first row and column are all 1s
+    dp = [[1]*n for _ in range(m)]
     for i in range(1, m):
         for j in range(1, n):
             dp[i][j] = dp[i-1][j] + dp[i][j-1]
     return dp[m-1][n-1]
 ```
 
-### ⭐ Longest Common Subsequence — LCS (LeetCode #1143)
+### ⭐ Longest Common Subsequence (LeetCode #1143)
 
-**The Concept:** Compare two strings character by character. If characters match, extend the sequence from the diagonal. If not, take the best from either dropping a character from string 1 or string 2.
-
-**Walkthrough for "ace" and "abcde":**
+**Walkthrough:**
 ```
      ""  a  b  c  d  e
   ""  0  0  0  0  0  0
-  a   0  1  1  1  1  1    ← 'a' matches 'a', count goes to 1
-  c   0  1  1  2  2  2    ← 'c' matches 'c', count goes to 2
-  e   0  1  1  2  2  3    ← 'e' matches 'e', count goes to 3
+  a   0  1  1  1  1  1    ← 'a' matches
+  c   0  1  1  2  2  2    ← 'c' matches
+  e   0  1  1  2  2  3    ← 'e' matches → LCS = 3
 ```
 
 ```python
@@ -925,100 +1137,93 @@ def longestCommonSubsequence(s1, s2):
     for i in range(1, m+1):
         for j in range(1, n+1):
             if s1[i-1] == s2[j-1]:
-                dp[i][j] = dp[i-1][j-1] + 1      # characters match!
+                dp[i][j] = dp[i-1][j-1] + 1
             else:
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1])  # skip one char
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
     return dp[m][n]
-# O(m × n)
 ```
 
 ### Edit Distance (LeetCode #72)
-
-**The Concept:** Minimum operations (insert, delete, replace) to turn one word into another. This is the classic 2D DP problem that powers spell checkers, diffs, and DNA comparison.
-
-- If characters match: no operation needed, take diagonal
-- If not: try all three operations, take the minimum + 1
 
 ```python
 def minDistance(w1, w2):
     m, n = len(w1), len(w2)
     dp = [[0]*(n+1) for _ in range(m+1)]
-    for i in range(m+1): dp[i][0] = i   # deleting all of w1
-    for j in range(n+1): dp[0][j] = j   # inserting all of w2
+    for i in range(m+1): dp[i][0] = i
+    for j in range(n+1): dp[0][j] = j
     for i in range(1, m+1):
         for j in range(1, n+1):
             if w1[i-1] == w2[j-1]:
-                dp[i][j] = dp[i-1][j-1]           # match: no cost
+                dp[i][j] = dp[i-1][j-1]
             else:
-                dp[i][j] = 1 + min(
-                    dp[i-1][j],        # delete from w1
-                    dp[i][j-1],        # insert into w1
-                    dp[i-1][j-1]       # replace
-                )
+                dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
     return dp[m][n]
 ```
 
 ### Partition Equal Subset Sum (LeetCode #416)
 
-**The Concept:** Can you divide the array into two subsets with equal sum? This reduces to: can you find a subset that sums to `total/2`? (A variant of the 0/1 Knapsack problem.)
-
 ```python
 def canPartition(nums):
     total = sum(nums)
-    if total % 2: return False         # odd total → impossible
+    if total % 2: return False
     target = total // 2
-    achievable = {0}                   # set of achievable sums
+    dp = {0}
     for n in nums:
-        achievable = achievable | {x + n for x in achievable}
-    return target in achievable
+        dp = dp | {x + n for x in dp}
+    return target in dp
+```
+
+### 0/1 Knapsack Pattern
+
+**The Concept:** Choose items with weights and values to maximize value within a weight limit.
+
+```python
+def knapsack(weights, values, capacity):
+    n = len(weights)
+    dp = [[0]*(capacity+1) for _ in range(n+1)]
+    for i in range(1, n+1):
+        for w in range(capacity+1):
+            dp[i][w] = dp[i-1][w]            # skip item i
+            if weights[i-1] <= w:
+                dp[i][w] = max(dp[i][w], dp[i-1][w-weights[i-1]] + values[i-1])
+    return dp[n][capacity]
 ```
 
 ---
 
 ## 🧠 DP Decision Guide
 
-When you see a DP problem, identify the structure:
-
 ```
-Single sequence / linear choices?    → 1D DP   (House Robber, Climbing Stairs, LIS)
-Two strings to compare?             → 2D DP   (LCS, Edit Distance)
-Grid movement?                      → 2D DP   (Unique Paths, Min Path Sum)
-Items with weight/capacity?         → Knapsack (Coin Change, Subset Sum)
-Optimization + overlapping subs?    → DP       (if greedy doesn't work, try DP)
-Can decompose into choices?         → DP       (at each step, what are my options?)
+Single sequence?         → 1D DP     (House Robber, Climbing Stairs, LIS)
+Two strings?             → 2D DP     (LCS, Edit Distance)
+Grid?                    → 2D DP     (Unique Paths, Min Path Sum)
+Items + capacity?        → Knapsack  (Coin Change, Subset Sum)
+Can decompose to choices?→ DP        (if greedy doesn't work)
 ```
-
-### How to Know It's DP
-
-1. The problem asks for **optimal** (min/max) or **count** of ways
-2. Making a sequence of **choices** leads to the answer
-3. The same subproblems are solved **repeatedly** in the brute force
-4. **Greedy doesn't work** (local optimal ≠ global optimal)
 
 ---
 
-# ✅ Day 2 Summary — Patterns 8-17
+# ✅ Day 2 Summary — All Advanced Patterns
 
-| # | Pattern | Core Insight | When to Use | Top Problem |
-|---|---------|-------------|-------------|-------------|
-| 8 | **Slow/Fast Pointers** | Different speeds reveal structure | Cycle, middle of list | Linked List Cycle #141 |
-| 9 | **Reverse LL** | Save → Reverse → Advance | Restructuring linked lists | Reverse LL #206 |
-| 10 | **Stack Matching** | Push open, pop close | Matching/nesting | Valid Parentheses #20 |
-| 11 | **Monotonic Stack** | Maintain order, pop violations | Next greater/smaller | Daily Temps #739, Histogram #84 |
-| 12 | **Tree Traversal** | DFS (3 orders) + BFS | Explore tree structure | Level Order #102 |
-| 13 | **Recursive Tree** | Solve left + right → combine | Tree properties | LCA #236, Max Path Sum #124 |
-| 14 | **BFS Graph** | Queue + visited = shortest path | Shortest path, levels | Islands #200, Rotting Oranges #994 |
-| 15 | **DFS Graph** | Go deep, 3-state cycle detect | All paths, cycles | Course Schedule #207 |
-| 16 | **1D DP** | dp[i] = f(previous values) | Linear optimization | Coin Change #322, LIS #300 |
-| 17 | **2D DP** | dp[i][j] for two-variable state | Grids, string comparison | LCS #1143, Edit Distance #72 |
+| # | Pattern | Core Insight | Key Problem |
+|---|---------|-------------|-------------|
+| 1 | **Backtracking** | Choose → Explore → Undo | Subsets #78, N-Queens #51 |
+| 2 | **Tree Traversal** | DFS (3 orders) + BFS | Level Order #102 |
+| 3 | **Recursive Tree** | Solve left + right → combine | LCA #236, Max Path Sum #124 |
+| 4 | **Top-K / Heap** | Min/max heap for streaming data | Kth Largest #215, Merge K #23 |
+| 5 | **BFS Graph** | Queue + visited = shortest path | Islands #200, Rotting Oranges #994 |
+| 6 | **DFS Graph** | 3-state cycle detection | Course Schedule #207 |
+| 7 | **1D DP** | dp[i] = f(previous values) | Coin Change #322, LIS #300 |
+| 8 | **2D DP** | dp[i][j] for grids/strings | LCS #1143, Edit Distance #72 |
+| **Bonus** | **Trie** | Prefix-based string operations | Word Search II #212 |
+| **Bonus** | **Union-Find** | Track connected components | Redundant Connection #684 |
+| **Bonus** | **Greedy** | Local optimal = global optimal | Jump Game #55, Meeting Rooms #253 |
 
 ---
 
-# 🏆 Complete Crash Course Summary — 17 Patterns in 4 Hours
+# 🏆 Complete Crash Course — All Topics Covered
 
-## Quick Pattern Recognition Cheat
-
-Ask yourself these questions to identify the pattern:
+## Quick Pattern Recognition
 
 ```
 "Find pair with property X"          → HashMap or Two Pointers
@@ -1031,22 +1236,29 @@ Ask yourself these questions to identify the pattern:
 "Next greater/smaller"              → Monotonic Stack
 "Level-by-level / shortest path"    → BFS
 "All paths / cycle detection"       → DFS
-"Optimize with overlapping sub"     → DP
+"Connected components"              → Union-Find
+"Schedule/select intervals"         → Greedy (sort by end)
+"Min/max with overlapping choices"  → Dynamic Programming
+"Prefix matching / autocomplete"    → Trie
+"Top K / streaming min/max"         → Heap
 ```
 
-## 🎯 Top 20 — If You Only Do These Problems
+## 🎯 Top 25 — If You Only Do These
 
 ```
-🟢 #1    Two Sum              🟡 #53   Max Subarray (Kadane's)
+🟢 #1    Two Sum              🟡 #53   Max Subarray
 🟡 #3    Longest Substring    🟡 #15   3Sum
-🟡 #33   Search Rotated       🟡 #56   Merge Intervals
-🟡 #78   Subsets              🟢 #206  Reverse Linked List
+🟡 #5    Longest Palindrome   🟢 #206  Reverse Linked List
 🟢 #20   Valid Parentheses    🟡 #739  Daily Temperatures
-🟡 #102  Level Order          🟢 #104  Max Depth Tree
-🟡 #236  LCA                  🟡 #200  Number of Islands
-🟡 #207  Course Schedule      🟡 #322  Coin Change
-🟡 #300  LIS                  🟡 #1143 LCS
+🟡 #33   Search Rotated       🟡 #56   Merge Intervals
+🟡 #78   Subsets              🟡 #102  Level Order
+🟢 #104  Max Depth Tree       🟡 #200  Number of Islands
+🟡 #207  Course Schedule      🟡 #236  LCA
+🟡 #322  Coin Change          🟡 #300  LIS
+🟡 #1143 LCS                  🟡 #55   Jump Game
 🔴 #42   Trapping Rain Water  🔴 #84   Largest Rectangle
+🔴 #23   Merge K Sorted       🔴 #124  Max Path Sum
+🔴 #212  Word Search II
 ```
 
 ---
@@ -1059,10 +1271,9 @@ Ask yourself these questions to identify the pattern:
 | **Striver A2Z Sheet** | [takeuforward.org](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2) | 450+ problems by topic |
 | **LeetCode Patterns** | [seanprashad.com/leetcode-patterns](https://seanprashad.com/leetcode-patterns/) | Pattern-based problem list |
 | **Visualizations** | [visualgo.net](https://visualgo.net/) | See every algorithm animate |
-| **Full Workshop** | [../README.md](../README.md) | Deep-dive 18-chapter version |
 
 > **Consistency beats intensity. Solve 2-3 problems daily and you'll crack any interview.** 🚀
 
 ---
 
-*See also: [cheatsheet.md](cheatsheet.md) for a printable quick-reference, [interview-playbook.md](interview-playbook.md) for interview day strategy.*
+*See also: [cheatsheet.md](cheatsheet.md) for quick-reference, [interview-playbook.md](interview-playbook.md) for interview day strategy.*
