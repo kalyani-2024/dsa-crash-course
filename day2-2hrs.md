@@ -1,10 +1,10 @@
-# Day 2 -- HashMaps, Linked Lists, Stacks, and Queues
+# Day 2 -- HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
-## Core Data Structures That Power Everything Else
+## Core Data Structures and Searching Techniques
 
-**What this day covers:** Hash Maps and Sets (O(1) lookup, frequency counting, grouping), Linked Lists (traversal, reversal, slow/fast pointers, merge), Stacks (matching, monotonic stack), and Queues (BFS, level-by-level processing).
+**What this day covers:** Hash Maps and Sets (O(1) lookup, frequency counting, grouping), Linked Lists (traversal, reversal, slow/fast pointers, merge), Stacks (matching, monotonic stack), Queues (BFS, level-by-level processing), Sorting as a preprocessing step, Binary Search (standard and on-answer), and Bit Manipulation tricks.
 
-These four data structures come up constantly in interviews. Understanding when and why to reach for each one is just as important as knowing how they work.
+These data structures and techniques come up constantly in interviews. Understanding when and why to reach for each one is just as important as knowing how they work.
 
 ---
 
@@ -343,7 +343,149 @@ class MinStack:
 
 ---
 
-# Day 2 Summary -- 5 Patterns
+# Sorting and Binary Search
+
+## Why Sorting Matters
+
+You rarely implement sorts yourself, but sorting as a preprocessing step unlocks many techniques:
+
+```
+Sorted -> Binary Search      O(n log n + log n)
+Sorted -> Two Pointers       O(n log n + n)
+Sorted -> Merge Intervals    O(n log n + n)
+Sorted -> Greedy decisions   O(n log n + n)
+Sorted -> Duplicates adjacent
+```
+
+### Dutch National Flag (LeetCode #75) -- Sort 0s, 1s, 2s in One Pass
+
+```python
+def sortColors(nums):
+    lo, mid, hi = 0, 0, len(nums) - 1
+    while mid <= hi:
+        if   nums[mid] == 0: nums[lo], nums[mid] = nums[mid], nums[lo]; lo += 1; mid += 1
+        elif nums[mid] == 1: mid += 1
+        else:                nums[mid], nums[hi] = nums[hi], nums[mid]; hi -= 1
+```
+
+### Merge Intervals (LeetCode #56)
+
+```python
+def merge(intervals):
+    intervals.sort()
+    res = [intervals[0]]
+    for s, e in intervals[1:]:
+        if s <= res[-1][1]: res[-1][1] = max(res[-1][1], e)
+        else: res.append([s, e])
+    return res
+```
+
+---
+
+## Pattern 12: Binary Search -- Halve the Search Space
+
+### The Core Idea
+
+> "If you can determine which half contains the answer, throw away the other half. Repeat. O(log n)."
+
+### Standard Binary Search
+
+```python
+def binary_search(arr, target):
+    lo, hi = 0, len(arr) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if   arr[mid] == target: return mid
+        elif arr[mid] < target:  lo = mid + 1
+        else:                    hi = mid - 1
+    return -1
+```
+
+### Search in Rotated Sorted Array (LeetCode #33)
+
+**The Concept:** At any mid, one half is always sorted. Check if target is in the sorted half.
+
+```python
+def search(nums, target):
+    lo, hi = 0, len(nums) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if nums[mid] == target: return mid
+        if nums[lo] <= nums[mid]:
+            if nums[lo] <= target < nums[mid]: hi = mid - 1
+            else: lo = mid + 1
+        else:
+            if nums[mid] < target <= nums[hi]: lo = mid + 1
+            else: hi = mid - 1
+    return -1
+```
+
+### Binary Search on Answer
+
+> "Instead of searching an array, search the range of possible answers."
+
+### Koko Eating Bananas (LeetCode #875)
+
+```python
+import math
+def minEatingSpeed(piles, h):
+    lo, hi = 1, max(piles)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if sum(math.ceil(p / mid) for p in piles) <= h:
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+```
+
+---
+
+# Bit Manipulation
+
+## Four Tricks Worth Knowing
+
+### 1. XOR Cancels Pairs -- Single Number (LeetCode #136)
+
+`a ^ a = 0` and `a ^ 0 = a`. XOR all numbers -- pairs cancel, the unique one remains.
+
+```python
+def singleNumber(nums):
+    result = 0
+    for n in nums: result ^= n
+    return result
+```
+
+### 2. Check Power of 2
+
+Powers of 2 have exactly one bit set. `n & (n-1)` clears the lowest bit.
+
+```python
+def isPowerOfTwo(n):
+    return n > 0 and (n & (n-1)) == 0
+```
+
+### 3. Count Set Bits (Brian Kernighan)
+
+```python
+def countBits(n):
+    count = 0
+    while n:
+        n &= n - 1
+        count += 1
+    return count
+```
+
+### 4. Even/Odd
+
+```python
+n & 1 == 0  # even
+n & 1 == 1  # odd
+```
+
+---
+
+# Day 2 Summary -- 6 Patterns + Key Techniques
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
@@ -352,6 +494,7 @@ class MinStack:
 | 9 | **Reverse LL** | Save, Reverse, Advance | Reverse LL #206 |
 | 10 | **Stack Matching** | Push open, pop close | Valid Parentheses #20 |
 | 11 | **Monotonic Stack** | Next greater/smaller | Daily Temps #739 |
+| 12 | **Binary Search** | Halve the search space | Rotated Array #33, Koko #875 |
 
 ### Practice Problems for Day 2
 
@@ -361,6 +504,8 @@ Easy:
   #20   Valid Parentheses
   #217  Contains Duplicate
   #141  Linked List Cycle
+  #704  Binary Search
+  #136  Single Number
 
 Medium:
   #128  Longest Consecutive Sequence
@@ -368,6 +513,10 @@ Medium:
   #739  Daily Temperatures
   #143  Reorder List
   #21   Merge Two Sorted Lists
+  #33   Search in Rotated Sorted Array
+  #56   Merge Intervals
+  #75   Sort Colors
+  #875  Koko Eating Bananas
 
 Hard:
   #84   Largest Rectangle in Histogram
@@ -375,4 +524,4 @@ Hard:
 
 ---
 
-*Next: Sorting, Binary Search, Recursion, and Backtracking -- [day3.md](day3.md)*
+*Next: Recursion, Backtracking, Trees, and Heaps -- [day3.md](day3.md)*

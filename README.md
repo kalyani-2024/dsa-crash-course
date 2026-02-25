@@ -36,43 +36,43 @@ Learn the most fundamental data structures and the patterns built on top of them
 |----------|------|--------|
 | **Course Content** | [day1-2hrs.md](day1-2hrs.md) | Big-O, Arrays (Two Pointers, Sliding Window, Prefix Sum, Kadane's), Strings (Frequency Counting, Palindromes, String Manipulation) |
 
-**Structures Covered:** Arrays, Strings
+**Patterns Covered:** 6 | **Structures:** Arrays, Strings
 
 ---
 
-### Day 2 -- HashMaps, Linked Lists, Stacks, and Queues
+### Day 2 -- HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
-Master the core data structures that power almost every other algorithm.
+Master the core data structures and essential searching/sorting techniques.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day2-2hrs.md](day2-2hrs.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues |
+| **Course Content** | [day2-2hrs.md](day2-2hrs.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search, Bit Manipulation |
 
-**Structures Covered:** Hash Maps, Hash Sets, Linked Lists, Stacks, Queues
+**Patterns Covered:** 6 | **Structures:** Hash Maps, Hash Sets, Linked Lists, Stacks, Queues
 
 ---
 
-### Day 3 -- Sorting, Binary Search, Recursion, and Backtracking
+### Day 3 -- Recursion, Backtracking, Trees, and Heaps
 
-Bridge the gap between fundamentals and advanced material.
+Learn recursive thinking, then apply it to trees and priority queues.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day3.md](day3.md) | Sorting as Preprocessing, Binary Search (Standard and On-Answer), Bit Manipulation, Recursion, Backtracking (Subsets, Permutations, Combinations) |
+| **Course Content** | [day3.md](day3.md) | Recursion, Backtracking (Subsets, Permutations, Combinations, N-Queens), Trees and BST (Traversals, Recursive Properties, Validation), Heaps and Priority Queues (Top-K, Merge K Sorted, Median) |
 
-**Techniques Covered:** Sorting, Binary Search, Bit Manipulation, Recursion, Backtracking
+**Patterns Covered:** 4 | **Structures:** Trees, BST, Heaps
 
 ---
 
-### Day 4 -- Trees, Heaps, Tries, Graphs, Greedy, and Dynamic Programming
+### Day 4 -- Tries, Graphs, Greedy, and Dynamic Programming
 
-The most advanced material -- trees, graphs, and algorithmic paradigms.
+The most advanced material -- graph algorithms and algorithm paradigms.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day4.md](day4.md) | Trees and BST, Heaps/Priority Queues, Tries, Graphs (BFS, DFS, Topological Sort, Dijkstra), Union-Find, Greedy Algorithms, Dynamic Programming (1D, 2D, Knapsack) |
+| **Course Content** | [day4.md](day4.md) | Tries (Prefix Trees), Graphs (BFS, DFS, Topological Sort, Dijkstra), Union-Find, Greedy Algorithms, Dynamic Programming (1D, 2D, Knapsack) |
 
-**Structures and Algorithms Covered:** Trees, BST, Heaps, Tries, Graphs, Union-Find, Greedy, Dynamic Programming
+**Patterns Covered:** 4+ | **Structures:** Tries, Graphs, Union-Find
 
 ---
 
@@ -88,34 +88,33 @@ The most advanced material -- trees, graphs, and algorithmic paradigms.
 ## Complete Topic Coverage
 
 ```
-Day 1 -- ARRAYS AND STRINGS          Day 2 -- CORE DATA STRUCTURES
+Day 1 -- ARRAYS AND STRINGS          Day 2 -- DATA STRUCTURES + SEARCH
 +-------------------------+          +-------------------------+
 | Arrays                  |          | Hash Maps / Sets        |
 | Strings                 |          | Linked Lists            |
-| Two Pointers            |          | Stacks                  |
-| Sliding Window          |          | Queues                  |
-| Prefix Sum / Kadane's   |          | Monotonic Stack         |
-| Palindrome Techniques   |          | Slow/Fast Pointers      |
-|                         |          | Linked List Reversal    |
-| Patterns: 6             |          |                         |
-| Problems: 15+           |          | Patterns: 5             |
-+-------------------------+          | Problems: 15+           |
+| Two Pointers            |          | Stacks / Queues         |
+| Sliding Window          |          | Monotonic Stack         |
+| Prefix Sum / Kadane's   |          | Slow/Fast Pointers      |
+| Palindrome Techniques   |          | Sorting (preprocessing) |
+|                         |          | Binary Search           |
+| 6 Patterns              |          | Bit Manipulation        |
+| 15+ Problems            |          |                         |
++-------------------------+          | 6 Patterns              |
+                                     | 16+ Problems            |
                                      +-------------------------+
 
-Day 3 -- SEARCH AND RECURSION        Day 4 -- ADVANCED ALGORITHMS
+Day 3 -- RECURSION + TREES           Day 4 -- GRAPHS + PARADIGMS
 +-------------------------+          +-------------------------+
-| Sorting                 |          | Trees (Binary, BST)     |
-| Binary Search           |          | Heaps / Priority Q      |
-| Bit Manipulation        |          | Tries (Prefix Trees)    |
-| Recursion               |          | Graphs (BFS/DFS)        |
-| Backtracking            |          | Union-Find              |
+| Recursion               |          | Tries (Prefix Trees)    |
+| Backtracking            |          | Graphs (BFS/DFS)        |
+| Trees (Binary, BST)     |          | Topological Sort        |
+| Tree Traversals         |          | Dijkstra's Algorithm    |
+| Heaps / Priority Q      |          | Union-Find              |
 |                         |          | Greedy Algorithms       |
-| Patterns: 2+            |          | Dynamic Programming     |
-| Problems: 12+           |          | Topological Sort        |
-+-------------------------+          | Dijkstra's Algorithm    |
-                                     |                         |
-                                     | Patterns: 7+            |
-                                     | Problems: 25+           |
+| 4 Patterns              |          | Dynamic Programming     |
+| 15+ Problems            |          |                         |
++-------------------------+          | 4+ Patterns             |
+                                     | 12+ Problems            |
                                      +-------------------------+
 ```
 

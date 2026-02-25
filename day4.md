@@ -1,340 +1,10 @@
-# Day 4 -- Trees, Heaps, Tries, Graphs, Greedy, and Dynamic Programming
+# Day 4 -- Tries, Graphs, Union-Find, Greedy, and Dynamic Programming
 
 ## Advanced Structures and Algorithm Paradigms
 
-**What this day covers:** Trees and BST (traversals, recursive properties, validation), Heaps and Priority Queues (Top-K, merge K sorted, median), Tries (prefix matching), Graphs (BFS, DFS, topological sort, Dijkstra), Union-Find (connected components), Greedy Algorithms (intervals, scheduling), and Dynamic Programming (1D, 2D, knapsack).
+**What this day covers:** Tries (prefix matching), Graphs (BFS, DFS, topological sort, Dijkstra), Union-Find (connected components), Greedy Algorithms (intervals, scheduling), and Dynamic Programming (1D, 2D, knapsack).
 
-After completing all four days, you will have covered every major topic that appears in coding interviews. This final day ties everything together with the most advanced material.
-
----
-
-# Trees and BST
-
-## What is a Tree?
-
-A tree is a hierarchical data structure -- nodes connected by parent-child relationships. Think of a family tree or a folder structure.
-
-```
-        1  (root)
-       / \
-      2   3
-     / \
-    4   5  (leaves)
-```
-
-### Key Terminology
-
-| Term | Meaning |
-|------|---------|
-| **Root** | Topmost node (no parent) |
-| **Leaf** | Node with no children |
-| **Depth** | Distance from root (root = 0) |
-| **Height** | Longest path from node to a leaf |
-| **Binary Tree** | Each node has at most 2 children |
-| **BST** | Binary tree where `left < node < right` always |
-
-```python
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-```
-
-Visualize tree operations: [visualgo.net/bst](https://visualgo.net/en/bst)
-
----
-
-## Pattern 14: Tree Traversals -- Four Ways to Visit Nodes
-
-### DFS (Depth-First) -- Go deep before going wide
-
-```
-Tree:       1             Inorder   (L, Root, R): 4,2,5,1,3  -- SORTED for BST!
-           / \            Preorder  (Root, L, R): 1,2,4,5,3  -- copy/serialize
-          2   3           Postorder (L, R, Root): 4,5,2,3,1  -- delete/evaluate
-         / \
-        4   5
-```
-
-### BFS (Breadth-First) -- Go level by level
-
-```
-Level Order: [1], [2, 3], [4, 5]  -- level-based questions, shortest path
-```
-
-### When to Use Which
-
-```
-Sorted data from BST?              -> Inorder
-Process levels?                     -> BFS
-Process children before parent?     -> Postorder
-Process parent before children?     -> Preorder
-```
-
-```python
-# DFS -- Recursive
-def inorder(root):
-    if not root: return []
-    return inorder(root.left) + [root.val] + inorder(root.right)
-
-# BFS -- Level Order (LeetCode #102)
-from collections import deque
-def levelOrder(root):
-    if not root: return []
-    res, q = [], deque([root])
-    while q:
-        level = []
-        for _ in range(len(q)):
-            node = q.popleft()
-            level.append(node.val)
-            if node.left:  q.append(node.left)
-            if node.right: q.append(node.right)
-        res.append(level)
-    return res
-```
-
----
-
-## Pattern 15: Recursive Tree Properties
-
-### The Core Idea
-
-> "Almost every tree problem: solve for left, solve for right, combine."
-
-```python
-def solve(root):
-    if not root: return BASE_CASE
-    left  = solve(root.left)
-    right = solve(root.right)
-    return COMBINE(root.val, left, right)
-```
-
-### Max Depth (LeetCode #104)
-
-```python
-def maxDepth(root):
-    if not root: return 0
-    return 1 + max(maxDepth(root.left), maxDepth(root.right))
-```
-
-### Diameter of Binary Tree (LeetCode #543)
-
-**The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
-
-```python
-def diameterOfBinaryTree(root):
-    diameter = 0
-    def height(node):
-        nonlocal diameter
-        if not node: return 0
-        L, R = height(node.left), height(node.right)
-        diameter = max(diameter, L + R)
-        return 1 + max(L, R)
-    height(root)
-    return diameter
-```
-
-### Invert Binary Tree (LeetCode #226)
-
-```python
-def invertTree(root):
-    if not root: return None
-    root.left, root.right = invertTree(root.right), invertTree(root.left)
-    return root
-```
-
-### Lowest Common Ancestor (LeetCode #236)
-
-**The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
-
-```python
-def lowestCommonAncestor(root, p, q):
-    if not root or root == p or root == q: return root
-    L = lowestCommonAncestor(root.left, p, q)
-    R = lowestCommonAncestor(root.right, p, q)
-    if L and R: return root
-    return L or R
-```
-
-### Validate BST (LeetCode #98)
-
-**The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
-
-```python
-def isValidBST(root, lo=float('-inf'), hi=float('inf')):
-    if not root: return True
-    if root.val <= lo or root.val >= hi: return False
-    return isValidBST(root.left, lo, root.val) and \
-           isValidBST(root.right, root.val, hi)
-```
-
-### Maximum Path Sum (LeetCode #124) -- Hard
-
-```python
-def maxPathSum(root):
-    best = float('-inf')
-    def helper(node):
-        nonlocal best
-        if not node: return 0
-        L = max(0, helper(node.left))
-        R = max(0, helper(node.right))
-        best = max(best, node.val + L + R)
-        return node.val + max(L, R)
-    helper(root)
-    return best
-```
-
-### Serialize and Deserialize (LeetCode #297)
-
-**The Concept:** Convert tree to/from a string. Use preorder traversal with "null" markers for missing nodes.
-
-```python
-class Codec:
-    def serialize(self, root):
-        if not root: return "null"
-        return f"{root.val},{self.serialize(root.left)},{self.serialize(root.right)}"
-    
-    def deserialize(self, data):
-        nodes = iter(data.split(","))
-        def build():
-            val = next(nodes)
-            if val == "null": return None
-            node = TreeNode(int(val))
-            node.left = build()
-            node.right = build()
-            return node
-        return build()
-```
-
----
-
-# Heaps and Priority Queues
-
-## What is a Heap?
-
-A heap is a complete binary tree where every parent is smaller (min-heap) or larger (max-heap) than its children. The root is always the min (or max).
-
-```
-Min-Heap:       1          -> root is always the minimum
-               / \
-              3   2        -> parent <= children at every level
-             / \
-            7   5
-```
-
-### Why Use a Heap?
-
-| Need | Alternative | Heap |
-|------|------------|------|
-| Get min/max | Sort first O(n log n) | O(1) peek |
-| Insert new element | Re-sort O(n log n) | O(log n) |
-| Remove min/max | O(n) scan | O(log n) |
-
-Use heaps when you need the min or max element repeatedly as data changes.
-
-### Python's heapq -- Min-Heap by Default
-
-```python
-import heapq
-
-heap = []
-heapq.heappush(heap, 5)       # insert: O(log n)
-heapq.heappush(heap, 3)
-heapq.heappush(heap, 7)
-min_val = heapq.heappop(heap)  # remove min: O(log n) -> returns 3
-peek = heap[0]                 # see min without removing: O(1)
-
-# Max-heap trick: negate values
-heapq.heappush(heap, -val)     # insert negated
-max_val = -heapq.heappop(heap) # negate back
-```
-
----
-
-## Pattern 16: Top-K Problems
-
-### The Core Idea
-
-> "Maintain a heap of size K. The root gives you the Kth element."
-
-### Kth Largest Element (LeetCode #215)
-
-```python
-def findKthLargest(nums, k):
-    # Min-heap of size k: root = kth largest
-    heap = nums[:k]
-    heapq.heapify(heap)
-    for num in nums[k:]:
-        if num > heap[0]:
-            heapq.heapreplace(heap, num)
-    return heap[0]
-# O(n log k) -- much better than sorting O(n log n)
-```
-
-### Merge K Sorted Lists (LeetCode #23) -- Hard
-
-**The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
-
-```python
-def mergeKLists(lists):
-    heap = []
-    for i, l in enumerate(lists):
-        if l: heapq.heappush(heap, (l.val, i, l))
-    dummy = curr = ListNode(0)
-    while heap:
-        val, i, node = heapq.heappop(heap)
-        curr.next = node
-        curr = curr.next
-        if node.next:
-            heapq.heappush(heap, (node.next.val, i, node.next))
-    return dummy.next
-# O(N log K) where N = total nodes, K = number of lists
-```
-
-### Task Scheduler (LeetCode #621)
-
-**The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
-
-```python
-def leastInterval(tasks, n):
-    freq = list(Counter(tasks).values())
-    max_heap = [-f for f in freq]
-    heapq.heapify(max_heap)
-    cooldown = deque()  # (remaining_count, available_time)
-    time = 0
-    while max_heap or cooldown:
-        time += 1
-        if max_heap:
-            remaining = heapq.heappop(max_heap) + 1  # negated
-            if remaining < 0:
-                cooldown.append((remaining, time + n))
-        if cooldown and cooldown[0][1] == time:
-            heapq.heappush(max_heap, cooldown.popleft()[0])
-    return time
-```
-
-### Find Median from Data Stream (LeetCode #295)
-
-**The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
-
-```python
-class MedianFinder:
-    def __init__(self):
-        self.lo = []  # max-heap (negated) -- smaller half
-        self.hi = []  # min-heap -- larger half
-    
-    def addNum(self, num):
-        heapq.heappush(self.lo, -num)
-        heapq.heappush(self.hi, -heapq.heappop(self.lo))
-        if len(self.hi) > len(self.lo):
-            heapq.heappush(self.lo, -heapq.heappop(self.hi))
-    
-    def findMedian(self):
-        if len(self.lo) > len(self.hi):
-            return -self.lo[0]
-        return (-self.lo[0] + self.hi[0]) / 2
-```
+This final day ties everything together with the most advanced material. After completing all four days, you will have covered every major topic that appears in coding interviews.
 
 ---
 
@@ -369,7 +39,7 @@ Insert: "cat", "car", "card", "dog"
 | Autocomplete | Expensive | Natural |
 | Spell checker | Expensive | Natural |
 
-### Trie Implementation
+### Trie Implementation (LeetCode #208)
 
 ```python
 class TrieNode:
@@ -632,13 +302,6 @@ Union-Find tracks groups of connected elements. It answers two questions instant
 
 Think of social groups at a party. Initially everyone is standalone. When two people become friends, their friend groups merge. Union-Find efficiently tracks who is in whose group.
 
-### Key Operations
-
-| Operation | Naive | With Optimizations |
-|-----------|-------|-------------------|
-| Find (which group?) | O(n) | O(a(n)) -- nearly O(1) |
-| Union (merge groups) | O(n) | O(a(n)) -- nearly O(1) |
-
 ### Implementation with Path Compression + Union by Rank
 
 ```python
@@ -656,7 +319,6 @@ class UnionFind:
     def union(self, a, b):
         ra, rb = self.find(a), self.find(b)
         if ra == rb: return False      # already connected
-        # union by rank: attach smaller tree to larger
         if self.rank[ra] < self.rank[rb]: ra, rb = rb, ra
         self.parent[rb] = ra
         if self.rank[ra] == self.rank[rb]: self.rank[ra] += 1
@@ -674,16 +336,6 @@ class UnionFind:
 - "Merge/connect groups"
 - "Detect cycles in undirected graphs"
 - Problems where relationships grow over time
-
-### Number of Connected Components (LeetCode #323)
-
-```python
-def countComponents(n, edges):
-    uf = UnionFind(n)
-    for u, v in edges:
-        uf.union(u, v)
-    return uf.components
-```
 
 ### Redundant Connection (LeetCode #684)
 
@@ -710,7 +362,6 @@ def accountsMerge(accounts):
             if email in email_to_id:
                 uf.union(i, email_to_id[email])
             email_to_id[email] = i
-    # Group emails by root account
     groups = defaultdict(set)
     for email, i in email_to_id.items():
         groups[uf.find(i)].add(email)
@@ -733,17 +384,9 @@ Greedy works when the problem has optimal substructure and the greedy choice pro
 
 - Interval scheduling (start/end times)
 - Activity selection
-- Minimum coins (specific cases)
 - Jump/reach problems
 
-### How to Verify Greedy Is Correct
-
-1. Can you prove that the greedy choice is always part of an optimal solution?
-2. Or: Does choosing the "best now" ever prevent a better future choice? If no, greedy works.
-
 ---
-
-## Key Greedy Problems
 
 ### Jump Game (LeetCode #55)
 
@@ -756,12 +399,9 @@ def canJump(nums):
         if i > farthest: return False
         farthest = max(farthest, i + nums[i])
     return True
-# O(n), O(1)
 ```
 
 ### Jump Game II (LeetCode #45)
-
-**The Concept:** BFS-style: track the farthest you can reach in each "jump." When you exhaust the current jump range, increment jumps.
 
 ```python
 def jump(nums):
@@ -776,34 +416,32 @@ def jump(nums):
 
 ### Non-overlapping Intervals (LeetCode #435)
 
-**The Concept:** Sort by end time. Greedily keep intervals that end earliest (leave maximum room for future intervals).
+**The Concept:** Sort by end time. Greedily keep intervals that end earliest.
 
 ```python
 def eraseOverlapIntervals(intervals):
-    intervals.sort(key=lambda x: x[1])  # sort by end time
+    intervals.sort(key=lambda x: x[1])
     count = 0
     prev_end = float('-inf')
     for s, e in intervals:
         if s >= prev_end:
-            prev_end = e               # no overlap -> keep it
+            prev_end = e
         else:
-            count += 1                 # overlap -> remove it
+            count += 1
     return count
 ```
 
 ### Meeting Rooms II (LeetCode #253)
 
-**The Concept:** Sort by start time. Use a min-heap of end times. If the earliest-ending meeting ends before the current start, reuse that room.
-
 ```python
 def minMeetingRooms(intervals):
     intervals.sort()
-    heap = []                          # end times of active meetings
+    heap = []
     for s, e in intervals:
         if heap and heap[0] <= s:
-            heapq.heappop(heap)        # reuse room (meeting ended)
+            heapq.heappop(heap)
         heapq.heappush(heap, e)
-    return len(heap)                   # heap size = rooms needed
+    return len(heap)
 ```
 
 ### Gas Station (LeetCode #134)
@@ -860,8 +498,6 @@ With DP:    each fib(i) computed ONCE -> O(n)
 ## Pattern 19: 1D DP -- Linear Optimization
 
 ### Climbing Stairs (LeetCode #70)
-
-**The Concept:** `dp[n] = dp[n-1] + dp[n-2]` -- literally Fibonacci!
 
 ```python
 def climbStairs(n):
@@ -999,15 +635,13 @@ def canPartition(nums):
 
 ### 0/1 Knapsack Pattern
 
-**The Concept:** Choose items with weights and values to maximize value within a weight limit.
-
 ```python
 def knapsack(weights, values, capacity):
     n = len(weights)
     dp = [[0]*(capacity+1) for _ in range(n+1)]
     for i in range(1, n+1):
         for w in range(capacity+1):
-            dp[i][w] = dp[i-1][w]            # skip item i
+            dp[i][w] = dp[i-1][w]
             if weights[i-1] <= w:
                 dp[i][w] = max(dp[i][w], dp[i-1][w-weights[i-1]] + values[i-1])
     return dp[n][capacity]
@@ -1031,9 +665,6 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
-| 14 | **Tree Traversal** | DFS (3 orders) + BFS | Level Order #102 |
-| 15 | **Recursive Tree** | Solve left + right, combine | LCA #236, Max Path Sum #124 |
-| 16 | **Top-K / Heap** | Min/max heap for streaming data | Kth Largest #215, Merge K #23 |
 | 17 | **BFS Graph** | Queue + visited = shortest path | Islands #200, Rotting Oranges #994 |
 | 18 | **DFS Graph** | 3-state cycle detection | Course Schedule #207 |
 | 19 | **1D DP** | dp[i] = f(previous values) | Coin Change #322, LIS #300 |
@@ -1047,27 +678,20 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 ```
 Easy:
   #70   Climbing Stairs
-  #104  Maximum Depth of Binary Tree
-  #226  Invert Binary Tree
 
 Medium:
-  #102  Binary Tree Level Order Traversal
-  #98   Validate BST
-  #236  Lowest Common Ancestor
   #200  Number of Islands
   #207  Course Schedule
   #55   Jump Game
   #322  Coin Change
   #300  Longest Increasing Subsequence
   #1143 Longest Common Subsequence
-  #215  Kth Largest Element
+  #435  Non-overlapping Intervals
+  #684  Redundant Connection
 
 Hard:
-  #23   Merge K Sorted Lists
-  #124  Binary Tree Maximum Path Sum
   #212  Word Search II
   #72   Edit Distance
-  #51   N-Queens
 ```
 
 ---

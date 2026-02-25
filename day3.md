@@ -1,152 +1,10 @@
-# Day 3 -- Sorting, Binary Search, Bit Manipulation, Recursion, and Backtracking
+# Day 3 -- Recursion, Backtracking, Trees, BST, and Heaps
 
-## From Searching Efficiently to Generating All Possibilities
+## Recursive Thinking and Hierarchical Data Structures
 
-**What this day covers:** Sorting as a preprocessing step, Binary Search (standard and on-answer), Bit Manipulation tricks, Recursion (base case thinking), and Backtracking (subsets, permutations, combinations, constraint satisfaction).
+**What this day covers:** Recursion (base case thinking), Backtracking (subsets, permutations, combinations, constraint satisfaction), Trees and BST (traversals, recursive properties, validation), and Heaps / Priority Queues (Top-K, merge K sorted, median).
 
-This is the bridge between fundamental data structures and advanced algorithms. Sorting and binary search show up everywhere as enabling techniques. Recursion and backtracking give you the tools to explore solution spaces systematically.
-
----
-
-# Sorting and Binary Search
-
-## Why Sorting Matters
-
-You rarely implement sorts yourself, but sorting as a preprocessing step unlocks many techniques:
-
-```
-Sorted -> Binary Search      O(n log n + log n)
-Sorted -> Two Pointers       O(n log n + n)
-Sorted -> Merge Intervals    O(n log n + n)
-Sorted -> Greedy decisions   O(n log n + n)
-Sorted -> Duplicates adjacent
-```
-
-### Dutch National Flag (LeetCode #75) -- Sort 0s, 1s, 2s in One Pass
-
-```python
-def sortColors(nums):
-    lo, mid, hi = 0, 0, len(nums) - 1
-    while mid <= hi:
-        if   nums[mid] == 0: nums[lo], nums[mid] = nums[mid], nums[lo]; lo += 1; mid += 1
-        elif nums[mid] == 1: mid += 1
-        else:                nums[mid], nums[hi] = nums[hi], nums[mid]; hi -= 1
-```
-
-### Merge Intervals (LeetCode #56)
-
-```python
-def merge(intervals):
-    intervals.sort()
-    res = [intervals[0]]
-    for s, e in intervals[1:]:
-        if s <= res[-1][1]: res[-1][1] = max(res[-1][1], e)
-        else: res.append([s, e])
-    return res
-```
-
----
-
-## Pattern 12: Binary Search -- Halve the Search Space
-
-### The Core Idea
-
-> "If you can determine which half contains the answer, throw away the other half. Repeat. O(log n)."
-
-### Standard Binary Search
-
-```python
-def binary_search(arr, target):
-    lo, hi = 0, len(arr) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
-        if   arr[mid] == target: return mid
-        elif arr[mid] < target:  lo = mid + 1
-        else:                    hi = mid - 1
-    return -1
-```
-
-### Search in Rotated Sorted Array (LeetCode #33)
-
-**The Concept:** At any mid, one half is always sorted. Check if target is in the sorted half.
-
-```python
-def search(nums, target):
-    lo, hi = 0, len(nums) - 1
-    while lo <= hi:
-        mid = (lo + hi) // 2
-        if nums[mid] == target: return mid
-        if nums[lo] <= nums[mid]:
-            if nums[lo] <= target < nums[mid]: hi = mid - 1
-            else: lo = mid + 1
-        else:
-            if nums[mid] < target <= nums[hi]: lo = mid + 1
-            else: hi = mid - 1
-    return -1
-```
-
-### Binary Search on Answer
-
-> "Instead of searching an array, search the range of possible answers."
-
-### Koko Eating Bananas (LeetCode #875)
-
-```python
-import math
-def minEatingSpeed(piles, h):
-    lo, hi = 1, max(piles)
-    while lo < hi:
-        mid = (lo + hi) // 2
-        if sum(math.ceil(p / mid) for p in piles) <= h:
-            hi = mid
-        else:
-            lo = mid + 1
-    return lo
-```
-
----
-
-# Bit Manipulation
-
-## Four Tricks Worth Knowing
-
-### 1. XOR Cancels Pairs -- Single Number (LeetCode #136)
-
-`a ^ a = 0` and `a ^ 0 = a`. XOR all numbers -- pairs cancel, the unique one remains.
-
-```python
-def singleNumber(nums):
-    result = 0
-    for n in nums: result ^= n
-    return result
-```
-
-### 2. Check Power of 2
-
-Powers of 2 have exactly one bit set. `n & (n-1)` clears the lowest bit.
-
-```python
-def isPowerOfTwo(n):
-    return n > 0 and (n & (n-1)) == 0
-```
-
-### 3. Count Set Bits (Brian Kernighan)
-
-```python
-def countBits(n):
-    count = 0
-    while n:
-        n &= n - 1
-        count += 1
-    return count
-```
-
-### 4. Even/Odd
-
-```python
-n & 1 == 0  # even
-n & 1 == 1  # odd
-```
+Recursion is the foundation for understanding trees and graphs. Once you learn to think recursively, tree problems become straightforward -- and heaps give you a powerful tool for streaming data problems.
 
 ---
 
@@ -308,37 +166,370 @@ def exist(board, word):
 
 ---
 
-# Day 3 Summary -- 2 Patterns + Key Techniques
+# Trees and BST
+
+## What is a Tree?
+
+A tree is a hierarchical data structure -- nodes connected by parent-child relationships. Think of a family tree or a folder structure.
+
+```
+        1  (root)
+       / \
+      2   3
+     / \
+    4   5  (leaves)
+```
+
+### Key Terminology
+
+| Term | Meaning |
+|------|---------|
+| **Root** | Topmost node (no parent) |
+| **Leaf** | Node with no children |
+| **Depth** | Distance from root (root = 0) |
+| **Height** | Longest path from node to a leaf |
+| **Binary Tree** | Each node has at most 2 children |
+| **BST** | Binary tree where `left < node < right` always |
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+```
+
+Visualize tree operations: [visualgo.net/bst](https://visualgo.net/en/bst)
+
+---
+
+## Pattern 14: Tree Traversals -- Four Ways to Visit Nodes
+
+### DFS (Depth-First) -- Go deep before going wide
+
+```
+Tree:       1             Inorder   (L, Root, R): 4,2,5,1,3  -- SORTED for BST!
+           / \            Preorder  (Root, L, R): 1,2,4,5,3  -- copy/serialize
+          2   3           Postorder (L, R, Root): 4,5,2,3,1  -- delete/evaluate
+         / \
+        4   5
+```
+
+### BFS (Breadth-First) -- Go level by level
+
+```
+Level Order: [1], [2, 3], [4, 5]  -- level-based questions, shortest path
+```
+
+### When to Use Which
+
+```
+Sorted data from BST?              -> Inorder
+Process levels?                     -> BFS
+Process children before parent?     -> Postorder
+Process parent before children?     -> Preorder
+```
+
+```python
+# DFS -- Recursive
+def inorder(root):
+    if not root: return []
+    return inorder(root.left) + [root.val] + inorder(root.right)
+
+# BFS -- Level Order (LeetCode #102)
+from collections import deque
+def levelOrder(root):
+    if not root: return []
+    res, q = [], deque([root])
+    while q:
+        level = []
+        for _ in range(len(q)):
+            node = q.popleft()
+            level.append(node.val)
+            if node.left:  q.append(node.left)
+            if node.right: q.append(node.right)
+        res.append(level)
+    return res
+```
+
+---
+
+## Pattern 15: Recursive Tree Properties
+
+### The Core Idea
+
+> "Almost every tree problem: solve for left, solve for right, combine."
+
+```python
+def solve(root):
+    if not root: return BASE_CASE
+    left  = solve(root.left)
+    right = solve(root.right)
+    return COMBINE(root.val, left, right)
+```
+
+### Max Depth (LeetCode #104)
+
+```python
+def maxDepth(root):
+    if not root: return 0
+    return 1 + max(maxDepth(root.left), maxDepth(root.right))
+```
+
+### Diameter of Binary Tree (LeetCode #543)
+
+**The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
+
+```python
+def diameterOfBinaryTree(root):
+    diameter = 0
+    def height(node):
+        nonlocal diameter
+        if not node: return 0
+        L, R = height(node.left), height(node.right)
+        diameter = max(diameter, L + R)
+        return 1 + max(L, R)
+    height(root)
+    return diameter
+```
+
+### Invert Binary Tree (LeetCode #226)
+
+```python
+def invertTree(root):
+    if not root: return None
+    root.left, root.right = invertTree(root.right), invertTree(root.left)
+    return root
+```
+
+### Lowest Common Ancestor (LeetCode #236)
+
+**The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
+
+```python
+def lowestCommonAncestor(root, p, q):
+    if not root or root == p or root == q: return root
+    L = lowestCommonAncestor(root.left, p, q)
+    R = lowestCommonAncestor(root.right, p, q)
+    if L and R: return root
+    return L or R
+```
+
+### Validate BST (LeetCode #98)
+
+**The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
+
+```python
+def isValidBST(root, lo=float('-inf'), hi=float('inf')):
+    if not root: return True
+    if root.val <= lo or root.val >= hi: return False
+    return isValidBST(root.left, lo, root.val) and \
+           isValidBST(root.right, root.val, hi)
+```
+
+### Maximum Path Sum (LeetCode #124) -- Hard
+
+```python
+def maxPathSum(root):
+    best = float('-inf')
+    def helper(node):
+        nonlocal best
+        if not node: return 0
+        L = max(0, helper(node.left))
+        R = max(0, helper(node.right))
+        best = max(best, node.val + L + R)
+        return node.val + max(L, R)
+    helper(root)
+    return best
+```
+
+### Serialize and Deserialize (LeetCode #297)
+
+**The Concept:** Convert tree to/from a string. Use preorder traversal with "null" markers for missing nodes.
+
+```python
+class Codec:
+    def serialize(self, root):
+        if not root: return "null"
+        return f"{root.val},{self.serialize(root.left)},{self.serialize(root.right)}"
+    
+    def deserialize(self, data):
+        nodes = iter(data.split(","))
+        def build():
+            val = next(nodes)
+            if val == "null": return None
+            node = TreeNode(int(val))
+            node.left = build()
+            node.right = build()
+            return node
+        return build()
+```
+
+---
+
+# Heaps and Priority Queues
+
+## What is a Heap?
+
+A heap is a complete binary tree where every parent is smaller (min-heap) or larger (max-heap) than its children. The root is always the min (or max).
+
+```
+Min-Heap:       1          -> root is always the minimum
+               / \
+              3   2        -> parent <= children at every level
+             / \
+            7   5
+```
+
+### Why Use a Heap?
+
+| Need | Alternative | Heap |
+|------|------------|------|
+| Get min/max | Sort first O(n log n) | O(1) peek |
+| Insert new element | Re-sort O(n log n) | O(log n) |
+| Remove min/max | O(n) scan | O(log n) |
+
+Use heaps when you need the min or max element repeatedly as data changes.
+
+### Python's heapq -- Min-Heap by Default
+
+```python
+import heapq
+
+heap = []
+heapq.heappush(heap, 5)       # insert: O(log n)
+heapq.heappush(heap, 3)
+heapq.heappush(heap, 7)
+min_val = heapq.heappop(heap)  # remove min: O(log n) -> returns 3
+peek = heap[0]                 # see min without removing: O(1)
+
+# Max-heap trick: negate values
+heapq.heappush(heap, -val)     # insert negated
+max_val = -heapq.heappop(heap) # negate back
+```
+
+---
+
+## Pattern 16: Top-K Problems
+
+### The Core Idea
+
+> "Maintain a heap of size K. The root gives you the Kth element."
+
+### Kth Largest Element (LeetCode #215)
+
+```python
+def findKthLargest(nums, k):
+    # Min-heap of size k: root = kth largest
+    heap = nums[:k]
+    heapq.heapify(heap)
+    for num in nums[k:]:
+        if num > heap[0]:
+            heapq.heapreplace(heap, num)
+    return heap[0]
+# O(n log k) -- much better than sorting O(n log n)
+```
+
+### Merge K Sorted Lists (LeetCode #23) -- Hard
+
+**The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
+
+```python
+def mergeKLists(lists):
+    heap = []
+    for i, l in enumerate(lists):
+        if l: heapq.heappush(heap, (l.val, i, l))
+    dummy = curr = ListNode(0)
+    while heap:
+        val, i, node = heapq.heappop(heap)
+        curr.next = node
+        curr = curr.next
+        if node.next:
+            heapq.heappush(heap, (node.next.val, i, node.next))
+    return dummy.next
+# O(N log K) where N = total nodes, K = number of lists
+```
+
+### Task Scheduler (LeetCode #621)
+
+**The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
+
+```python
+def leastInterval(tasks, n):
+    freq = list(Counter(tasks).values())
+    max_heap = [-f for f in freq]
+    heapq.heapify(max_heap)
+    cooldown = deque()  # (remaining_count, available_time)
+    time = 0
+    while max_heap or cooldown:
+        time += 1
+        if max_heap:
+            remaining = heapq.heappop(max_heap) + 1  # negated
+            if remaining < 0:
+                cooldown.append((remaining, time + n))
+        if cooldown and cooldown[0][1] == time:
+            heapq.heappush(max_heap, cooldown.popleft()[0])
+    return time
+```
+
+### Find Median from Data Stream (LeetCode #295)
+
+**The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
+
+```python
+class MedianFinder:
+    def __init__(self):
+        self.lo = []  # max-heap (negated) -- smaller half
+        self.hi = []  # min-heap -- larger half
+    
+    def addNum(self, num):
+        heapq.heappush(self.lo, -num)
+        heapq.heappush(self.hi, -heapq.heappop(self.lo))
+        if len(self.hi) > len(self.lo):
+            heapq.heappush(self.lo, -heapq.heappop(self.hi))
+    
+    def findMedian(self):
+        if len(self.lo) > len(self.hi):
+            return -self.lo[0]
+        return (-self.lo[0] + self.hi[0]) / 2
+```
+
+---
+
+# Day 3 Summary -- 4 Patterns
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
-| 12 | **Binary Search** | Halve the search space | Rotated Array #33, Koko #875 |
 | 13 | **Backtracking** | Choose, Explore, Undo | Subsets #78, N-Queens #51 |
-| -- | **Sorting** | Preprocessing that unlocks patterns | Merge Intervals #56 |
-| -- | **Bit Manipulation** | XOR tricks, power of 2, set bits | Single Number #136 |
-| -- | **Recursion** | Base case + recursive case | Foundation for trees and graphs |
+| 14 | **Tree Traversal** | DFS (3 orders) + BFS | Level Order #102 |
+| 15 | **Recursive Tree** | Solve left + right, combine | LCA #236, Max Path Sum #124 |
+| 16 | **Top-K / Heap** | Min/max heap for streaming data | Kth Largest #215, Merge K #23 |
 
 ### Practice Problems for Day 3
 
 ```
 Easy:
-  #704  Binary Search
-  #136  Single Number
+  #70   Climbing Stairs
+  #104  Maximum Depth of Binary Tree
+  #226  Invert Binary Tree
+  #78   Subsets
 
 Medium:
-  #33   Search in Rotated Sorted Array
-  #56   Merge Intervals
-  #75   Sort Colors
-  #78   Subsets
   #46   Permutations
   #39   Combination Sum
   #79   Word Search
-  #875  Koko Eating Bananas
+  #102  Binary Tree Level Order Traversal
+  #98   Validate BST
+  #236  Lowest Common Ancestor
+  #543  Diameter of Binary Tree
+  #215  Kth Largest Element
 
 Hard:
   #51   N-Queens
+  #23   Merge K Sorted Lists
+  #124  Binary Tree Maximum Path Sum
 ```
 
 ---
 
-*Next: Trees, Heaps, Tries, Graphs, Greedy, and Dynamic Programming -- [day4.md](day4.md)*
+*Next: Tries, Graphs, Greedy, and Dynamic Programming -- [day4.md](day4.md)*
