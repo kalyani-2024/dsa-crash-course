@@ -41,7 +41,7 @@ Insert: "cat", "car", "card", "dog"
 | Autocomplete | Expensive | Natural |
 | Spell checker | Expensive | Natural |
 
-### Trie Implementation ([LeetCode #208](https://leetcode.com/problems/implement-trie-prefix-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Trie Implementation ([LeetCode #208](https://leetcode.com/problems/implement-trie-prefix-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/implement-trie-prefix-tree.md)
 
 ```python
 class TrieNode:
@@ -76,7 +76,7 @@ class Trie:
         return node
 ```
 
-### Word Search II ([LeetCode #212](https://leetcode.com/problems/word-search-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Word Search II ([LeetCode #212](https://leetcode.com/problems/word-search-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/word-search-ii.md)
 
 **The Concept:** Build a Trie from all target words, then DFS through the grid. At each cell, follow the Trie — if the Trie has no branch for a character, prune that search path.
 
@@ -176,7 +176,7 @@ def bfs(graph, start):
                 q.append(nb)
 ```
 
-### Number of Islands ([LeetCode #200](https://leetcode.com/problems/number-of-islands/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Number of Islands ([LeetCode #200](https://leetcode.com/problems/number-of-islands/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/number-of-islands.md)
 
 **The Concept:** Iterate the grid; when you find a '1', increment count and BFS/DFS to mark all connected '1's as visited ('0').
 
@@ -204,7 +204,7 @@ def numIslands(grid):
     return count
 ```
 
-### Rotting Oranges ([LeetCode #994](https://leetcode.com/problems/rotting-oranges/)) — Multi-source BFS | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Rotting Oranges ([LeetCode #994](https://leetcode.com/problems/rotting-oranges/)) — Multi-source BFS | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/rotting-oranges.md)
 
 **The Concept:** Start BFS from all rotten oranges simultaneously. Each "level" = 1 minute.
 
@@ -253,7 +253,7 @@ Three states:
 Reaching a node in state 1 means you have found a CYCLE.
 ```
 
-### Course Schedule ([LeetCode #207](https://leetcode.com/problems/course-schedule/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Course Schedule ([LeetCode #207](https://leetcode.com/problems/course-schedule/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/course-schedule.md)
 
 **The Concept:** Model as a directed graph. If there's a cycle, you can't finish all courses. Detect cycles with 3-state DFS.
 
@@ -277,7 +277,7 @@ def canFinish(n, prereqs):
     return not any(has_cycle(i) for i in range(n))
 ```
 
-### Course Schedule II ([LeetCode #210](https://leetcode.com/problems/course-schedule-ii/)) — Topological Sort | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Course Schedule II ([LeetCode #210](https://leetcode.com/problems/course-schedule-ii/)) — Topological Sort | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/course-schedule-ii.md)
 
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
@@ -375,7 +375,7 @@ class UnionFind:
 - "Detect cycles in undirected graphs"
 - Problems where relationships grow over time
 
-### Redundant Connection ([LeetCode #684](https://leetcode.com/problems/redundant-connection/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Redundant Connection ([LeetCode #684](https://leetcode.com/problems/redundant-connection/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/redundant-connection.md)
 
 **The Concept:** Find the edge that creates a cycle. Add edges one by one — if union returns False (already connected), that edge is redundant.
 
@@ -391,7 +391,7 @@ def findRedundantConnection(edges):
             return [u, v]              # this edge created a cycle!
 ```
 
-### Accounts Merge ([LeetCode #721](https://leetcode.com/problems/accounts-merge/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Accounts Merge ([LeetCode #721](https://leetcode.com/problems/accounts-merge/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/accounts-merge.md)
 
 **The Concept:** Union-Find to group accounts by shared emails.
 
@@ -430,7 +430,7 @@ Greedy works when the problem has optimal substructure and the greedy choice pro
 
 ---
 
-### Jump Game ([LeetCode #55](https://leetcode.com/problems/jump-game/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Jump Game ([LeetCode #55](https://leetcode.com/problems/jump-game/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/jump-game.md)
 
 **The Concept:** Track the farthest position you can reach. If you can ever reach the end, return True.
 
@@ -447,7 +447,7 @@ def canJump(nums):
     return True
 ```
 
-### Jump Game II ([LeetCode #45](https://leetcode.com/problems/jump-game-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Jump Game II ([LeetCode #45](https://leetcode.com/problems/jump-game-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/jump-game-ii.md)
 
 **The Concept:** BFS-like approach — each "level" is a jump. Track the current reachable end and the farthest from that level.
 
@@ -462,7 +462,7 @@ def jump(nums):
     return jumps
 ```
 
-### Non-overlapping Intervals ([LeetCode #435](https://leetcode.com/problems/non-overlapping-intervals/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Non-overlapping Intervals ([LeetCode #435](https://leetcode.com/problems/non-overlapping-intervals/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/non-overlapping-intervals.md)
 
 **The Concept:** Sort by end time. Greedily keep intervals that end earliest.
 
@@ -483,7 +483,7 @@ def eraseOverlapIntervals(intervals):
     return count
 ```
 
-### Meeting Rooms II ([LeetCode #253](https://leetcode.com/problems/meeting-rooms-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Meeting Rooms II ([LeetCode #253](https://leetcode.com/problems/meeting-rooms-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/meeting-rooms-ii.md)
 
 **The Concept:** Sort meetings by start. Use a min-heap of end times to track active rooms. Reuse a room if a meeting starts after the earliest ending.
 
@@ -502,7 +502,7 @@ def minMeetingRooms(intervals):
     return len(heap)
 ```
 
-### Gas Station ([LeetCode #134](https://leetcode.com/problems/gas-station/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Gas Station ([LeetCode #134](https://leetcode.com/problems/gas-station/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/gas-station.md)
 
 **The Concept:** If total gas ≥ total cost, a solution exists. Track current tank; whenever it goes negative, restart from the next station.
 
@@ -563,7 +563,7 @@ With DP:    each fib(i) computed ONCE -> O(n)
 
 ## Pattern 19: 1D DP — Linear Optimization
 
-### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/climbing-stairs.md)
 
 **The Concept:** At step n, you could have come from step n-1 or n-2. So `dp[n] = dp[n-1] + dp[n-2]` — it's Fibonacci!
 
@@ -580,7 +580,7 @@ def climbStairs(n):
     return b
 ```
 
-### House Robber ([LeetCode #198](https://leetcode.com/problems/house-robber/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### House Robber ([LeetCode #198](https://leetcode.com/problems/house-robber/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/house-robber.md)
 
 **The Concept:** At each house: rob it (value + best from 2 ago) or skip it (best from previous).
 
@@ -597,7 +597,7 @@ def rob(nums):
     return b
 ```
 
-### Coin Change ([LeetCode #322](https://leetcode.com/problems/coin-change/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Coin Change ([LeetCode #322](https://leetcode.com/problems/coin-change/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/coin-change.md)
 
 **The Concept:** `dp[amount] = 1 + min(dp[amount - coin])` for each coin.
 
@@ -616,7 +616,7 @@ def coinChange(coins, amount):
     return dp[amount] if dp[amount] != float('inf') else -1
 ```
 
-### Longest Increasing Subsequence ([LeetCode #300](https://leetcode.com/problems/longest-increasing-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Longest Increasing Subsequence ([LeetCode #300](https://leetcode.com/problems/longest-increasing-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-increasing-subsequence.md)
 
 **The Concept:** `dp[i]` = length of LIS ending at index i. For each j < i, if `nums[j] < nums[i]`, update `dp[i] = max(dp[i], dp[j] + 1)`.
 
@@ -635,7 +635,7 @@ def lengthOfLIS(nums):
 # O(n^2) -- optimizable to O(n log n) with binary search
 ```
 
-### Word Break ([LeetCode #139](https://leetcode.com/problems/word-break/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Word Break ([LeetCode #139](https://leetcode.com/problems/word-break/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/word-break.md)
 
 **The Concept:** `dp[i]` = can string `s[0:i]` be segmented using the dictionary? Check all possible last-word boundaries.
 
@@ -660,7 +660,7 @@ def wordBreak(s, wordDict):
 
 ## Pattern 20: 2D DP — Grids and Two-Sequence Comparison
 
-### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/unique-paths.md)
 
 **The Concept:** Each cell can be reached from above or from the left: `dp[i][j] = dp[i-1][j] + dp[i][j-1]`.
 
@@ -673,7 +673,7 @@ def uniquePaths(m, n):
     return dp[m-1][n-1]
 ```
 
-### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-common-subsequence.md)
 
 **The Concept:** If characters match, take diagonal + 1. Otherwise, take max of skipping from either string.
 
@@ -699,7 +699,7 @@ def longestCommonSubsequence(s1, s2):
     return dp[m][n]
 ```
 
-### Edit Distance ([LeetCode #72](https://leetcode.com/problems/edit-distance/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Edit Distance ([LeetCode #72](https://leetcode.com/problems/edit-distance/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/edit-distance.md)
 
 **The Concept:** `dp[i][j]` = min operations to convert `word1[:i]` to `word2[:j]`. If characters match, no cost. Else min(insert, delete, replace) + 1.
 
@@ -722,7 +722,7 @@ def minDistance(w1, w2):
     return dp[m][n]
 ```
 
-### Partition Equal Subset Sum ([LeetCode #416](https://leetcode.com/problems/partition-equal-subset-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Partition Equal Subset Sum ([LeetCode #416](https://leetcode.com/problems/partition-equal-subset-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/partition-equal-subset-sum.md)
 
 **The Concept:** Reduce to: can we find a subset that sums to `total/2`? Use a set to track all reachable sums.
 
@@ -795,7 +795,7 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 | 22 | **Union-Find** | Track connected components | [Redundant Connection #684](https://leetcode.com/problems/redundant-connection/) |
 | 23 | **Greedy** | Local optimal = global optimal | [Jump Game #55](https://leetcode.com/problems/jump-game/), [Meeting Rooms #253](https://leetcode.com/problems/meeting-rooms-ii/) |
 
-### Practice Problems for Day 4
+### [Practice Problems for Day 4](day4-practice.md)
 
 ```
 Easy:

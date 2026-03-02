@@ -154,46 +154,46 @@ GIVEN A PROBLEM, ASK:
 
 | # | Problem | Pattern | LeetCode | Solution |
 |---|---------|---------|----------|----------|
-| 1 | Two Sum | HashMap | [LeetCode #1](https://leetcode.com/problems/two-sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 20 | Valid Parentheses | Stack | [LeetCode #20](https://leetcode.com/problems/valid-parentheses/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 21 | Merge Two Sorted Lists | Linked List | [LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 70 | Climbing Stairs | DP | [LeetCode #70](https://leetcode.com/problems/climbing-stairs/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 104 | Max Depth Binary Tree | Tree DFS | [LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 121 | Best Time Buy/Sell | Linear Scan | [LeetCode #121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 125 | Valid Palindrome | Two Pointers | [LeetCode #125](https://leetcode.com/problems/valid-palindrome/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 136 | Single Number | Bit XOR | [LeetCode #136](https://leetcode.com/problems/single-number/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 141 | Linked List Cycle | Slow/Fast | [LeetCode #141](https://leetcode.com/problems/linked-list-cycle/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 206 | Reverse Linked List | Three Pointers | [LeetCode #206](https://leetcode.com/problems/reverse-linked-list/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
+| 1 | Two Sum | HashMap | [LeetCode #1](https://leetcode.com/problems/two-sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/two-sum.md) |
+| 20 | Valid Parentheses | Stack | [LeetCode #20](https://leetcode.com/problems/valid-parentheses/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/valid-parentheses.md) |
+| 21 | Merge Two Sorted Lists | Linked List | [LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-two-sorted-lists.md) |
+| 70 | Climbing Stairs | DP | [LeetCode #70](https://leetcode.com/problems/climbing-stairs/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/climbing-stairs.md) |
+| 104 | Max Depth Binary Tree | Tree DFS | [LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/maximum-depth-of-binary-tree.md) |
+| 121 | Best Time Buy/Sell | Linear Scan | [LeetCode #121](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/best-time-to-buy-and-sell-stock.md) |
+| 125 | Valid Palindrome | Two Pointers | [LeetCode #125](https://leetcode.com/problems/valid-palindrome/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/valid-palindrome.md) |
+| 136 | Single Number | Bit XOR | [LeetCode #136](https://leetcode.com/problems/single-number/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/single-number.md) |
+| 141 | Linked List Cycle | Slow/Fast | [LeetCode #141](https://leetcode.com/problems/linked-list-cycle/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/linked-list-cycle.md) |
+| 206 | Reverse Linked List | Three Pointers | [LeetCode #206](https://leetcode.com/problems/reverse-linked-list/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/reverse-linked-list.md) |
 
 ### Medium (15) — Core Interview Questions
 
 | # | Problem | Pattern | LeetCode | Solution |
 |---|---------|---------|----------|----------|
-| 3 | Longest Substring No Repeat | Sliding Window | [LeetCode #3](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 5 | Longest Palindromic Substr | Expand Center | [LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 11 | Container With Most Water | Two Pointers | [LeetCode #11](https://leetcode.com/problems/container-with-most-water/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 15 | 3Sum | Sort + Two Pointers | [LeetCode #15](https://leetcode.com/problems/3sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 33 | Search Rotated Array | Binary Search | [LeetCode #33](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 49 | Group Anagrams | HashMap | [LeetCode #49](https://leetcode.com/problems/group-anagrams/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 53 | Maximum Subarray | Kadane's | [LeetCode #53](https://leetcode.com/problems/maximum-subarray/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 55 | Jump Game | Greedy | [LeetCode #55](https://leetcode.com/problems/jump-game/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 56 | Merge Intervals | Sort + Sweep | [LeetCode #56](https://leetcode.com/problems/merge-intervals/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 78 | Subsets | Backtracking | [LeetCode #78](https://leetcode.com/problems/subsets/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 102 | Level Order Traversal | Tree BFS | [LeetCode #102](https://leetcode.com/problems/binary-tree-level-order-traversal/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 200 | Number of Islands | BFS/DFS | [LeetCode #200](https://leetcode.com/problems/number-of-islands/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 207 | Course Schedule | Topo Sort | [LeetCode #207](https://leetcode.com/problems/course-schedule/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 236 | Lowest Common Ancestor | Tree DFS | [LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 322 | Coin Change | DP | [LeetCode #322](https://leetcode.com/problems/coin-change/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
+| 3 | Longest Substring No Repeat | Sliding Window | [LeetCode #3](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-substring-without-repeating-characters.md) |
+| 5 | Longest Palindromic Substr | Expand Center | [LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-palindromic-substring.md) |
+| 11 | Container With Most Water | Two Pointers | [LeetCode #11](https://leetcode.com/problems/container-with-most-water/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/container-with-most-water.md) |
+| 15 | 3Sum | Sort + Two Pointers | [LeetCode #15](https://leetcode.com/problems/3sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/3Sum.md) |
+| 33 | Search Rotated Array | Binary Search | [LeetCode #33](https://leetcode.com/problems/search-in-rotated-sorted-array/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/search-in-rotated-sorted-array.md) |
+| 49 | Group Anagrams | HashMap | [LeetCode #49](https://leetcode.com/problems/group-anagrams/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/group-anagrams.md) |
+| 53 | Maximum Subarray | Kadane's | [LeetCode #53](https://leetcode.com/problems/maximum-subarray/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/maximum-subarray.md) |
+| 55 | Jump Game | Greedy | [LeetCode #55](https://leetcode.com/problems/jump-game/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/jump-game.md) |
+| 56 | Merge Intervals | Sort + Sweep | [LeetCode #56](https://leetcode.com/problems/merge-intervals/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-intervals.md) |
+| 78 | Subsets | Backtracking | [LeetCode #78](https://leetcode.com/problems/subsets/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/subsets.md) |
+| 102 | Level Order Traversal | Tree BFS | [LeetCode #102](https://leetcode.com/problems/binary-tree-level-order-traversal/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/binary-tree-level-order-traversal.md) |
+| 200 | Number of Islands | BFS/DFS | [LeetCode #200](https://leetcode.com/problems/number-of-islands/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/number-of-islands.md) |
+| 207 | Course Schedule | Topo Sort | [LeetCode #207](https://leetcode.com/problems/course-schedule/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/course-schedule.md) |
+| 236 | Lowest Common Ancestor | Tree DFS | [LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/lowest-common-ancestor-of-a-binary-tree.md) |
+| 322 | Coin Change | DP | [LeetCode #322](https://leetcode.com/problems/coin-change/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/coin-change.md) |
 
 ### Hard (5) — Stand Out
 
 | # | Problem | Pattern | LeetCode | Solution |
 |---|---------|---------|----------|----------|
-| 23 | Merge K Sorted Lists | Heap + LL | [LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 42 | Trapping Rain Water | Two Pointers | [LeetCode #42](https://leetcode.com/problems/trapping-rain-water/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 76 | Min Window Substring | Sliding Window | [LeetCode #76](https://leetcode.com/problems/minimum-window-substring/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 84 | Largest Rectangle | Monotonic Stack | [LeetCode #84](https://leetcode.com/problems/largest-rectangle-in-histogram/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
-| 124 | Max Path Sum Tree | Tree DFS | [LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) |
+| 23 | Merge K Sorted Lists | Heap + LL | [LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-k-sorted-lists.md) |
+| 42 | Trapping Rain Water | Two Pointers | [LeetCode #42](https://leetcode.com/problems/trapping-rain-water/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/trapping-rain-water.md) |
+| 76 | Min Window Substring | Sliding Window | [LeetCode #76](https://leetcode.com/problems/minimum-window-substring/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/minimum-window-substring.md) |
+| 84 | Largest Rectangle | Monotonic Stack | [LeetCode #84](https://leetcode.com/problems/largest-rectangle-in-histogram/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/largest-rectangle-in-histogram.md) |
+| 124 | Max Path Sum Tree | Tree DFS | [LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/binary-tree-maximum-path-sum.md) |
 
 ---
 

@@ -90,7 +90,7 @@ Elements: [1, 2, 3]
 [123][12][13][1][23][2][3][]   -- include 3 or skip?
 ```
 
-### Subsets ([LeetCode #78](https://leetcode.com/problems/subsets/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Subsets ([LeetCode #78](https://leetcode.com/problems/subsets/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/subsets.md)
 
 **The Concept:** For each element, make two recursive calls: one including it, one excluding it. This creates a binary decision tree with 2^n leaves.
 
@@ -114,7 +114,7 @@ def subsets(nums):
 # O(2^n)
 ```
 
-### Combination Sum ([LeetCode #39](https://leetcode.com/problems/combination-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Combination Sum ([LeetCode #39](https://leetcode.com/problems/combination-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/combination-sum.md)
 
 **The Concept:** Find combinations summing to target. Can reuse elements. At each step, try each candidate, recurse with reduced target, backtrack.
 
@@ -136,7 +136,7 @@ def combinationSum(candidates, target):
     return res
 ```
 
-### Permutations ([LeetCode #46](https://leetcode.com/problems/permutations/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Permutations ([LeetCode #46](https://leetcode.com/problems/permutations/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/permutations.md)
 
 **The Concept:** Order matters. For each position, choose from remaining elements. n! total.
 
@@ -159,7 +159,7 @@ def permute(nums):
     return res
 ```
 
-### N-Queens ([LeetCode #51](https://leetcode.com/problems/n-queens/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### N-Queens ([LeetCode #51](https://leetcode.com/problems/n-queens/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/n-queens.md)
 
 **The Concept:** Place n queens so none attack each other. Row by row, at each row, try each column. Track attacks using sets for columns (`col`), diagonals (`row-col`), anti-diagonals (`row+col`).
 
@@ -190,7 +190,7 @@ def solveNQueens(n):
     return res
 ```
 
-### Word Search ([LeetCode #79](https://leetcode.com/problems/word-search/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Word Search ([LeetCode #79](https://leetcode.com/problems/word-search/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/word-search.md)
 
 **The Concept:** DFS + backtracking on a grid. At each cell, try all 4 directions. Mark visited cells to avoid reuse; unmark on backtrack.
 
@@ -320,7 +320,7 @@ def solve(root):
     return COMBINE(root.val, left, right)
 ```
 
-### Max Depth ([LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Max Depth ([LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/maximum-depth-of-binary-tree.md)
 
 **The Concept:** The depth of a tree is 1 + the maximum depth of its children. Base case: null node has depth 0.
 
@@ -334,7 +334,7 @@ def maxDepth(root):
     return 1 + max(maxDepth(root.left), maxDepth(root.right))
 ```
 
-### Diameter of Binary Tree ([LeetCode #543](https://leetcode.com/problems/diameter-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Diameter of Binary Tree ([LeetCode #543](https://leetcode.com/problems/diameter-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/diameter-of-binary-tree.md)
 
 **The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
 
@@ -355,7 +355,7 @@ def diameterOfBinaryTree(root):
     return diameter
 ```
 
-### Invert Binary Tree ([LeetCode #226](https://leetcode.com/problems/invert-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Invert Binary Tree ([LeetCode #226](https://leetcode.com/problems/invert-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/invert-binary-tree.md)
 
 **The Concept:** Swap each node's left and right children recursively. Base case: null node returns null.
 
@@ -370,7 +370,7 @@ def invertTree(root):
     return root
 ```
 
-### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/lowest-common-ancestor-of-a-binary-tree.md)
 
 **The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
 
@@ -387,7 +387,7 @@ def lowestCommonAncestor(root, p, q):
     return L or R
 ```
 
-### Validate BST ([LeetCode #98](https://leetcode.com/problems/validate-binary-search-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Validate BST ([LeetCode #98](https://leetcode.com/problems/validate-binary-search-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/validate-binary-search-tree.md)
 
 **The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
 
@@ -403,7 +403,7 @@ def isValidBST(root, lo=float('-inf'), hi=float('inf')):
            isValidBST(root.right, root.val, hi)
 ```
 
-### Maximum Path Sum ([LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Maximum Path Sum ([LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/binary-tree-maximum-path-sum.md)
 
 **The Concept:** At each node, the max path going through it is `node.val + max(0, left) + max(0, right)`. Each subtree returns the max single-branch path for its parent to use.
 
@@ -425,7 +425,7 @@ def maxPathSum(root):
     return best
 ```
 
-### Serialize and Deserialize ([LeetCode #297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Serialize and Deserialize ([LeetCode #297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/serialize-and-deserialize-binary-tree.md)
 
 **The Concept:** Convert tree to/from a string. Use preorder traversal with "null" markers for missing nodes.
 
@@ -509,7 +509,7 @@ max_val = -heapq.heappop(heap) # negate back
 ![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
 *Heap Sort animation — shows how a heap maintains order*
 
-### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/kth-largest-element-in-an-array.md)
 
 **The Concept:** Min-heap of size k: process all numbers, root = kth largest. O(n log k) beats sorting O(n log n).
 
@@ -529,7 +529,7 @@ def findKthLargest(nums, k):
 # O(n log k) -- much better than sorting O(n log n)
 ```
 
-### Merge K Sorted Lists ([LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Merge K Sorted Lists ([LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-k-sorted-lists.md)
 
 **The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
 
@@ -553,7 +553,7 @@ def mergeKLists(lists):
 # O(N log K) where N = total nodes, K = number of lists
 ```
 
-### Task Scheduler ([LeetCode #621](https://leetcode.com/problems/task-scheduler/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Task Scheduler ([LeetCode #621](https://leetcode.com/problems/task-scheduler/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/task-scheduler.md)
 
 **The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
 
@@ -579,7 +579,7 @@ def leastInterval(tasks, n):
     return time
 ```
 
-### Find Median from Data Stream ([LeetCode #295](https://leetcode.com/problems/find-median-from-data-stream/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Find Median from Data Stream ([LeetCode #295](https://leetcode.com/problems/find-median-from-data-stream/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/find-median-from-data-stream.md)
 
 **The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
 
@@ -616,7 +616,7 @@ class MedianFinder:
 | 15 | **Recursive Tree** | Solve left + right, combine | LCA #236, Max Path Sum #124 |
 | 16 | **Top-K / Heap** | Min/max heap for streaming data | Kth Largest #215, Merge K #23 |
 
-### Practice Problems for Day 3
+### [Practice Problems for Day 3](day3-practice.md)
 
 ```
 Easy:

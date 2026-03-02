@@ -46,7 +46,7 @@ With HashMap:    For each element, check the map   -> O(n)
 
 ## Pattern 7: Frequency Counting and Lookup
 
-### Contains Duplicate ([LeetCode #217](https://leetcode.com/problems/contains-duplicate/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Contains Duplicate ([LeetCode #217](https://leetcode.com/problems/contains-duplicate/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/contains-duplicate.md)
 
 **The Concept:** If the number of unique elements (set size) is less than total elements, duplicates exist.
 
@@ -59,7 +59,7 @@ def containsDuplicate(nums):
     return len(nums) != len(set(nums))
 ```
 
-### Longest Consecutive Sequence ([LeetCode #128](https://leetcode.com/problems/longest-consecutive-sequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Longest Consecutive Sequence ([LeetCode #128](https://leetcode.com/problems/longest-consecutive-sequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-consecutive-sequence.md)
 
 **The Concept:** Only start counting from the beginning of a sequence (where `n-1` is NOT in the set).
 
@@ -81,7 +81,7 @@ def longestConsecutive(nums):
 # O(n) -- each number visited at most twice
 ```
 
-### Top K Frequent Elements ([LeetCode #347](https://leetcode.com/problems/top-k-frequent-elements/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Top K Frequent Elements ([LeetCode #347](https://leetcode.com/problems/top-k-frequent-elements/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/top-k-frequent-elements.md)
 
 **The Concept:** Count frequencies with a HashMap, then find the top K. Bucket sort avoids the O(n log n) of a regular sort.
 
@@ -151,7 +151,7 @@ Visualize linked list operations:
 
 > [![Visualize Linked List Ops](https://img.shields.io/badge/▶_See_Animated_Demo-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/list)
 
-### Middle of Linked List ([LeetCode #876](https://leetcode.com/problems/middle-of-the-linked-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Middle of Linked List ([LeetCode #876](https://leetcode.com/problems/middle-of-the-linked-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/middle-of-the-linked-list.md)
 
 **The Concept:** Slow moves 1 step, fast moves 2 steps. When fast reaches the end, slow is at the middle.
 
@@ -168,7 +168,7 @@ def middleNode(head):
     return slow
 ```
 
-### Linked List Cycle ([LeetCode #141](https://leetcode.com/problems/linked-list-cycle/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Linked List Cycle ([LeetCode #141](https://leetcode.com/problems/linked-list-cycle/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/linked-list-cycle.md)
 
 **The Concept:** If there's a cycle, the fast pointer will eventually catch up to the slow pointer — like two runners on a circular track.
 
@@ -194,7 +194,7 @@ def hasCycle(head):
 
 > "Walk through the list, reversing each arrow to point backwards. Need three pointers: where you came from (prev), where you are (curr), where you're going (nxt)."
 
-### Reverse Linked List ([LeetCode #206](https://leetcode.com/problems/reverse-linked-list/)) — Top 5 Interview Question | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Reverse Linked List ([LeetCode #206](https://leetcode.com/problems/reverse-linked-list/)) — Top 5 Interview Question | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/reverse-linked-list.md)
 
 > **Common Pitfalls:**
 > 1. Forgetting to save `curr.next` before overwriting it
@@ -223,7 +223,7 @@ def reverseList(head):
 # O(n) time, O(1) space -- MEMORIZE THIS
 ```
 
-### Merge Two Sorted Lists ([LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Merge Two Sorted Lists ([LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-two-sorted-lists.md)
 
 **Key technique — Dummy Node:** Creates a fake start node to simplify edge cases.
 
@@ -244,7 +244,7 @@ def mergeTwoLists(l1, l2):
     return dummy.next
 ```
 
-### Reorder List ([LeetCode #143](https://leetcode.com/problems/reorder-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Reorder List ([LeetCode #143](https://leetcode.com/problems/reorder-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/reorder-list.md)
 
 **The Concept:** Combines three linked list patterns in one problem:
 
@@ -322,7 +322,7 @@ q.popleft()       # dequeue O(1)
 
 > "When you see an opening element, push it. When you see a closing element, pop and check if they match. Stacks naturally handle nesting."
 
-### Valid Parentheses ([LeetCode #20](https://leetcode.com/problems/valid-parentheses/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Valid Parentheses ([LeetCode #20](https://leetcode.com/problems/valid-parentheses/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/valid-parentheses.md)
 
 **The Concept:** Push opening brackets, pop on closing brackets. If the popped bracket doesn't match the closing one, it's invalid.
 
@@ -352,7 +352,7 @@ def isValid(s):
 
 **Why O(n)?** Each element is pushed at most once and popped at most once, giving O(2n) = O(n) total.
 
-### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/daily-temperatures.md)
 
 **The Concept:** For each day, find how many days until a warmer temperature. A monotonic decreasing stack of indices solves this: when a warmer day arrives, pop and record the gap.
 
@@ -374,7 +374,7 @@ def dailyTemperatures(temps):
 # O(n)
 ```
 
-### Largest Rectangle in Histogram ([LeetCode #84](https://leetcode.com/problems/largest-rectangle-in-histogram/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Largest Rectangle in Histogram ([LeetCode #84](https://leetcode.com/problems/largest-rectangle-in-histogram/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/largest-rectangle-in-histogram.md)
 
 **The Concept:** Monotonic increasing stack of indices. When a shorter bar arrives, pop and calculate the area using popped bar's height × width between boundaries.
 
@@ -395,7 +395,7 @@ def largestRectangleArea(heights):
     return best
 ```
 
-### Min Stack ([LeetCode #155](https://leetcode.com/problems/min-stack/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Min Stack ([LeetCode #155](https://leetcode.com/problems/min-stack/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/min-stack.md)
 
 **The Concept:** Store `(value, current_min)` pairs so getMin is always O(1).
 
@@ -437,7 +437,7 @@ Sorted -> Greedy decisions   O(n log n + n)
 Sorted -> Duplicates adjacent
 ```
 
-### Dutch National Flag ([LeetCode #75](https://leetcode.com/problems/sort-colors/)) — Sort 0s, 1s, 2s in One Pass | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Dutch National Flag ([LeetCode #75](https://leetcode.com/problems/sort-colors/)) — Sort 0s, 1s, 2s in One Pass | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/sort-colors.md)
 
 **The Concept:** Three pointers (lo, mid, hi) partition the array into regions of 0s, 1s, and 2s in a single pass.
 
@@ -454,7 +454,7 @@ def sortColors(nums):
         else:                nums[mid], nums[hi] = nums[hi], nums[mid]; hi -= 1
 ```
 
-### Merge Intervals ([LeetCode #56](https://leetcode.com/problems/merge-intervals/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Merge Intervals ([LeetCode #56](https://leetcode.com/problems/merge-intervals/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-intervals.md)
 
 **The Concept:** Sort intervals by start. Iterate and merge overlapping intervals by extending the end.
 
@@ -499,7 +499,7 @@ def binary_search(arr, target):
     return -1
 ```
 
-### Search in Rotated Sorted Array ([LeetCode #33](https://leetcode.com/problems/search-in-rotated-sorted-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Search in Rotated Sorted Array ([LeetCode #33](https://leetcode.com/problems/search-in-rotated-sorted-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/search-in-rotated-sorted-array.md)
 
 **The Concept:** At any mid, one half is always sorted. Check if target is in the sorted half.
 
@@ -526,7 +526,7 @@ def search(nums, target):
 
 > "Instead of searching an array, search the range of possible answers."
 
-### Koko Eating Bananas ([LeetCode #875](https://leetcode.com/problems/koko-eating-bananas/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### Koko Eating Bananas ([LeetCode #875](https://leetcode.com/problems/koko-eating-bananas/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/koko-eating-bananas.md)
 
 **The Concept:** Binary search on the answer — search the range of possible eating speeds [1, max(piles)] and check feasibility.
 
@@ -553,7 +553,7 @@ def minEatingSpeed(piles, h):
 
 ## Four Tricks Worth Knowing
 
-### 1. XOR Cancels Pairs — Single Number ([LeetCode #136](https://leetcode.com/problems/single-number/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
+### 1. XOR Cancels Pairs — Single Number ([LeetCode #136](https://leetcode.com/problems/single-number/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/single-number.md)
 
 `a ^ a = 0` and `a ^ 0 = a`. XOR all numbers — pairs cancel, the unique one remains.
 
@@ -604,7 +604,7 @@ n & 1 == 1  # odd
 | 11 | **Monotonic Stack** | Next greater/smaller | Daily Temps #739 |
 | 12 | **Binary Search** | Halve the search space | Rotated Array #33, Koko #875 |
 
-### Practice Problems for Day 2
+### [Practice Problems for Day 2](day2-practice.md)
 
 ```
 Easy:
