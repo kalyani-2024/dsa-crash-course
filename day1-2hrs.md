@@ -364,6 +364,20 @@ def subarraySum(nums, k):
 > 1. Initializing `best` to 0 instead of `nums[0]` (fails for all-negative arrays)
 > 2. Starting the loop from index 0 instead of index 1 when using `nums[0]` as initial value
 
+```
+Kadane's Algorithm Visualization:
+
+Array:  [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+curr:   -2   1  -2  4   3  5  6   1  5
+best:   -2   1   1  4   4  5  6   6  6
+                     ↑————————↑
+                     [4, -1, 2, 1] = 6 ← Answer!
+
+At each step: curr = max(num, curr + num)
+→ Start fresh (num) vs extend (curr + num)
+```
+
 If the running sum goes negative, starting fresh is always better.
 
 ```python
@@ -383,6 +397,18 @@ def maxSubArray(nums):
 ## What is a String?
 
 > 🔗 **Learn more:** [String Data Structure — GeeksForGeeks](https://www.geeksforgeeks.org/string-data-structure/) | [String Problems — GeeksForGeeks](https://www.geeksforgeeks.org/string-data-structure/)
+
+```
+String = Array of Characters:
+
+ "H E L L O"
+  0 1 2 3 4    ← indices
+  
+Immutable (Python/Java):        Mutable (C++/JS):
+  s = "hello"                     s[0] = 'H'  ✓
+  s[0] = 'H'  ✗ ERROR!            "Hello"
+  s = 'H' + s[1:]  ✓ new string
+```
 
 A string is an array of characters. This means most array techniques (two pointers, sliding window, [hashing](https://www.geeksforgeeks.org/hashing-data-structure/)) apply directly. But strings have unique properties:
 
@@ -422,6 +448,18 @@ result = ''.join(chars)
 ### The Core Idea
 
 > "Many string problems reduce to: do two strings have the same character frequencies?"
+
+```
+Frequency Counting:
+
+"anagram"  →  {a:3, n:1, g:1, r:1, m:1}
+"nagaram"  →  {n:1, a:3, g:1, r:1, m:1}
+                Same! → They are anagrams ✓
+
+"hello"    →  {h:1, e:1, l:2, o:1}
+"world"    →  {w:1, o:1, r:1, l:1, d:1}
+                Different! → Not anagrams ✗
+```
 
 ### Valid Anagram ([LeetCode #242](https://leetcode.com/problems/valid-anagram/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 

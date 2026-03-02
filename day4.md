@@ -160,6 +160,7 @@ for u, v in edges:
 Think of ripples in a pond — expanding outward uniformly.
 
 ![BFS Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
+*BFS explores level by level — shortest path in unweighted graphs*
 
 > [![Simulate BFS/DFS/Dijkstra](https://img.shields.io/badge/▶_Simulate_BFS%2FDFS%2FDijkstra-PathFinding.js-2ea44f?style=for-the-badge)](https://qiao.github.io/PathFinding.js/visual/)
 
@@ -241,6 +242,7 @@ def orangesRotting(grid):
 > "Go as deep as possible, then backtrack. Use 3 states to detect cycles in directed graphs."
 
 ![DFS Animation](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
+*DFS goes as deep as possible before backtracking*
 
 ```
 Three states:
@@ -279,6 +281,9 @@ def canFinish(n, prereqs):
 
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
+![Topological Sort](https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg)
+*A Directed Acyclic Graph (DAG) — topological sort gives a valid ordering*
+
 ```python
 def findOrder(n, prereqs):
     graph = defaultdict(list)
@@ -303,6 +308,7 @@ def findOrder(n, prereqs):
 **The Concept:** BFS finds shortest path in unweighted graphs. Dijkstra uses a min-heap to always process the closest unvisited node.
 
 ![Dijkstra Animation](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+*Dijkstra's algorithm — always processes the closest unvisited node*
 
 ```python
 def dijkstra(graph, start, n):

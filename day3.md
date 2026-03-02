@@ -18,6 +18,9 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 >
 > [![Visualize Recursion](https://img.shields.io/badge/▶_Visualize_Recursion-Python_Tutor-FF6F00?style=for-the-badge)](https://pythontutor.com/)
 
+![Recursion Tree](https://upload.wikimedia.org/wikipedia/commons/0/06/Fibonacci_dynamic_programming.svg)
+*Recursive Fibonacci call tree — notice the repeated subproblems!*
+
 Every recursive solution has:
 1. **Base case** — when to stop (prevents infinite loops)
 2. **Recursive case** — break the problem into a smaller identical problem
@@ -502,6 +505,9 @@ max_val = -heapq.heappop(heap) # negate back
 > "Maintain a heap of size K. The root gives you the Kth element."
 
 > [![Visualize Heap](https://img.shields.io/badge/▶_Visualize_Heap_Operations-USFCA-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
+
+![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
+*Heap Sort animation — shows how a heap maintains order*
 
 ### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
