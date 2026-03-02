@@ -235,6 +235,7 @@ def trap(height):
 > [![Visualize Sliding Window](https://img.shields.io/badge/▶_Visualize_Sliding_Window-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/dynamic-programming/sliding-window)
 
 ![Sliding Window Technique](images/sliding-window.png)
+
 *The window expands right and shrinks left to find optimal subarrays*
 
 ```
