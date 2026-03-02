@@ -1,4 +1,4 @@
-# Day 2 Practice -- HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+# 04: Day 2 Practice — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 ## 12 Must-Do Problems
 
@@ -95,6 +95,18 @@ Three steps: (1) Find middle with slow/fast pointers. (2) Reverse the second hal
 - [ ] Can you explain sorting as a preprocessing step?
 
 If you checked most boxes, move on to [Day 3](day3.md).
+
+---
+
+## Editorial Solutions
+
+Need a detailed walkthrough after attempting a problem? Check these editorial resources:
+
+| Resource | Link | Notes |
+|----------|------|-------|
+| **walkccc/LeetCode** | [github.com/walkccc/LeetCode](https://github.com/walkccc/LeetCode) | Clean solutions in Python, C++, Java for every problem |
+| **NeetCode Video Solutions** | [neetcode.io](https://neetcode.io/) | Video explanations with diagrams |
+| **LeetCode Discuss** | [leetcode.com/discuss](https://leetcode.com/discuss/) | Community solutions and explanations |
 
 ---
 

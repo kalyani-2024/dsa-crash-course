@@ -1,10 +1,10 @@
-# DSA Crash Course -- Master Data Structures and Algorithms in 4 Days
+# DSA Crash Course — Master Data Structures and Algorithms in 4 Days
 
 ## From Zero to Interview-Ready
 
 **Who is this for?** Complete beginners, college students preparing for placements, anyone who wants to crack coding interviews at top tech companies.
 
-**What you will learn:** Every major data structure, every core algorithm pattern, interview strategies, and -- most importantly -- how to think algorithmically.
+**What you will learn:** Every major data structure, every core algorithm pattern, interview strategies, and — most importantly — how to think algorithmically.
 
 **Prerequisites:** Basic programming knowledge in any language (Python/C++/Java). We use Python in examples, but concepts apply to all languages.
 
@@ -28,49 +28,53 @@ Every topic follows a concept-first approach:
 
 ## 4-Day Schedule
 
-### Day 1 -- Arrays and Strings
+### 01: Day 1 — Arrays and Strings
 
 Learn the most fundamental data structures and the patterns built on top of them.
 
 | Resource | File | Topics |
 |----------|------|--------|
 | **Course Content** | [day1-2hrs.md](day1-2hrs.md) | Big-O, Arrays (Two Pointers, Sliding Window, Prefix Sum, Kadane's), Strings (Frequency Counting, Palindromes, String Manipulation) |
+| **Practice** | [day1-practice.md](day1-practice.md) | 10 Must-Do Problems with Hints |
 
 **Patterns Covered:** 6 | **Structures:** Arrays, Strings
 
 ---
 
-### Day 2 -- HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+### 03: Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 Master the core data structures and essential searching/sorting techniques.
 
 | Resource | File | Topics |
 |----------|------|--------|
 | **Course Content** | [day2-2hrs.md](day2-2hrs.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search, Bit Manipulation |
+| **Practice** | [day2-practice.md](day2-practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 6 | **Structures:** Hash Maps, Hash Sets, Linked Lists, Stacks, Queues
 
 ---
 
-### Day 3 -- Recursion, Backtracking, Trees, and Heaps
+### 05: Day 3 — Recursion, Backtracking, Trees, and Heaps
 
 Learn recursive thinking, then apply it to trees and priority queues.
 
 | Resource | File | Topics |
 |----------|------|--------|
 | **Course Content** | [day3.md](day3.md) | Recursion, Backtracking (Subsets, Permutations, Combinations, N-Queens), Trees and BST (Traversals, Recursive Properties, Validation), Heaps and Priority Queues (Top-K, Merge K Sorted, Median) |
+| **Practice** | [day3-practice.md](day3-practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 4 | **Structures:** Trees, BST, Heaps
 
 ---
 
-### Day 4 -- Tries, Graphs, Greedy, and Dynamic Programming
+### 07: Day 4 — Tries, Graphs, Greedy, and Dynamic Programming
 
-The most advanced material -- graph algorithms and algorithm paradigms.
+The most advanced material — graph algorithms and algorithm paradigms.
 
 | Resource | File | Topics |
 |----------|------|--------|
 | **Course Content** | [day4.md](day4.md) | Tries (Prefix Trees), Graphs (BFS, DFS, Topological Sort, Dijkstra), Union-Find, Greedy Algorithms, Dynamic Programming (1D, 2D, Knapsack) |
+| **Practice** | [day4-practice.md](day4-practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 4+ | **Structures:** Tries, Graphs, Union-Find
 
@@ -80,8 +84,8 @@ The most advanced material -- graph algorithms and algorithm paradigms.
 
 | Resource | File | Purpose |
 |----------|------|---------|
-| **Cheatsheet** | [cheatsheet.md](cheatsheet.md) | Quick-reference for all patterns during practice |
-| **Interview Playbook** | [interview-playbook.md](interview-playbook.md) | How to approach any coding interview question |
+| **09: Cheatsheet** | [cheatsheet.md](cheatsheet.md) | Quick-reference for all patterns during practice |
+| **10: Interview Playbook** | [interview-playbook.md](interview-playbook.md) | How to approach any coding interview question |
 
 ---
 

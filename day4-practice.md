@@ -1,4 +1,4 @@
-# Day 4 Practice -- Tries, Graphs, Greedy, and Dynamic Programming
+# 08: Day 4 Practice — Tries, Graphs, Greedy, and Dynamic Programming
 
 ## 12 Must-Do Problems
 
@@ -134,3 +134,15 @@ If you checked most boxes, you are interview-ready.
 ---
 
 [Back to Day 4](day4.md) | [Back to Course](README.md) | [Cheatsheet](cheatsheet.md) | [Interview Playbook](interview-playbook.md)
+
+---
+
+## Editorial Solutions
+
+Need a detailed walkthrough after attempting a problem? Check these editorial resources:
+
+| Resource | Link | Notes |
+|----------|------|-------|
+| **walkccc/LeetCode** | [github.com/walkccc/LeetCode](https://github.com/walkccc/LeetCode) | Clean solutions in Python, C++, Java for every problem |
+| **NeetCode Video Solutions** | [neetcode.io](https://neetcode.io/) | Video explanations with diagrams |
+| **LeetCode Discuss** | [leetcode.com/discuss](https://leetcode.com/discuss/) | Community solutions and explanations |

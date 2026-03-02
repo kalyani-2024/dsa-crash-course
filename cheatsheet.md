@@ -1,4 +1,4 @@
-# DSA Cheatsheet -- Complete Quick Reference
+# 09: DSA Cheatsheet — Complete Quick Reference
 
 Keep this open while practicing. Covers every data structure, every pattern, and every complexity.
 

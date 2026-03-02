@@ -1,4 +1,4 @@
-# Day 3 Practice -- Recursion, Backtracking, Trees, BST, and Heaps
+# 06: Day 3 Practice — Recursion, Backtracking, Trees, BST, and Heaps
 
 ## 12 Must-Do Problems
 
@@ -102,6 +102,18 @@ Put the head of each list into a min-heap. Pop the smallest, append to result, p
 - [ ] Can you implement the "Top-K" pattern with a min-heap?
 
 If you checked most boxes, move on to [Day 4](day4.md).
+
+---
+
+## Editorial Solutions
+
+Need a detailed walkthrough after attempting a problem? Check these editorial resources:
+
+| Resource | Link | Notes |
+|----------|------|-------|
+| **walkccc/LeetCode** | [github.com/walkccc/LeetCode](https://github.com/walkccc/LeetCode) | Clean solutions in Python, C++, Java for every problem |
+| **NeetCode Video Solutions** | [neetcode.io](https://neetcode.io/) | Video explanations with diagrams |
+| **LeetCode Discuss** | [leetcode.com/discuss](https://leetcode.com/discuss/) | Community solutions and explanations |
 
 ---
 

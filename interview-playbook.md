@@ -1,4 +1,4 @@
-# Interview Playbook -- How to Crack Any Coding Interview
+# 10: Interview Playbook — How to Crack Any Coding Interview
 
 Read this the night before your interview. This is your game plan.
 
@@ -7,6 +7,8 @@ Read this the night before your interview. This is your game plan.
 ## Step 1: Clarify the Problem (5 min)
 
 **Never start coding immediately.** Ask these questions first:
+
+> 🔗 **Mock practice:** [Pramp — Free mock interviews](https://www.pramp.com/) | [Interviewing.io](https://interviewing.io/)
 
 ### Must-Ask Questions
 ```
@@ -81,6 +83,8 @@ Does this approach make sense before I start coding?"
 ## Step 3: Code Clean (18 min)
 
 ### Coding Best Practices
+
+> 🔗 **Practice writing code without autocomplete:** [LeetCode Playground](https://leetcode.com/playground/) | [Google Docs](https://docs.google.com/)
 
 ```python
 # Good: Clean, readable code
@@ -212,6 +216,15 @@ Not handling null/None
 
 Forgetting to mark visited in graphs
     -> Infinite loops in BFS/DFS
+
+Using == instead of .equals() for string comparison (Java)
+    -> Always use .equals() for object comparison
+
+Returning inside a loop prematurely
+    -> Make sure you've checked all possibilities before returning False/None
+
+Not considering negative numbers or zeros
+    -> Test with [-1, 0, 1] as input
 ```
 
 ### Behavioral Mistakes
@@ -230,6 +243,15 @@ Not asking clarifying questions
 
 Arguing with the interviewer
     -> They're trying to help you. Listen.
+
+Not testing your code after writing it
+    -> Always trace through at least one example
+
+Writing "perfect" code on the first try
+    -> Get a working solution first, optimize later
+
+Ignoring hints from the interviewer
+    -> They're guiding you toward the answer. Pivot!
 ```
 
 ---
@@ -260,7 +282,7 @@ Step 6: Ask the interviewer for a HINT. This is OK!
 
 ---
 
-## Top Interview Questions by Company (2024-2025)
+## Top Interview Questions by Company (2024–2026)
 
 ### FAANG Favorites
 ```
@@ -280,18 +302,59 @@ PhonePe/Razorpay: System Design + Medium LeetCode
 Google/Microsoft: Hard LeetCode + System Design
 ```
 
+### Company-Wise Problem Lists
+
+The lists above are just starting points. For a **comprehensive, regularly updated** collection of LeetCode problems tagged by company (400+ companies, with 30/60/90-day and all-time frequency data), use this community resource:
+
+> **[liquidslr/interview-company-wise-problems](https://github.com/liquidslr/interview-company-wise-problems)** — 14k+ stars
+>
+> Curated LeetCode questions grouped by company, updated as of June 2025. Each company folder has CSV files with problems from the past 30, 60, 90 days and all-time.
+
+**How to use it:**
+```
+1. Find your target company's folder (e.g., Google/, Amazon/, Meta/)
+2. Open the CSV — problems are sorted by frequency
+3. Focus on the "30 days" list first (most recent and likely)
+4. Cross-reference with patterns from this course:
+   - Day 1: Arrays, Strings, Two Pointers, Sliding Window
+   - Day 2: HashMaps, Linked Lists, Stacks, Binary Search
+   - Day 3: Trees, BST, Recursion, Backtracking, Heaps
+   - Day 4: Tries, Graphs, Union-Find, Greedy, DP
+5. Aim to solve the top 20 most-frequent problems for your company
+```
+
+**Popular company folders to start with:**
+
+| FAANG & Big Tech | Finance & Trading | Indian Tech |
+|---|---|---|
+| [Google](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Google) | [Goldman Sachs](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Goldman%20Sachs) | [Flipkart](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Flipkart) |
+| [Amazon](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Amazon) | [J.P. Morgan](https://github.com/liquidslr/interview-company-wise-problems/tree/main/J.P.%20Morgan) | [PhonePe](https://github.com/liquidslr/interview-company-wise-problems/tree/main/PhonePe) |
+| [Meta](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Meta) | [Bloomberg](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Bloomberg) | [Swiggy](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Swiggy) |
+| [Apple](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Apple) | [Citadel](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Citadel) | [Zomato](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Zomato) |
+| [Microsoft](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Microsoft) | [DE Shaw](https://github.com/liquidslr/interview-company-wise-problems/tree/main/DE%20Shaw) | [Razorpay](https://github.com/liquidslr/interview-company-wise-problems/tree/main/razorpay) |
+| [Netflix](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Netflix) | [Two Sigma](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Two%20Sigma) | [Meesho](https://github.com/liquidslr/interview-company-wise-problems/tree/main/Meesho) |
+
 ---
 
 ## Resources for Continued Learning
 
 ### Free Resources
 ```
-NeetCode (YouTube + neetcode.io) -- Best LeetCode explanations
-Striver (takeUforward) -- A2Z DSA Sheet
-Abdul Bari (YouTube) -- Algorithm theory explanations
-LeetCode Explore Cards -- Structured learning paths
-GeeksForGeeks -- Problem discussions and editorials
+NeetCode (YouTube + neetcode.io) — Best LeetCode explanations
+Striver (takeUforward) — A2Z DSA Sheet
+Abdul Bari (YouTube) — Algorithm theory explanations
+LeetCode Explore Cards — Structured learning paths
+GeeksForGeeks — Problem discussions and editorials
 ```
+
+> 🔗 **Quick Links:**
+> - [NeetCode Roadmap](https://neetcode.io/roadmap)
+> - [Striver A2Z DSA Sheet](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2)
+> - [LeetCode Explore](https://leetcode.com/explore/)
+> - [GeeksForGeeks DSA](https://www.geeksforgeeks.org/data-structures/)
+> - [LeetCode Patterns by Sean Prashad](https://seanprashad.com/leetcode-patterns/)
+> - [Blind 75 List](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
+> - [Company-Wise Problems (400+ companies)](https://github.com/liquidslr/interview-company-wise-problems)
 
 ### Practice Platforms
 ```
@@ -324,11 +387,18 @@ Before your real interview, do at least 3 mock interviews:
 
 ### Mock Interview Partners
 ```
-Pramp.com -- Free mock interviews with peers
-Interviewing.io -- Practice with engineers (some free)
+Pramp.com — Free mock interviews with peers
+Interviewing.io — Practice with engineers (some free)
 LeetCode mock interview mode
 Practice with a friend (switch roles)
 ```
+
+> 🔗 **Quick Links:**
+> - [Pramp](https://www.pramp.com/)
+> - [Interviewing.io](https://interviewing.io/)
+> - [LeetCode Mock Interview](https://leetcode.com/interview/)
+> - [VisuAlgo](https://visualgo.net/) — Visualize algorithms before your interview
+> - [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) — Quick complexity reference
 
 ---
 
@@ -344,7 +414,7 @@ Practice with a friend (switch roles)
 |    Solve 2-3 problems daily for 3 months,          |
 |    and you WILL crack any coding interview."        |
 |                                                    |
-|                          -- Every successful SDE    |
+|                          — Every successful SDE    |
 |                                                    |
 +----------------------------------------------------+
 ```

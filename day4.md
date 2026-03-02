@@ -1,8 +1,8 @@
-# Day 4 -- Tries, Graphs, Union-Find, Greedy, and Dynamic Programming
+# 07: Day 4 — Tries, Graphs, Union-Find, Greedy, and Dynamic Programming
 
 ## Advanced Structures and Algorithm Paradigms
 
-**What this day covers:** Tries (prefix matching), Graphs (BFS, DFS, topological sort, Dijkstra), Union-Find (connected components), Greedy Algorithms (intervals, scheduling), and Dynamic Programming (1D, 2D, knapsack).
+**What this day covers:** [Tries](https://www.geeksforgeeks.org/trie-insert-and-search/) (prefix matching), [Graphs](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/) (BFS, DFS, topological sort, Dijkstra), [Union-Find](https://www.geeksforgeeks.org/union-find/) (connected components), [Greedy Algorithms](https://www.geeksforgeeks.org/greedy-algorithms/) (intervals, scheduling), and [Dynamic Programming](https://www.geeksforgeeks.org/dynamic-programming/) (1D, 2D, knapsack).
 
 This final day ties everything together with the most advanced material. After completing all four days, you will have covered every major topic that appears in coding interviews.
 
@@ -12,7 +12,9 @@ This final day ties everything together with the most advanced material. After c
 
 ## What is a Trie?
 
-A Trie (pronounced "try") is a tree where each node represents a character, and paths from root to nodes spell out prefixes. It's the ultimate data structure for prefix-based operations.
+A [Trie](https://www.geeksforgeeks.org/trie-insert-and-search/) (pronounced "try") is a tree where each node represents a character, and paths from root to nodes spell out prefixes. It's the ultimate data structure for prefix-based operations.
+
+![Trie](https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg)
 
 ```
 Insert: "cat", "car", "card", "dog"
@@ -39,7 +41,7 @@ Insert: "cat", "car", "card", "dog"
 | Autocomplete | Expensive | Natural |
 | Spell checker | Expensive | Natural |
 
-### Trie Implementation (LeetCode #208)
+### Trie Implementation ([LeetCode #208](https://leetcode.com/problems/implement-trie-prefix-tree/))
 
 ```python
 class TrieNode:
@@ -74,9 +76,13 @@ class Trie:
         return node
 ```
 
-### Word Search II (LeetCode #212) -- Hard
+### Word Search II ([LeetCode #212](https://leetcode.com/problems/word-search-ii/))
 
-**The Concept:** Build a Trie from all target words, then DFS through the grid. At each cell, follow the Trie -- if the Trie has no branch for a character, prune that search path.
+**The Concept:** Build a Trie from all target words, then DFS through the grid. At each cell, follow the Trie — if the Trie has no branch for a character, prune that search path.
+
+> **Common Pitfalls:**
+> 1. Not pruning empty Trie branches after finding a word (causes TLE)
+> 2. Forgetting to backtrack the visited cell marker
 
 ```python
 def findWords(board, words):
@@ -113,13 +119,13 @@ def findWords(board, words):
 
 ## What is a Graph?
 
-A graph models relationships between things. It's the most general data structure -- trees, linked lists, and even arrays can be viewed as special cases of graphs.
+A graph models relationships between things. It's the most general data structure — trees, linked lists, and even arrays can be viewed as special cases of graphs.
 
 ### Real-World Examples
 
-- **Social network** -- people = nodes, friendships = edges
-- **GPS/Maps** -- intersections = nodes, roads = edges (weighted)
-- **Course prerequisites** -- courses = nodes, "must take before" = directed edges
+- **Social network** — people = nodes, friendships = edges
+- **GPS/Maps** — intersections = nodes, roads = edges (weighted)
+- **Course prerequisites** — courses = nodes, "must take before" = directed edges
 
 ### Types
 
@@ -131,7 +137,7 @@ Cyclic:      A -> B -> C -> A  (loops exist)
 Acyclic:     A -> B -> C      (no loops; a tree is acyclic)
 ```
 
-### Representation -- Adjacency List
+### Representation — Adjacency List
 
 ```python
 from collections import defaultdict
@@ -145,13 +151,17 @@ Visualize pathfinding: [pathfinding.js.org](https://qiao.github.io/PathFinding.j
 
 ---
 
-## Pattern 17: BFS -- Shortest Path and Level-by-Level
+## Pattern 17: BFS — Shortest Path and Level-by-Level
 
 ### The Core Idea
 
 > "Explore all neighbors at distance 1 first, then distance 2, then 3... Naturally finds shortest path."
 
-Think of ripples in a pond -- expanding outward uniformly.
+Think of ripples in a pond — expanding outward uniformly.
+
+![BFS Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
+
+> 🔗 **Simulate:** [Pathfinding Visualizer — see BFS/DFS/Dijkstra live](https://qiao.github.io/PathFinding.js/visual/)
 
 ```python
 def bfs(graph, start):
@@ -165,7 +175,9 @@ def bfs(graph, start):
                 q.append(nb)
 ```
 
-### Number of Islands (LeetCode #200)
+### Number of Islands ([LeetCode #200](https://leetcode.com/problems/number-of-islands/))
+
+**The Concept:** Iterate the grid; when you find a '1', increment count and BFS/DFS to mark all connected '1's as visited ('0').
 
 ```python
 def numIslands(grid):
@@ -187,7 +199,7 @@ def numIslands(grid):
     return count
 ```
 
-### Rotting Oranges (LeetCode #994) -- Multi-source BFS
+### Rotting Oranges ([LeetCode #994](https://leetcode.com/problems/rotting-oranges/)) — Multi-source BFS
 
 **The Concept:** Start BFS from all rotten oranges simultaneously. Each "level" = 1 minute.
 
@@ -214,11 +226,13 @@ def orangesRotting(grid):
 
 ---
 
-## Pattern 18: DFS -- All Paths and Cycle Detection
+## Pattern 18: DFS — All Paths and Cycle Detection
 
 ### The Core Idea
 
 > "Go as deep as possible, then backtrack. Use 3 states to detect cycles in directed graphs."
+
+![DFS Animation](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
 
 ```
 Three states:
@@ -229,7 +243,9 @@ Three states:
 Reaching a node in state 1 means you have found a CYCLE.
 ```
 
-### Course Schedule (LeetCode #207)
+### Course Schedule ([LeetCode #207](https://leetcode.com/problems/course-schedule/))
+
+**The Concept:** Model as a directed graph. If there's a cycle, you can't finish all courses. Detect cycles with 3-state DFS.
 
 ```python
 def canFinish(n, prereqs):
@@ -247,7 +263,7 @@ def canFinish(n, prereqs):
     return not any(has_cycle(i) for i in range(n))
 ```
 
-### Course Schedule II (LeetCode #210) -- Topological Sort
+### Course Schedule II ([LeetCode #210](https://leetcode.com/problems/course-schedule-ii/)) — Topological Sort
 
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
@@ -270,9 +286,11 @@ def findOrder(n, prereqs):
     return order[::-1]
 ```
 
-### Dijkstra's Algorithm -- Weighted Shortest Path
+### Dijkstra's Algorithm — Weighted Shortest Path
 
 **The Concept:** BFS finds shortest path in unweighted graphs. Dijkstra uses a min-heap to always process the closest unvisited node.
+
+![Dijkstra Animation](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
 
 ```python
 def dijkstra(graph, start, n):
@@ -296,11 +314,13 @@ def dijkstra(graph, start, n):
 
 ## What is Union-Find?
 
-Union-Find tracks groups of connected elements. It answers two questions instantly:
+[Union-Find](https://www.geeksforgeeks.org/union-find/) tracks groups of connected elements. It answers two questions instantly:
 - **Find:** Which group does element X belong to?
 - **Union:** Merge two groups together.
 
 Think of social groups at a party. Initially everyone is standalone. When two people become friends, their friend groups merge. Union-Find efficiently tracks who is in whose group.
+
+> 🔗 **Visualize:** [Union-Find on USFCA](https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html)
 
 ### Implementation with Path Compression + Union by Rank
 
@@ -337,9 +357,9 @@ class UnionFind:
 - "Detect cycles in undirected graphs"
 - Problems where relationships grow over time
 
-### Redundant Connection (LeetCode #684)
+### Redundant Connection ([LeetCode #684](https://leetcode.com/problems/redundant-connection/))
 
-**The Concept:** Find the edge that creates a cycle. Add edges one by one -- if union returns False (already connected), that edge is redundant.
+**The Concept:** Find the edge that creates a cycle. Add edges one by one — if union returns False (already connected), that edge is redundant.
 
 ```python
 def findRedundantConnection(edges):
@@ -349,7 +369,7 @@ def findRedundantConnection(edges):
             return [u, v]              # this edge created a cycle!
 ```
 
-### Accounts Merge (LeetCode #721)
+### Accounts Merge ([LeetCode #721](https://leetcode.com/problems/accounts-merge/))
 
 **The Concept:** Union-Find to group accounts by shared emails.
 
@@ -374,7 +394,7 @@ def accountsMerge(accounts):
 
 ## What is Greedy?
 
-A greedy algorithm makes the locally optimal choice at each step, hoping it leads to a globally optimal solution. Unlike DP, greedy doesn't reconsider past choices.
+A [greedy algorithm](https://www.geeksforgeeks.org/greedy-algorithms/) makes the locally optimal choice at each step, hoping it leads to a globally optimal solution. Unlike DP, greedy doesn't reconsider past choices.
 
 > "At each step, take the best available option. Never look back."
 
@@ -388,7 +408,7 @@ Greedy works when the problem has optimal substructure and the greedy choice pro
 
 ---
 
-### Jump Game (LeetCode #55)
+### Jump Game ([LeetCode #55](https://leetcode.com/problems/jump-game/))
 
 **The Concept:** Track the farthest position you can reach. If you can ever reach the end, return True.
 
@@ -401,7 +421,9 @@ def canJump(nums):
     return True
 ```
 
-### Jump Game II (LeetCode #45)
+### Jump Game II ([LeetCode #45](https://leetcode.com/problems/jump-game-ii/))
+
+**The Concept:** BFS-like approach — each "level" is a jump. Track the current reachable end and the farthest from that level.
 
 ```python
 def jump(nums):
@@ -414,9 +436,13 @@ def jump(nums):
     return jumps
 ```
 
-### Non-overlapping Intervals (LeetCode #435)
+### Non-overlapping Intervals ([LeetCode #435](https://leetcode.com/problems/non-overlapping-intervals/))
 
 **The Concept:** Sort by end time. Greedily keep intervals that end earliest.
+
+> **Common Pitfalls:**
+> 1. Sorting by start time instead of end time
+> 2. Counting intervals to keep instead of intervals to remove
 
 ```python
 def eraseOverlapIntervals(intervals):
@@ -431,7 +457,9 @@ def eraseOverlapIntervals(intervals):
     return count
 ```
 
-### Meeting Rooms II (LeetCode #253)
+### Meeting Rooms II ([LeetCode #253](https://leetcode.com/problems/meeting-rooms-ii/))
+
+**The Concept:** Sort meetings by start. Use a min-heap of end times to track active rooms. Reuse a room if a meeting starts after the earliest ending.
 
 ```python
 def minMeetingRooms(intervals):
@@ -444,7 +472,9 @@ def minMeetingRooms(intervals):
     return len(heap)
 ```
 
-### Gas Station (LeetCode #134)
+### Gas Station ([LeetCode #134](https://leetcode.com/problems/gas-station/))
+
+**The Concept:** If total gas ≥ total cost, a solution exists. Track current tank; whenever it goes negative, restart from the next station.
 
 ```python
 def canCompleteCircuit(gas, cost):
@@ -467,6 +497,8 @@ def canCompleteCircuit(gas, cost):
 DP is the most feared interview topic, but at its core:
 
 > "If you're solving the same subproblem multiple times, solve it once and save the answer."
+
+![DP Fibonacci](https://upload.wikimedia.org/wikipedia/commons/0/06/Fibonacci_dynamic_programming.svg)
 
 ### DP = Recursion + Caching
 
@@ -495,9 +527,11 @@ With DP:    each fib(i) computed ONCE -> O(n)
 
 ---
 
-## Pattern 19: 1D DP -- Linear Optimization
+## Pattern 19: 1D DP — Linear Optimization
 
-### Climbing Stairs (LeetCode #70)
+### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/))
+
+**The Concept:** At step n, you could have come from step n-1 or n-2. So `dp[n] = dp[n-1] + dp[n-2]` — it's Fibonacci!
 
 ```python
 def climbStairs(n):
@@ -508,9 +542,13 @@ def climbStairs(n):
     return b
 ```
 
-### House Robber (LeetCode #198)
+### House Robber ([LeetCode #198](https://leetcode.com/problems/house-robber/))
 
 **The Concept:** At each house: rob it (value + best from 2 ago) or skip it (best from previous).
+
+> **Common Pitfalls:**
+> 1. Thinking you must skip exactly one house between robberies (you can skip multiple)
+> 2. Not handling the base case for arrays of length 1 and 2
 
 ```python
 def rob(nums):
@@ -521,9 +559,13 @@ def rob(nums):
     return b
 ```
 
-### Coin Change (LeetCode #322)
+### Coin Change ([LeetCode #322](https://leetcode.com/problems/coin-change/))
 
 **The Concept:** `dp[amount] = 1 + min(dp[amount - coin])` for each coin.
+
+> **Common Pitfalls:**
+> 1. Not initializing dp values to infinity (except dp[0] = 0)
+> 2. Returning dp[amount] without checking if it's still infinity (meaning impossible)
 
 ```python
 def coinChange(coins, amount):
@@ -536,7 +578,9 @@ def coinChange(coins, amount):
     return dp[amount] if dp[amount] != float('inf') else -1
 ```
 
-### Longest Increasing Subsequence (LeetCode #300)
+### Longest Increasing Subsequence ([LeetCode #300](https://leetcode.com/problems/longest-increasing-subsequence/))
+
+**The Concept:** `dp[i]` = length of LIS ending at index i. For each j < i, if `nums[j] < nums[i]`, update `dp[i] = max(dp[i], dp[j] + 1)`.
 
 ```python
 def lengthOfLIS(nums):
@@ -549,7 +593,9 @@ def lengthOfLIS(nums):
 # O(n^2) -- optimizable to O(n log n) with binary search
 ```
 
-### Word Break (LeetCode #139)
+### Word Break ([LeetCode #139](https://leetcode.com/problems/word-break/))
+
+**The Concept:** `dp[i]` = can string `s[0:i]` be segmented using the dictionary? Check all possible last-word boundaries.
 
 ```python
 def wordBreak(s, wordDict):
@@ -566,9 +612,11 @@ def wordBreak(s, wordDict):
 
 ---
 
-## Pattern 20: 2D DP -- Grids and Two-Sequence Comparison
+## Pattern 20: 2D DP — Grids and Two-Sequence Comparison
 
-### Unique Paths (LeetCode #62)
+### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/))
+
+**The Concept:** Each cell can be reached from above or from the left: `dp[i][j] = dp[i-1][j] + dp[i][j-1]`.
 
 ```python
 def uniquePaths(m, n):
@@ -579,7 +627,9 @@ def uniquePaths(m, n):
     return dp[m-1][n-1]
 ```
 
-### Longest Common Subsequence (LeetCode #1143)
+### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/))
+
+**The Concept:** If characters match, take diagonal + 1. Otherwise, take max of skipping from either string.
 
 **Walkthrough:**
 ```
@@ -603,7 +653,13 @@ def longestCommonSubsequence(s1, s2):
     return dp[m][n]
 ```
 
-### Edit Distance (LeetCode #72)
+### Edit Distance ([LeetCode #72](https://leetcode.com/problems/edit-distance/))
+
+**The Concept:** `dp[i][j]` = min operations to convert `word1[:i]` to `word2[:j]`. If characters match, no cost. Else min(insert, delete, replace) + 1.
+
+> **Common Pitfalls:**
+> 1. Forgetting to initialize the first row and column (cost of converting to/from empty string)
+> 2. Off-by-one: `dp[i][j]` compares `word1[i-1]` and `word2[j-1]`
 
 ```python
 def minDistance(w1, w2):
@@ -620,7 +676,9 @@ def minDistance(w1, w2):
     return dp[m][n]
 ```
 
-### Partition Equal Subset Sum (LeetCode #416)
+### Partition Equal Subset Sum ([LeetCode #416](https://leetcode.com/problems/partition-equal-subset-sum/))
+
+**The Concept:** Reduce to: can we find a subset that sums to `total/2`? Use a set to track all reachable sums.
 
 ```python
 def canPartition(nums):
@@ -661,7 +719,7 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 
 ---
 
-# Day 4 Summary -- All Advanced Patterns
+# Day 4 Summary — All Advanced Patterns
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
@@ -696,7 +754,7 @@ Hard:
 
 ---
 
-# Complete Course -- Quick Pattern Recognition
+# Complete Course — Quick Pattern Recognition
 
 ```
 "Find pair with property X"          -> HashMap or Two Pointers
@@ -716,7 +774,7 @@ Hard:
 "Top K / streaming min/max"         -> Heap
 ```
 
-## Top 25 -- If You Only Do These
+## Top 25 — If You Only Do These
 
 ```
 Easy:

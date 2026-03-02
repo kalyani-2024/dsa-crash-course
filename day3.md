@@ -1,10 +1,10 @@
-# Day 3 -- Recursion, Backtracking, Trees, BST, and Heaps
+# 05: Day 3 — Recursion, Backtracking, Trees, BST, and Heaps
 
 ## Recursive Thinking and Hierarchical Data Structures
 
-**What this day covers:** Recursion (base case thinking), Backtracking (subsets, permutations, combinations, constraint satisfaction), Trees and BST (traversals, recursive properties, validation), and Heaps / Priority Queues (Top-K, merge K sorted, median).
+**What this day covers:** Recursion (base case thinking), [Backtracking](https://www.geeksforgeeks.org/backtracking-algorithms/) (subsets, permutations, combinations, constraint satisfaction), [Trees and BST](https://www.geeksforgeeks.org/binary-tree-data-structure/) (traversals, recursive properties, validation), and [Heaps / Priority Queues](https://www.geeksforgeeks.org/heap-data-structure/) (Top-K, merge K sorted, median).
 
-Recursion is the foundation for understanding trees and graphs. Once you learn to think recursively, tree problems become straightforward -- and heaps give you a powerful tool for streaming data problems.
+Recursion is the foundation for understanding trees and graphs. Once you learn to think recursively, tree problems become straightforward — and heaps give you a powerful tool for streaming data problems.
 
 ---
 
@@ -12,13 +12,13 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 
 ## What is Recursion?
 
-Recursion is when a function calls itself to solve a smaller version of the same problem. It's not a data structure -- it's a way of thinking.
+Recursion is when a function calls itself to solve a smaller version of the same problem. It's not a data structure — it's a way of thinking.
 
 Every recursive solution has:
-1. **Base case** -- when to stop (prevents infinite loops)
-2. **Recursive case** -- break the problem into a smaller identical problem
+1. **Base case** — when to stop (prevents infinite loops)
+2. **Recursive case** — break the problem into a smaller identical problem
 
-Think of Russian nesting dolls -- open one, find another inside, open that one... until you reach the smallest one (base case). Then work back up.
+Think of Russian nesting dolls — open one, find another inside, open that one... until you reach the smallest one (base case). Then work back up.
 
 ### How to Think Recursively
 
@@ -38,7 +38,7 @@ Visualize your recursive code: [pythontutor.com](https://pythontutor.com/)
 
 Backtracking is recursion with undo. You make a choice, explore it fully, then undo and try the next option. It systematically explores all possibilities.
 
-Think of solving a maze -- at each fork, pick a path. Dead end? Walk back and try another.
+Think of solving a maze — at each fork, pick a path. Dead end? Walk back and try another.
 
 ```
 Backtracking Template:
@@ -50,7 +50,7 @@ Backtracking Template:
 
 ---
 
-## Pattern 13: Subsets -- Include or Exclude
+## Pattern 13: Subsets — Include or Exclude
 
 ### The Core Idea
 
@@ -68,7 +68,9 @@ Elements: [1, 2, 3]
 [123][12][13][1][23][2][3][]   -- include 3 or skip?
 ```
 
-### Subsets (LeetCode #78)
+### Subsets ([LeetCode #78](https://leetcode.com/problems/subsets/))
+
+**The Concept:** For each element, make two recursive calls: one including it, one excluding it. This creates a binary decision tree with 2^n leaves.
 
 ```python
 def subsets(nums):
@@ -86,9 +88,13 @@ def subsets(nums):
 # O(2^n)
 ```
 
-### Combination Sum (LeetCode #39)
+### Combination Sum ([LeetCode #39](https://leetcode.com/problems/combination-sum/))
 
 **The Concept:** Find combinations summing to target. Can reuse elements. At each step, try each candidate, recurse with reduced target, backtrack.
+
+> **Common Pitfalls:**
+> 1. Not passing `start` index — causes duplicate combinations in different orders
+> 2. Forgetting the `remain < 0` early termination
 
 ```python
 def combinationSum(candidates, target):
@@ -104,9 +110,13 @@ def combinationSum(candidates, target):
     return res
 ```
 
-### Permutations (LeetCode #46)
+### Permutations ([LeetCode #46](https://leetcode.com/problems/permutations/))
 
 **The Concept:** Order matters. For each position, choose from remaining elements. n! total.
+
+> **Common Pitfalls:**
+> 1. Modifying the remaining list in-place without proper backtracking
+> 2. Not appending a copy of `curr` (appending a reference that gets modified later)
 
 ```python
 def permute(nums):
@@ -123,9 +133,11 @@ def permute(nums):
     return res
 ```
 
-### N-Queens (LeetCode #51)
+### N-Queens ([LeetCode #51](https://leetcode.com/problems/n-queens/))
 
 **The Concept:** Place n queens so none attack each other. Row by row, at each row, try each column. Track attacks using sets for columns (`col`), diagonals (`row-col`), anti-diagonals (`row+col`).
+
+![N-Queens](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
 
 ```python
 def solveNQueens(n):
@@ -146,9 +158,13 @@ def solveNQueens(n):
     return res
 ```
 
-### Word Search (LeetCode #79)
+### Word Search ([LeetCode #79](https://leetcode.com/problems/word-search/))
 
 **The Concept:** DFS + backtracking on a grid. At each cell, try all 4 directions. Mark visited cells to avoid reuse; unmark on backtrack.
+
+> **Common Pitfalls:**
+> 1. Forgetting to unmark visited cells after backtracking
+> 2. Not checking bounds before accessing grid cells
 
 ```python
 def exist(board, word):
@@ -170,7 +186,9 @@ def exist(board, word):
 
 ## What is a Tree?
 
-A tree is a hierarchical data structure -- nodes connected by parent-child relationships. Think of a family tree or a folder structure.
+A tree is a hierarchical data structure — nodes connected by parent-child relationships. Think of a family tree or a folder structure.
+
+> 🔗 **Visualize:** [See tree operations animated on VisuAlgo](https://visualgo.net/en/bst)
 
 ```
         1  (root)
@@ -203,9 +221,9 @@ Visualize tree operations: [visualgo.net/bst](https://visualgo.net/en/bst)
 
 ---
 
-## Pattern 14: Tree Traversals -- Four Ways to Visit Nodes
+## Pattern 14: Tree Traversals — Four Ways to Visit Nodes
 
-### DFS (Depth-First) -- Go deep before going wide
+### DFS (Depth-First) — Go deep before going wide
 
 ```
 Tree:       1             Inorder   (L, Root, R): 4,2,5,1,3  -- SORTED for BST!
@@ -215,7 +233,7 @@ Tree:       1             Inorder   (L, Root, R): 4,2,5,1,3  -- SORTED for BST!
         4   5
 ```
 
-### BFS (Breadth-First) -- Go level by level
+### BFS (Breadth-First) — Go level by level
 
 ```
 Level Order: [1], [2, 3], [4, 5]  -- level-based questions, shortest path
@@ -236,7 +254,7 @@ def inorder(root):
     if not root: return []
     return inorder(root.left) + [root.val] + inorder(root.right)
 
-# BFS -- Level Order (LeetCode #102)
+# BFS -- Level Order ([LeetCode #102](https://leetcode.com/problems/binary-tree-level-order-traversal/))
 from collections import deque
 def levelOrder(root):
     if not root: return []
@@ -268,7 +286,9 @@ def solve(root):
     return COMBINE(root.val, left, right)
 ```
 
-### Max Depth (LeetCode #104)
+### Max Depth ([LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/))
+
+**The Concept:** The depth of a tree is 1 + the maximum depth of its children. Base case: null node has depth 0.
 
 ```python
 def maxDepth(root):
@@ -276,9 +296,13 @@ def maxDepth(root):
     return 1 + max(maxDepth(root.left), maxDepth(root.right))
 ```
 
-### Diameter of Binary Tree (LeetCode #543)
+### Diameter of Binary Tree ([LeetCode #543](https://leetcode.com/problems/diameter-of-binary-tree/))
 
 **The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
+
+> **Common Pitfalls:**
+> 1. Confusing diameter (edges) with height (nodes) — diameter = number of edges on the longest path
+> 2. Not using a nonlocal/global variable to track the maximum across all nodes
 
 ```python
 def diameterOfBinaryTree(root):
@@ -293,7 +317,9 @@ def diameterOfBinaryTree(root):
     return diameter
 ```
 
-### Invert Binary Tree (LeetCode #226)
+### Invert Binary Tree ([LeetCode #226](https://leetcode.com/problems/invert-binary-tree/))
+
+**The Concept:** Swap each node's left and right children recursively. Base case: null node returns null.
 
 ```python
 def invertTree(root):
@@ -302,7 +328,7 @@ def invertTree(root):
     return root
 ```
 
-### Lowest Common Ancestor (LeetCode #236)
+### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/))
 
 **The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
 
@@ -315,9 +341,13 @@ def lowestCommonAncestor(root, p, q):
     return L or R
 ```
 
-### Validate BST (LeetCode #98)
+### Validate BST ([LeetCode #98](https://leetcode.com/problems/validate-binary-search-tree/))
 
 **The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
+
+> **Common Pitfalls:**
+> 1. Only checking immediate children (a node in the left subtree must be less than ALL ancestors)
+> 2. Using `<=` instead of `<` (BST typically requires strictly less/greater)
 
 ```python
 def isValidBST(root, lo=float('-inf'), hi=float('inf')):
@@ -327,7 +357,9 @@ def isValidBST(root, lo=float('-inf'), hi=float('inf')):
            isValidBST(root.right, root.val, hi)
 ```
 
-### Maximum Path Sum (LeetCode #124) -- Hard
+### Maximum Path Sum ([LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/))
+
+**The Concept:** At each node, the max path going through it is `node.val + max(0, left) + max(0, right)`. Each subtree returns the max single-branch path for its parent to use.
 
 ```python
 def maxPathSum(root):
@@ -343,7 +375,7 @@ def maxPathSum(root):
     return best
 ```
 
-### Serialize and Deserialize (LeetCode #297)
+### Serialize and Deserialize ([LeetCode #297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/))
 
 **The Concept:** Convert tree to/from a string. Use preorder traversal with "null" markers for missing nodes.
 
@@ -373,6 +405,8 @@ class Codec:
 
 A heap is a complete binary tree where every parent is smaller (min-heap) or larger (max-heap) than its children. The root is always the min (or max).
 
+![Heap](https://upload.wikimedia.org/wikipedia/commons/3/38/Max-Heap.svg)
+
 ```
 Min-Heap:       1          -> root is always the minimum
                / \
@@ -391,7 +425,7 @@ Min-Heap:       1          -> root is always the minimum
 
 Use heaps when you need the min or max element repeatedly as data changes.
 
-### Python's heapq -- Min-Heap by Default
+### Python's heapq — Min-Heap by Default
 
 ```python
 import heapq
@@ -416,7 +450,11 @@ max_val = -heapq.heappop(heap) # negate back
 
 > "Maintain a heap of size K. The root gives you the Kth element."
 
-### Kth Largest Element (LeetCode #215)
+> 🔗 **Visualize:** [See heap operations on USFCA](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
+
+### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/))
+
+**The Concept:** Min-heap of size k: process all numbers, root = kth largest. O(n log k) beats sorting O(n log n).
 
 ```python
 def findKthLargest(nums, k):
@@ -430,7 +468,7 @@ def findKthLargest(nums, k):
 # O(n log k) -- much better than sorting O(n log n)
 ```
 
-### Merge K Sorted Lists (LeetCode #23) -- Hard
+### Merge K Sorted Lists ([LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/))
 
 **The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
 
@@ -450,7 +488,7 @@ def mergeKLists(lists):
 # O(N log K) where N = total nodes, K = number of lists
 ```
 
-### Task Scheduler (LeetCode #621)
+### Task Scheduler ([LeetCode #621](https://leetcode.com/problems/task-scheduler/))
 
 **The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
 
@@ -472,9 +510,13 @@ def leastInterval(tasks, n):
     return time
 ```
 
-### Find Median from Data Stream (LeetCode #295)
+### Find Median from Data Stream ([LeetCode #295](https://leetcode.com/problems/find-median-from-data-stream/))
 
 **The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
+
+> **Common Pitfalls:**
+> 1. Not balancing the two heaps (sizes should differ by at most 1)
+> 2. Forgetting to negate values for Python's min-heap when simulating a max-heap
 
 ```python
 class MedianFinder:
@@ -496,7 +538,7 @@ class MedianFinder:
 
 ---
 
-# Day 3 Summary -- 4 Patterns
+# Day 3 Summary — 4 Patterns
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
@@ -532,4 +574,4 @@ Hard:
 
 ---
 
-*Next: Tries, Graphs, Greedy, and Dynamic Programming -- [day4.md](day4.md)*
+*Next: Tries, Graphs, Greedy, and Dynamic Programming — [day4.md](day4.md)*

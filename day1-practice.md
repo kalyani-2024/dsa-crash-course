@@ -1,4 +1,4 @@
-# Day 1 Practice -- Arrays and Strings
+# 02: Day 1 Practice — Arrays and Strings
 
 ## 10 Must-Do Problems
 
@@ -92,6 +92,18 @@ Sliding window: expand right until all characters of `t` are present, then shrin
 - [ ] Can you expand around center to find palindromes?
 
 If you checked most boxes, move on to [Day 2](day2-2hrs.md).
+
+---
+
+## Editorial Solutions
+
+Need a detailed walkthrough after attempting a problem? Check these editorial resources:
+
+| Resource | Link | Notes |
+|----------|------|-------|
+| **walkccc/LeetCode** | [github.com/walkccc/LeetCode](https://github.com/walkccc/LeetCode) | Clean solutions in Python, C++, Java for every problem |
+| **NeetCode Video Solutions** | [neetcode.io](https://neetcode.io/) | Video explanations with diagrams |
+| **LeetCode Discuss** | [leetcode.com/discuss](https://leetcode.com/discuss/) | Community solutions and explanations |
 
 ---
 

@@ -1,8 +1,8 @@
-# Day 2 -- HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+# 03: Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 ## Core Data Structures and Searching Techniques
 
-**What this day covers:** Hash Maps and Sets (O(1) lookup, frequency counting, grouping), Linked Lists (traversal, reversal, slow/fast pointers, merge), Stacks (matching, monotonic stack), Queues (BFS, level-by-level processing), Sorting as a preprocessing step, Binary Search (standard and on-answer), and Bit Manipulation tricks.
+**What this day covers:** [Hash Maps and Sets](https://www.geeksforgeeks.org/hashing-data-structure/) (O(1) lookup, frequency counting, grouping), [Linked Lists](https://www.geeksforgeeks.org/data-structures/linked-list/) (traversal, reversal, slow/fast pointers, merge), [Stacks](https://www.geeksforgeeks.org/stack-data-structure/) (matching, monotonic stack), [Queues](https://www.geeksforgeeks.org/queue-data-structure/) (BFS, level-by-level processing), Sorting as a preprocessing step, [Binary Search](https://www.geeksforgeeks.org/binary-search/) (standard and on-answer), and Bit Manipulation tricks.
 
 These data structures and techniques come up constantly in interviews. Understanding when and why to reach for each one is just as important as knowing how they work.
 
@@ -12,11 +12,13 @@ These data structures and techniques come up constantly in interviews. Understan
 
 ## What is Hashing?
 
-Hashing is arguably the single most important concept in DSA interviews. A HashMap (dictionary) takes any data and computes a "shelf code" (hash) that maps directly to a memory location.
+Hashing is arguably the single most important concept in DSA interviews. A [HashMap](https://www.geeksforgeeks.org/hashing-data-structure/) (dictionary) takes any data and computes a "shelf code" (hash) that maps directly to a memory location.
 
 Think of it like a library where every book has a shelf code. Instead of searching sequentially, you go directly to the right shelf.
 
-### Key Operations -- All O(1) Average
+![Hash Table](https://upload.wikimedia.org/wikipedia/commons/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg)
+
+### Key Operations — All O(1) Average
 
 | Operation | HashMap (dict) | HashSet (set) |
 |-----------|----------------|---------------|
@@ -44,16 +46,22 @@ With HashMap:    For each element, check the map   -> O(n)
 
 ## Pattern 7: Frequency Counting and Lookup
 
-### Contains Duplicate (LeetCode #217)
+### Contains Duplicate ([LeetCode #217](https://leetcode.com/problems/contains-duplicate/))
+
+**The Concept:** If the number of unique elements (set size) is less than total elements, duplicates exist.
 
 ```python
 def containsDuplicate(nums):
     return len(nums) != len(set(nums))
 ```
 
-### Longest Consecutive Sequence (LeetCode #128)
+### Longest Consecutive Sequence ([LeetCode #128](https://leetcode.com/problems/longest-consecutive-sequence/))
 
 **The Concept:** Only start counting from the beginning of a sequence (where `n-1` is NOT in the set).
+
+> **Common Pitfalls:**
+> 1. Trying to sort first (O(n log n)) when HashSet gives O(n)
+> 2. Not checking `if n - 1 not in s` guard, causing O(n²) for sorted inputs
 
 ```python
 def longestConsecutive(nums):
@@ -69,7 +77,7 @@ def longestConsecutive(nums):
 # O(n) -- each number visited at most twice
 ```
 
-### Top K Frequent Elements (LeetCode #347)
+### Top K Frequent Elements ([LeetCode #347](https://leetcode.com/problems/top-k-frequent-elements/))
 
 **The Concept:** Count frequencies with a HashMap, then find the top K. Bucket sort avoids the O(n log n) of a regular sort.
 
@@ -94,7 +102,9 @@ def topKFrequent(nums, k):
 
 ## What is a Linked List?
 
-Unlike arrays (contiguous memory), a linked list stores elements scattered across memory, connected by pointers -- each node knows where the next one is.
+Unlike arrays (contiguous memory), a [linked list](https://www.geeksforgeeks.org/data-structures/linked-list/) stores elements scattered across memory, connected by pointers — each node knows where the next one is.
+
+![Linked List](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
 
 ```
 Array:   [10][20][30][40]     -> accessed by index (O(1))
@@ -129,7 +139,11 @@ Visualize linked list operations: [visualgo.net/list](https://visualgo.net/en/li
 
 > "Two pointers at different speeds: fast reaches the end in half the time, so slow is at the middle. On a cycle, fast laps slow, so a cycle is detected."
 
-### Middle of Linked List (LeetCode #876)
+> 🔗 **Visualize:** [See Linked List operations animated](https://visualgo.net/en/list)
+
+### Middle of Linked List ([LeetCode #876](https://leetcode.com/problems/middle-of-the-linked-list/))
+
+**The Concept:** Slow moves 1 step, fast moves 2 steps. When fast reaches the end, slow is at the middle.
 
 ```python
 def middleNode(head):
@@ -140,7 +154,9 @@ def middleNode(head):
     return slow
 ```
 
-### Linked List Cycle (LeetCode #141)
+### Linked List Cycle ([LeetCode #141](https://leetcode.com/problems/linked-list-cycle/))
+
+**The Concept:** If there's a cycle, the fast pointer will eventually catch up to the slow pointer — like two runners on a circular track.
 
 ```python
 def hasCycle(head):
@@ -154,13 +170,13 @@ def hasCycle(head):
 
 ---
 
-## Pattern 9: Reverse a Linked List -- The 3-Pointer Technique
+## Pattern 9: Reverse a Linked List — The 3-Pointer Technique
 
 ### The Core Idea
 
 > "Walk through the list, reversing each arrow to point backwards. Need three pointers: where you came from (prev), where you are (curr), where you're going (nxt)."
 
-### Reverse Linked List (LeetCode #206) -- Top 5 Interview Question
+### Reverse Linked List ([LeetCode #206](https://leetcode.com/problems/reverse-linked-list/)) — Top 5 Interview Question
 
 ```
 prev=None  curr=1->2->3->None
@@ -183,9 +199,9 @@ def reverseList(head):
 # O(n) time, O(1) space -- MEMORIZE THIS
 ```
 
-### Merge Two Sorted Lists (LeetCode #21)
+### Merge Two Sorted Lists ([LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/))
 
-**Key technique -- Dummy Node:** Creates a fake start node to simplify edge cases.
+**Key technique — Dummy Node:** Creates a fake start node to simplify edge cases.
 
 ```python
 def mergeTwoLists(l1, l2):
@@ -200,7 +216,7 @@ def mergeTwoLists(l1, l2):
     return dummy.next
 ```
 
-### Reorder List (LeetCode #143)
+### Reorder List ([LeetCode #143](https://leetcode.com/problems/reorder-list/))
 
 **The Concept:** Combines three linked list patterns in one problem:
 1. Find middle (slow/fast)
@@ -234,17 +250,21 @@ def reorderList(head):
 
 ## What Are Stacks and Queues?
 
-Both are restricted access data structures -- you can only add or remove from specific ends.
+Both are restricted access data structures — you can only add or remove from specific ends.
 
 ### Stack = LIFO (Last In, First Out)
 
-**Analogy:** Stack of plates -- add and remove from the top only.
+![Stack](https://upload.wikimedia.org/wikipedia/commons/e/e4/Lifo_stack.svg)
+
+**Analogy:** Stack of plates — add and remove from the top only.
 
 **Used for:** Undo operations, matching brackets, DFS, expression evaluation, function call stack.
 
 ### Queue = FIFO (First In, First Out)
 
-**Analogy:** Line at a theater -- first person in line is served first.
+![Queue](https://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg)
+
+**Analogy:** Line at a theater — first person in line is served first.
 
 **Used for:** BFS traversal, task scheduling, level-by-level processing.
 
@@ -270,7 +290,13 @@ q.popleft()       # dequeue O(1)
 
 > "When you see an opening element, push it. When you see a closing element, pop and check if they match. Stacks naturally handle nesting."
 
-### Valid Parentheses (LeetCode #20)
+### Valid Parentheses ([LeetCode #20](https://leetcode.com/problems/valid-parentheses/))
+
+**The Concept:** Push opening brackets, pop on closing brackets. If the popped bracket doesn't match the closing one, it's invalid.
+
+> **Common Pitfalls:**
+> 1. Forgetting to check if the stack is empty before popping
+> 2. Not checking the stack is empty at the end (unmatched opening brackets)
 
 ```python
 def isValid(s):
@@ -286,15 +312,17 @@ def isValid(s):
 
 ---
 
-## Pattern 11: Monotonic Stack -- "Next Greater Element"
+## Pattern 11: Monotonic Stack — "Next Greater Element"
 
 ### The Core Idea
 
-> "Maintain a stack in decreasing order. When a bigger element arrives, pop -- the popped element just found its answer."
+> "Maintain a stack in decreasing order. When a bigger element arrives, pop — the popped element just found its answer."
 
 **Why O(n)?** Each element is pushed at most once and popped at most once, giving O(2n) = O(n) total.
 
-### Daily Temperatures (LeetCode #739)
+### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/))
+
+**The Concept:** For each day, find how many days until a warmer temperature. A monotonic decreasing stack of indices solves this: when a warmer day arrives, pop and record the gap.
 
 ```python
 def dailyTemperatures(temps):
@@ -310,7 +338,9 @@ def dailyTemperatures(temps):
 # O(n)
 ```
 
-### Largest Rectangle in Histogram (LeetCode #84)
+### Largest Rectangle in Histogram ([LeetCode #84](https://leetcode.com/problems/largest-rectangle-in-histogram/))
+
+**The Concept:** Monotonic increasing stack of indices. When a shorter bar arrives, pop and calculate the area using popped bar's height × width between boundaries.
 
 ```python
 def largestRectangleArea(heights):
@@ -325,7 +355,7 @@ def largestRectangleArea(heights):
     return best
 ```
 
-### Min Stack (LeetCode #155)
+### Min Stack ([LeetCode #155](https://leetcode.com/problems/min-stack/))
 
 **The Concept:** Store `(value, current_min)` pairs so getMin is always O(1).
 
@@ -357,7 +387,9 @@ Sorted -> Greedy decisions   O(n log n + n)
 Sorted -> Duplicates adjacent
 ```
 
-### Dutch National Flag (LeetCode #75) -- Sort 0s, 1s, 2s in One Pass
+### Dutch National Flag ([LeetCode #75](https://leetcode.com/problems/sort-colors/)) — Sort 0s, 1s, 2s in One Pass
+
+**The Concept:** Three pointers (lo, mid, hi) partition the array into regions of 0s, 1s, and 2s in a single pass.
 
 ```python
 def sortColors(nums):
@@ -368,7 +400,9 @@ def sortColors(nums):
         else:                nums[mid], nums[hi] = nums[hi], nums[mid]; hi -= 1
 ```
 
-### Merge Intervals (LeetCode #56)
+### Merge Intervals ([LeetCode #56](https://leetcode.com/problems/merge-intervals/))
+
+**The Concept:** Sort intervals by start. Iterate and merge overlapping intervals by extending the end.
 
 ```python
 def merge(intervals):
@@ -382,13 +416,19 @@ def merge(intervals):
 
 ---
 
-## Pattern 12: Binary Search -- Halve the Search Space
+## Pattern 12: Binary Search — Halve the Search Space
 
 ### The Core Idea
 
 > "If you can determine which half contains the answer, throw away the other half. Repeat. O(log n)."
 
+![Binary Search](https://upload.wikimedia.org/wikipedia/commons/8/83/Binary_Search_Depiction.svg)
+
+> 🔗 **Simulate:** [Binary Search step-by-step on VisuAlgo](https://visualgo.net/en/sorting)
+
 ### Standard Binary Search
+
+**The Concept:** Compare target with the middle element. Eliminate the half where target can't be.
 
 ```python
 def binary_search(arr, target):
@@ -401,9 +441,13 @@ def binary_search(arr, target):
     return -1
 ```
 
-### Search in Rotated Sorted Array (LeetCode #33)
+### Search in Rotated Sorted Array ([LeetCode #33](https://leetcode.com/problems/search-in-rotated-sorted-array/))
 
 **The Concept:** At any mid, one half is always sorted. Check if target is in the sorted half.
+
+> **Common Pitfalls:**
+> 1. Using `<` instead of `<=` for boundary checks
+> 2. Not correctly identifying which half is sorted (check `nums[lo] <= nums[mid]`)
 
 ```python
 def search(nums, target):
@@ -424,7 +468,9 @@ def search(nums, target):
 
 > "Instead of searching an array, search the range of possible answers."
 
-### Koko Eating Bananas (LeetCode #875)
+### Koko Eating Bananas ([LeetCode #875](https://leetcode.com/problems/koko-eating-bananas/))
+
+**The Concept:** Binary search on the answer — search the range of possible eating speeds [1, max(piles)] and check feasibility.
 
 ```python
 import math
@@ -445,9 +491,9 @@ def minEatingSpeed(piles, h):
 
 ## Four Tricks Worth Knowing
 
-### 1. XOR Cancels Pairs -- Single Number (LeetCode #136)
+### 1. XOR Cancels Pairs — Single Number ([LeetCode #136](https://leetcode.com/problems/single-number/))
 
-`a ^ a = 0` and `a ^ 0 = a`. XOR all numbers -- pairs cancel, the unique one remains.
+`a ^ a = 0` and `a ^ 0 = a`. XOR all numbers — pairs cancel, the unique one remains.
 
 ```python
 def singleNumber(nums):
@@ -485,7 +531,7 @@ n & 1 == 1  # odd
 
 ---
 
-# Day 2 Summary -- 6 Patterns + Key Techniques
+# Day 2 Summary — 6 Patterns + Key Techniques
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
@@ -524,4 +570,4 @@ Hard:
 
 ---
 
-*Next: Recursion, Backtracking, Trees, and Heaps -- [day3.md](day3.md)*
+*Next: Recursion, Backtracking, Trees, and Heaps — [day3.md](day3.md)*
