@@ -402,7 +402,7 @@ Practice with a friend (switch roles)
 > - [Pramp](https://www.pramp.com/)
 > - [Interviewing.io](https://interviewing.io/)
 > - [LeetCode Mock Interview](https://leetcode.com/interview/)
-> - [VisuAlgo](https://visualgo.net/) — Visualize algorithms before your interview
+> [![VisuAlgo](https://img.shields.io/badge/▶_VisuAlgo-Visualize_Algorithms-007EC6?style=for-the-badge)](https://visualgo.net/)
 > - [Big-O Cheat Sheet](https://www.bigocheatsheet.com/) — Quick complexity reference
 
 ---

@@ -147,7 +147,7 @@ for u, v in edges:
     graph[v].append(u)     # remove for directed
 ```
 
-Visualize pathfinding: [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/)
+[![Visualize Pathfinding](https://img.shields.io/badge/▶_Visualize_Pathfinding-PathFinding.js-2ea44f?style=for-the-badge)](https://qiao.github.io/PathFinding.js/visual/)
 
 ---
 
@@ -161,7 +161,7 @@ Think of ripples in a pond — expanding outward uniformly.
 
 ![BFS Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
 
-> 🔗 **Simulate:** [Pathfinding Visualizer — see BFS/DFS/Dijkstra live](https://qiao.github.io/PathFinding.js/visual/)
+> [![Simulate BFS/DFS/Dijkstra](https://img.shields.io/badge/▶_Simulate_BFS%2FDFS%2FDijkstra-PathFinding.js-2ea44f?style=for-the-badge)](https://qiao.github.io/PathFinding.js/visual/)
 
 ```python
 def bfs(graph, start):
@@ -332,7 +332,7 @@ def dijkstra(graph, start, n):
 
 Think of social groups at a party. Initially everyone is standalone. When two people become friends, their friend groups merge. Union-Find efficiently tracks who is in whose group.
 
-> 🔗 **Visualize:** [Union-Find on USFCA](https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html)
+> [![Visualize Union-Find](https://img.shields.io/badge/▶_Visualize_Union--Find-USFCA-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/DisjointSets.html)
 
 ### Implementation with Path Compression + Union by Rank
 

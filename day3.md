@@ -14,7 +14,9 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 
 [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) is when a function calls itself to solve a smaller version of the same problem. It's not a data structure — it's a way of thinking.
 
-> 🔗 **Learn more:** [Recursion — GeeksForGeeks](https://www.geeksforgeeks.org/introduction-to-recursion-2/) | [Recursion Visualizer — Python Tutor](https://pythontutor.com/)
+> 🔗 **Learn more:** [Recursion — GeeksForGeeks](https://www.geeksforgeeks.org/introduction-to-recursion-2/)
+>
+> [![Visualize Recursion](https://img.shields.io/badge/▶_Visualize_Recursion-Python_Tutor-FF6F00?style=for-the-badge)](https://pythontutor.com/)
 
 Every recursive solution has:
 1. **Base case** — when to stop (prevents infinite loops)
@@ -32,7 +34,7 @@ def factorial(n):
     return n * factorial(n-1)  # trust that factorial(n-1) works
 ```
 
-Visualize your recursive code: [pythontutor.com](https://pythontutor.com/)
+[![Visualize Your Code](https://img.shields.io/badge/▶_Trace_Your_Code-Python_Tutor-FF6F00?style=for-the-badge)](https://pythontutor.com/)
 
 ---
 
@@ -40,7 +42,9 @@ Visualize your recursive code: [pythontutor.com](https://pythontutor.com/)
 
 Backtracking is recursion with undo. You make a choice, explore it fully, then undo and try the next option. It systematically explores all possibilities.
 
-> 🔗 **Learn more:** [Backtracking — GeeksForGeeks](https://www.geeksforgeeks.org/backtracking-algorithms/) | [Visualize Backtracking](https://algorithm-visualizer.org/)
+> 🔗 **Learn more:** [Backtracking — GeeksForGeeks](https://www.geeksforgeeks.org/backtracking-algorithms/)
+>
+> [![Visualize Backtracking](https://img.shields.io/badge/▶_Visualize_Backtracking-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
 
 Think of solving a maze — at each fork, pick a path. Dead end? Walk back and try another.
 
@@ -156,7 +160,7 @@ def permute(nums):
 
 **The Concept:** Place n queens so none attack each other. Row by row, at each row, try each column. Track attacks using sets for columns (`col`), diagonals (`row-col`), anti-diagonals (`row+col`).
 
-> 🔗 **Visualize:** [N-Queens Animation on Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
+> [![See N-Queens Animation](https://img.shields.io/badge/▶_See_N--Queens_Animation-Wikipedia-blue?style=for-the-badge)](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
 
 ![N-Queens](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
 
@@ -213,7 +217,7 @@ def exist(board, word):
 
 A tree is a hierarchical data structure — nodes connected by parent-child relationships. Think of a family tree or a folder structure.
 
-> 🔗 **Visualize:** [See tree operations animated on VisuAlgo](https://visualgo.net/en/bst) | [Binary Trees — GeeksForGeeks](https://www.geeksforgeeks.org/binary-tree-data-structure/)
+> [![Visualize Trees](https://img.shields.io/badge/▶_Visualize_Tree_Operations-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/bst)  [Binary Trees — GeeksForGeeks](https://www.geeksforgeeks.org/binary-tree-data-structure/)
 
 ```
 Binary Tree:
@@ -244,7 +248,7 @@ class TreeNode:
         self.right = right
 ```
 
-Visualize tree operations: [visualgo.net/bst](https://visualgo.net/en/bst)
+[![Visualize BST](https://img.shields.io/badge/▶_Visualize_BST_Operations-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/bst)
 
 ---
 
@@ -497,7 +501,7 @@ max_val = -heapq.heappop(heap) # negate back
 
 > "Maintain a heap of size K. The root gives you the Kth element."
 
-> 🔗 **Visualize:** [See heap operations on USFCA](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
+> [![Visualize Heap](https://img.shields.io/badge/▶_Visualize_Heap_Operations-USFCA-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
 
 ### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 

@@ -137,7 +137,9 @@ class ListNode:
         self.next = next
 ```
 
-Visualize linked list operations: [visualgo.net/list](https://visualgo.net/en/list)
+Visualize linked list operations:
+
+[![Visualize Linked Lists](https://img.shields.io/badge/▶_Visualize_Linked_Lists-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/list)
 
 ---
 
@@ -147,7 +149,7 @@ Visualize linked list operations: [visualgo.net/list](https://visualgo.net/en/li
 
 > "Two pointers at different speeds: fast reaches the end in half the time, so slow is at the middle. On a cycle, fast laps slow, so a cycle is detected."
 
-> 🔗 **Visualize:** [See Linked List operations animated](https://visualgo.net/en/list)
+> [![Visualize Linked List Ops](https://img.shields.io/badge/▶_See_Animated_Demo-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/list)
 
 ### Middle of Linked List ([LeetCode #876](https://leetcode.com/problems/middle-of-the-linked-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 

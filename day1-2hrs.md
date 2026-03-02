@@ -95,7 +95,9 @@ Index:   0    1    2    3    4
 
 > "Use two indices that move through the data intelligently, skipping unnecessary comparisons."
 
-> 🔗 **Learn more:** [Two Pointers Technique — GeeksForGeeks](https://www.geeksforgeeks.org/two-pointers-technique/) | [Visualize Two Pointers](https://algorithm-visualizer.org/)
+> 🔗 **Learn more:** [Two Pointers Technique — GeeksForGeeks](https://www.geeksforgeeks.org/two-pointers-technique/)
+>
+> [![Visualize Two Pointers](https://img.shields.io/badge/▶_Visualize_Two_Pointers-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
 
 ```
 Two Pointers — Opposite End:
@@ -232,7 +234,9 @@ def trap(height):
 
 > "Maintain a window [left, right] that expands and shrinks to track the best valid subarray."
 
-> 🔗 **Learn more:** [Sliding Window — GeeksForGeeks](https://www.geeksforgeeks.org/window-sliding-technique/) | [Visualize](https://algorithm-visualizer.org/)
+> 🔗 **Learn more:** [Sliding Window — GeeksForGeeks](https://www.geeksforgeeks.org/window-sliding-technique/)
+>
+> [![Visualize Sliding Window](https://img.shields.io/badge/▶_Visualize_Sliding_Window-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
 
 ```
 Sliding Window Animation:

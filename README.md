@@ -126,15 +126,19 @@ Day 3 -- RECURSION + TREES           Day 4 -- GRAPHS + PARADIGMS
 
 ## Visual Learning Tools (Bookmark These)
 
-| Tool | URL | Best For |
-|------|-----|----------|
-| **VisuAlgo** | [visualgo.net](https://visualgo.net/) | Sorting, Trees, Graphs, DP -- animated |
-| **Algorithm Visualizer** | [algorithm-visualizer.org](https://algorithm-visualizer.org/) | Interactive code + animation |
-| **USFCA Visualizations** | [cs.usfca.edu/~galles](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) | BST, Heaps, Hash Tables, Tries |
-| **Pathfinding Visualizer** | [pathfinding.js.org](https://qiao.github.io/PathFinding.js/visual/) | BFS, DFS, Dijkstra on grids |
-| **Sorting Visualizer** | [toptal.com/sorting](https://www.toptal.com/developers/sorting-algorithms) | Compare sorting algorithms |
-| **Python Tutor** | [pythontutor.com](https://pythontutor.com/) | Visualize your code step-by-step |
-| **NeetCode Roadmap** | [neetcode.io/roadmap](https://neetcode.io/roadmap) | Problem roadmap with videos |
+[![VisuAlgo](https://img.shields.io/badge/▶_VisuAlgo-Sorting,_Trees,_Graphs,_DP-007EC6?style=for-the-badge)](https://visualgo.net/)
+
+[![Algorithm Visualizer](https://img.shields.io/badge/▶_Algorithm_Visualizer-Interactive_Code_+_Animation-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
+
+[![USFCA Visualizations](https://img.shields.io/badge/▶_USFCA-BST,_Heaps,_Hash_Tables,_Tries-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+
+[![Pathfinding Visualizer](https://img.shields.io/badge/▶_Pathfinding-BFS,_DFS,_Dijkstra_on_Grids-2ea44f?style=for-the-badge)](https://qiao.github.io/PathFinding.js/visual/)
+
+[![Sorting Visualizer](https://img.shields.io/badge/▶_Sorting_Visualizer-Compare_Sorting_Algorithms-9C27B0?style=for-the-badge)](https://www.toptal.com/developers/sorting-algorithms)
+
+[![Python Tutor](https://img.shields.io/badge/▶_Python_Tutor-Visualize_Code_Step--by--Step-FF6F00?style=for-the-badge)](https://pythontutor.com/)
+
+[![NeetCode Roadmap](https://img.shields.io/badge/▶_NeetCode_Roadmap-Problem_Roadmap_with_Videos-FF0000?style=for-the-badge)](https://neetcode.io/roadmap)
 
 ---
 
