@@ -119,8 +119,7 @@ Instead of checking every pair (O(n^2)), set up two pointers that converge based
 **1. Opposite-end pointers** — start from both ends, move inward (works on sorted data)
 **2. Same-direction pointers** — both start at beginning, one moves faster
 
-### Two Sum ([LeetCode #1](https://leetcode.com/problems/two-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/two-sum.md) | [Approach](https://algomaster.io/practice/dsa-patterns)
-
+### Two Sum ([LeetCode #1](https://leetcode.com/problems/two-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/two-sum.md) 
 **The Concept:** For each number, check if its complement (`target - num`) exists. Use a [HashMap](https://www.geeksforgeeks.org/hashing-data-structure/) for O(1) lookup, or sort + two pointers.
 
 > **Common Pitfalls:**
