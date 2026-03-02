@@ -100,6 +100,7 @@ Index:   0    1    2    3    4
 
 
 ![Two Pointers Technique](images/two-pointers.png)
+
 *Two pointers converge from opposite ends, reducing O(n²) to O(n)*
 
 ```
@@ -197,6 +198,7 @@ def threeSum(nums):
 **The Concept:** Water at any position = `min(max_left, max_right) - height`. Use two pointers: the shorter side determines the water, so process that side.
 
 ![Trapping Rain Water](images/trapping-rain-water.png)
+
 *Water at each position = min(max_left, max_right) - height[i]*
 
 > **Common Pitfalls:**
@@ -230,7 +232,7 @@ def trap(height):
 
 > 🔗 **Learn more:** [Sliding Window — GeeksForGeeks](https://www.geeksforgeeks.org/window-sliding-technique/)
 >
-> [![Visualize Sliding Window](https://img.shields.io/badge/▶_Visualize_Sliding_Window-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
+> [![Visualize Sliding Window](https://img.shields.io/badge/▶_Visualize_Sliding_Window-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/dynamic-programming/sliding-window)
 
 ![Sliding Window Technique](images/sliding-window.png)
 *The window expands right and shrinks left to find optimal subarrays*
@@ -362,6 +364,7 @@ def subarraySum(nums, k):
 > 2. Starting the loop from index 0 instead of index 1 when using `nums[0]` as initial value
 
 ![Kadane's Algorithm](images/kadanes-algorithm.png)
+
 *At each step: extend the current subarray or start fresh?*
 
 ```
@@ -535,6 +538,7 @@ Expand Around Center:
 ```
 
 ![Palindrome Expand Around Center](images/palindrome-expand.png)
+
 *Expand outward from each center — stop when characters don't match*
 
 ### Longest Palindromic Substring ([LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/)) — Expand Around Center | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-palindromic-substring.md)
