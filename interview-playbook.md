@@ -52,12 +52,12 @@ n > 10^7     -> O(log n) needed  -> Math / Binary Search
 
 ### The UMPIRE Method
 ```
-U -- Understand the problem
-M -- Match to a known pattern
-P -- Plan your approach
-I -- Implement the code
-R -- Review and test
-E -- Evaluate complexity
+U — Understand the problem
+M — Match to a known pattern
+P — Plan your approach
+I — Implement the code
+R — Review and test
+E — Evaluate complexity
 ```
 
 ### What to Say
@@ -84,7 +84,7 @@ Does this approach make sense before I start coding?"
 
 ### Coding Best Practices
 
-> 🔗 **Practice writing code without autocomplete:** [LeetCode Playground](https://leetcode.com/playground/) | [Google Docs](https://docs.google.com/)
+> 🔗 **Practice writing code without autocomplete:** [LeetCode Playground](https://leetcode.com/playground/) | 
 
 ```python
 # Good: Clean, readable code
@@ -285,22 +285,24 @@ Step 6: Ask the interviewer for a HINT. This is OK!
 ## Top Interview Questions by Company (2024–2026)
 
 ### FAANG Favorites
-```
-Apple:        Two Sum, LRU Cache, Merge Intervals
-Meta:         Valid Parentheses, Binary Tree Paths, Word Break
-Google:       Median Two Arrays, Course Schedule, Word Ladder
-Amazon:       Number of Islands, LRU Cache, Best Time Stock
-Microsoft:    Two Sum, Reverse LL, Spiral Matrix
-```
+
+| Company | Top Problems |
+|---------|-------------|
+| **Apple** | [Two Sum](https://leetcode.com/problems/two-sum/), [LRU Cache](https://leetcode.com/problems/lru-cache/), [Merge Intervals](https://leetcode.com/problems/merge-intervals/) |
+| **Meta** | [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/), [Binary Tree Paths](https://leetcode.com/problems/binary-tree-paths/), [Word Break](https://leetcode.com/problems/word-break/) |
+| **Google** | [Median Two Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/), [Course Schedule](https://leetcode.com/problems/course-schedule/), [Word Ladder](https://leetcode.com/problems/word-ladder/) |
+| **Amazon** | [Number of Islands](https://leetcode.com/problems/number-of-islands/), [LRU Cache](https://leetcode.com/problems/lru-cache/), [Best Time Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) |
+| **Microsoft** | [Two Sum](https://leetcode.com/problems/two-sum/), [Reverse LL](https://leetcode.com/problems/reverse-linked-list/), [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) |
 
 ### College Placement Favorites (India)
-```
-TCS/Infosys:     Two Sum, Palindrome, Sorting algorithms
-Wipro/HCL:       Arrays, Strings, Basic recursion
-Flipkart:        DP problems, Graph BFS/DFS
-PhonePe/Razorpay: System Design + Medium LeetCode
-Google/Microsoft: Hard LeetCode + System Design
-```
+
+| Company | Focus Areas |
+|---------|------------|
+| **TCS/Infosys** | [Two Sum](https://leetcode.com/problems/two-sum/), [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/), Sorting algorithms |
+| **Wipro/HCL** | [Arrays](https://www.geeksforgeeks.org/array-data-structure/), [Strings](https://www.geeksforgeeks.org/string-data-structure/), [Basic recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) |
+| **Flipkart** | [DP problems](https://www.geeksforgeeks.org/dynamic-programming/), [Graph BFS/DFS](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/) |
+| **PhonePe/Razorpay** | System Design + Medium LeetCode |
+| **Google/Microsoft** | Hard LeetCode + System Design |
 
 ### Company-Wise Problem Lists
 
@@ -339,13 +341,14 @@ The lists above are just starting points. For a **comprehensive, regularly updat
 ## Resources for Continued Learning
 
 ### Free Resources
-```
-NeetCode (YouTube + neetcode.io) — Best LeetCode explanations
-Striver (takeUforward) — A2Z DSA Sheet
-Abdul Bari (YouTube) — Algorithm theory explanations
-LeetCode Explore Cards — Structured learning paths
-GeeksForGeeks — Problem discussions and editorials
-```
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **NeetCode** | Best LeetCode explanations (YouTube + website) | [neetcode.io](https://neetcode.io/) / [YouTube](https://www.youtube.com/@NeetCode) |
+| **Striver (takeUforward)** | A2Z DSA Sheet — comprehensive problem list | [takeuforward.org](https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2) / [YouTube](https://www.youtube.com/@takeUforward) |
+| **Abdul Bari** | Algorithm theory explanations | [YouTube](https://www.youtube.com/@abdul_bari) |
+| **LeetCode Explore Cards** | Structured learning paths by topic | [leetcode.com/explore](https://leetcode.com/explore/) |
+| **GeeksForGeeks** | Problem discussions and editorials | [geeksforgeeks.org](https://www.geeksforgeeks.org/data-structures/) |
 
 > 🔗 **Quick Links:**
 > - [NeetCode Roadmap](https://neetcode.io/roadmap)
@@ -357,20 +360,22 @@ GeeksForGeeks — Problem discussions and editorials
 > - [Company-Wise Problems (400+ companies)](https://github.com/liquidslr/interview-company-wise-problems)
 
 ### Practice Platforms
-```
-LeetCode.com -- The gold standard
-HackerRank -- Good for college contests
-Codeforces -- Competitive programming
-InterviewBit -- Interview-focused
-CodeStudio (Coding Ninjas) -- Indian placement prep
-```
+
+| Platform | Best For | Link |
+|----------|----------|------|
+| **LeetCode** | The gold standard for interview prep | [leetcode.com](https://leetcode.com/) |
+| **HackerRank** | Good for college contests | [hackerrank.com](https://www.hackerrank.com/) |
+| **Codeforces** | Competitive programming | [codeforces.com](https://codeforces.com/) |
+| **InterviewBit** | Interview-focused problems | [interviewbit.com](https://www.interviewbit.com/) |
+| **CodeStudio (Coding Ninjas)** | Indian placement prep | [codingninjas.com/codestudio](https://www.codingninjas.com/codestudio) |
 
 ### Books (Optional)
-```
-"Cracking the Coding Interview" by Gayle McDowell
-"Introduction to Algorithms" (CLRS) -- The bible of algorithms
-"Grokking Algorithms" -- Visual, beginner-friendly
-```
+
+| Book | Description |
+|------|------------|
+| **"Cracking the Coding Interview"** by Gayle McDowell | The classic interview prep book |
+| **"Introduction to Algorithms" (CLRS)** | The bible of algorithms |
+| **"Grokking Algorithms"** | Visual, beginner-friendly introduction |
 
 ---
 

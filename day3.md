@@ -2,7 +2,7 @@
 
 ## Recursive Thinking and Hierarchical Data Structures
 
-**What this day covers:** Recursion (base case thinking), [Backtracking](https://www.geeksforgeeks.org/backtracking-algorithms/) (subsets, permutations, combinations, constraint satisfaction), [Trees and BST](https://www.geeksforgeeks.org/binary-tree-data-structure/) (traversals, recursive properties, validation), and [Heaps / Priority Queues](https://www.geeksforgeeks.org/heap-data-structure/) (Top-K, merge K sorted, median).
+**What this day covers:** [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) (base case thinking), [Backtracking](https://www.geeksforgeeks.org/backtracking-algorithms/) (subsets, permutations, combinations, constraint satisfaction), [Trees and BST](https://www.geeksforgeeks.org/binary-tree-data-structure/) (traversals, recursive properties, validation), and [Heaps / Priority Queues](https://www.geeksforgeeks.org/heap-data-structure/) (Top-K, merge K sorted, median).
 
 Recursion is the foundation for understanding trees and graphs. Once you learn to think recursively, tree problems become straightforward — and heaps give you a powerful tool for streaming data problems.
 
@@ -12,7 +12,9 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 
 ## What is Recursion?
 
-Recursion is when a function calls itself to solve a smaller version of the same problem. It's not a data structure — it's a way of thinking.
+[Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) is when a function calls itself to solve a smaller version of the same problem. It's not a data structure — it's a way of thinking.
+
+> 🔗 **Learn more:** [Recursion — GeeksForGeeks](https://www.geeksforgeeks.org/introduction-to-recursion-2/) | [Recursion Visualizer — Python Tutor](https://pythontutor.com/)
 
 Every recursive solution has:
 1. **Base case** — when to stop (prevents infinite loops)
@@ -38,7 +40,20 @@ Visualize your recursive code: [pythontutor.com](https://pythontutor.com/)
 
 Backtracking is recursion with undo. You make a choice, explore it fully, then undo and try the next option. It systematically explores all possibilities.
 
+> 🔗 **Learn more:** [Backtracking — GeeksForGeeks](https://www.geeksforgeeks.org/backtracking-algorithms/) | [Visualize Backtracking](https://algorithm-visualizer.org/)
+
 Think of solving a maze — at each fork, pick a path. Dead end? Walk back and try another.
+
+```
+Backtracking = Exploring a Decision Tree:
+
+              START
+            /   |   \
+         A      B      C        ← Choose
+        / \    / \    / \
+      AB  AC  BA  BC  CA  CB    ← Explore deeper
+       ✗       ✓       ✗        ← Dead end? Backtrack!
+```
 
 ```
 Backtracking Template:
@@ -68,9 +83,13 @@ Elements: [1, 2, 3]
 [123][12][13][1][23][2][3][]   -- include 3 or skip?
 ```
 
-### Subsets ([LeetCode #78](https://leetcode.com/problems/subsets/))
+### Subsets ([LeetCode #78](https://leetcode.com/problems/subsets/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** For each element, make two recursive calls: one including it, one excluding it. This creates a binary decision tree with 2^n leaves.
+
+> **Common Pitfalls:**
+> 1. Appending a reference to `curr` instead of a copy (`curr[:]`) — all entries end up as the same empty list
+> 2. Not understanding that `.pop()` is the backtracking step
 
 ```python
 def subsets(nums):
@@ -88,7 +107,7 @@ def subsets(nums):
 # O(2^n)
 ```
 
-### Combination Sum ([LeetCode #39](https://leetcode.com/problems/combination-sum/))
+### Combination Sum ([LeetCode #39](https://leetcode.com/problems/combination-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Find combinations summing to target. Can reuse elements. At each step, try each candidate, recurse with reduced target, backtrack.
 
@@ -110,7 +129,7 @@ def combinationSum(candidates, target):
     return res
 ```
 
-### Permutations ([LeetCode #46](https://leetcode.com/problems/permutations/))
+### Permutations ([LeetCode #46](https://leetcode.com/problems/permutations/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Order matters. For each position, choose from remaining elements. n! total.
 
@@ -133,11 +152,17 @@ def permute(nums):
     return res
 ```
 
-### N-Queens ([LeetCode #51](https://leetcode.com/problems/n-queens/))
+### N-Queens ([LeetCode #51](https://leetcode.com/problems/n-queens/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Place n queens so none attack each other. Row by row, at each row, try each column. Track attacks using sets for columns (`col`), diagonals (`row-col`), anti-diagonals (`row+col`).
 
+> 🔗 **Visualize:** [N-Queens Animation on Wikipedia](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
+
 ![N-Queens](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
+
+> **Common Pitfalls:**
+> 1. Not tracking anti-diagonals (`row + col`) separately from diagonals (`row - col`)
+> 2. Forgetting to remove from sets when backtracking (`discard` not `remove` for safety)
 
 ```python
 def solveNQueens(n):
@@ -158,7 +183,7 @@ def solveNQueens(n):
     return res
 ```
 
-### Word Search ([LeetCode #79](https://leetcode.com/problems/word-search/))
+### Word Search ([LeetCode #79](https://leetcode.com/problems/word-search/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** DFS + backtracking on a grid. At each cell, try all 4 directions. Mark visited cells to avoid reuse; unmark on backtrack.
 
@@ -188,13 +213,15 @@ def exist(board, word):
 
 A tree is a hierarchical data structure — nodes connected by parent-child relationships. Think of a family tree or a folder structure.
 
-> 🔗 **Visualize:** [See tree operations animated on VisuAlgo](https://visualgo.net/en/bst)
+> 🔗 **Visualize:** [See tree operations animated on VisuAlgo](https://visualgo.net/en/bst) | [Binary Trees — GeeksForGeeks](https://www.geeksforgeeks.org/binary-tree-data-structure/)
 
 ```
-        1  (root)
-       / \
-      2   3
-     / \
+Binary Tree:
+
+        1  (root)       Pre-order:  1, 2, 4, 5, 3
+       / \              In-order:   4, 2, 5, 1, 3
+      2   3             Post-order: 4, 5, 2, 3, 1
+     / \                Level-order: [1], [2,3], [4,5]
     4   5  (leaves)
 ```
 
@@ -286,9 +313,13 @@ def solve(root):
     return COMBINE(root.val, left, right)
 ```
 
-### Max Depth ([LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/))
+### Max Depth ([LeetCode #104](https://leetcode.com/problems/maximum-depth-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** The depth of a tree is 1 + the maximum depth of its children. Base case: null node has depth 0.
+
+> **Common Pitfalls:**
+> 1. Confusing depth (from root) with height (from leaf)
+> 2. Returning -1 instead of 0 for null nodes
 
 ```python
 def maxDepth(root):
@@ -296,7 +327,7 @@ def maxDepth(root):
     return 1 + max(maxDepth(root.left), maxDepth(root.right))
 ```
 
-### Diameter of Binary Tree ([LeetCode #543](https://leetcode.com/problems/diameter-of-binary-tree/))
+### Diameter of Binary Tree ([LeetCode #543](https://leetcode.com/problems/diameter-of-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Longest path = the path that bends through some node. At each node, it's `left_height + right_height`. Track the global max as a side effect.
 
@@ -317,9 +348,13 @@ def diameterOfBinaryTree(root):
     return diameter
 ```
 
-### Invert Binary Tree ([LeetCode #226](https://leetcode.com/problems/invert-binary-tree/))
+### Invert Binary Tree ([LeetCode #226](https://leetcode.com/problems/invert-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Swap each node's left and right children recursively. Base case: null node returns null.
+
+> **Common Pitfalls:**
+> 1. Trying to swap only at one level instead of recursing through the entire tree
+> 2. Not returning the root after swapping
 
 ```python
 def invertTree(root):
@@ -328,9 +363,13 @@ def invertTree(root):
     return root
 ```
 
-### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/))
+### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
+
+> **Common Pitfalls:**
+> 1. Not handling the case where p or q IS the root
+> 2. Confusing LCA in a BST (can use value comparison) vs general binary tree (must check subtrees)
 
 ```python
 def lowestCommonAncestor(root, p, q):
@@ -341,7 +380,7 @@ def lowestCommonAncestor(root, p, q):
     return L or R
 ```
 
-### Validate BST ([LeetCode #98](https://leetcode.com/problems/validate-binary-search-tree/))
+### Validate BST ([LeetCode #98](https://leetcode.com/problems/validate-binary-search-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Pass valid bounds downward. Every node must satisfy `lo < val < hi`.
 
@@ -357,9 +396,13 @@ def isValidBST(root, lo=float('-inf'), hi=float('inf')):
            isValidBST(root.right, root.val, hi)
 ```
 
-### Maximum Path Sum ([LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/))
+### Maximum Path Sum ([LeetCode #124](https://leetcode.com/problems/binary-tree-maximum-path-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** At each node, the max path going through it is `node.val + max(0, left) + max(0, right)`. Each subtree returns the max single-branch path for its parent to use.
+
+> **Common Pitfalls:**
+> 1. Forgetting to clamp negative subtree values to 0 (don't include a negative path)
+> 2. Confusing the return value (single branch for parent) with the through value (both branches for global max)
 
 ```python
 def maxPathSum(root):
@@ -375,9 +418,13 @@ def maxPathSum(root):
     return best
 ```
 
-### Serialize and Deserialize ([LeetCode #297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/))
+### Serialize and Deserialize ([LeetCode #297](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Convert tree to/from a string. Use preorder traversal with "null" markers for missing nodes.
+
+> **Common Pitfalls:**
+> 1. Not including null markers (makes deserialization ambiguous)
+> 2. Using inorder — preorder/level-order are much easier to deserialize
 
 ```python
 class Codec:
@@ -452,9 +499,13 @@ max_val = -heapq.heappop(heap) # negate back
 
 > 🔗 **Visualize:** [See heap operations on USFCA](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
 
-### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/))
+### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Min-heap of size k: process all numbers, root = kth largest. O(n log k) beats sorting O(n log n).
+
+> **Common Pitfalls:**
+> 1. Using a max-heap instead of a min-heap of size k
+> 2. Not understanding why `heapreplace` is more efficient than `heappop` + `heappush`
 
 ```python
 def findKthLargest(nums, k):
@@ -468,9 +519,13 @@ def findKthLargest(nums, k):
 # O(n log k) -- much better than sorting O(n log n)
 ```
 
-### Merge K Sorted Lists ([LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/))
+### Merge K Sorted Lists ([LeetCode #23](https://leetcode.com/problems/merge-k-sorted-lists/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Put the head of each list in a min-heap. Pop the smallest, push its next node. The heap always gives you the globally smallest available node.
+
+> **Common Pitfalls:**
+> 1. Not including a tiebreaker index in the heap tuple (ListNode isn't comparable)
+> 2. Pushing None nodes into the heap
 
 ```python
 def mergeKLists(lists):
@@ -488,9 +543,13 @@ def mergeKLists(lists):
 # O(N log K) where N = total nodes, K = number of lists
 ```
 
-### Task Scheduler ([LeetCode #621](https://leetcode.com/problems/task-scheduler/))
+### Task Scheduler ([LeetCode #621](https://leetcode.com/problems/task-scheduler/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Always execute the most frequent task first (max-heap). After executing, put it in a cooldown queue for `n` intervals.
+
+> **Common Pitfalls:**
+> 1. Not using a cooldown queue to track when tasks become available again
+> 2. Forgetting that idle time is needed when no tasks are available
 
 ```python
 def leastInterval(tasks, n):
@@ -510,7 +569,7 @@ def leastInterval(tasks, n):
     return time
 ```
 
-### Find Median from Data Stream ([LeetCode #295](https://leetcode.com/problems/find-median-from-data-stream/))
+### Find Median from Data Stream ([LeetCode #295](https://leetcode.com/problems/find-median-from-data-stream/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Maintain two heaps: a max-heap for the smaller half and a min-heap for the larger half. The median is at the tops.
 

@@ -41,7 +41,7 @@ Insert: "cat", "car", "card", "dog"
 | Autocomplete | Expensive | Natural |
 | Spell checker | Expensive | Natural |
 
-### Trie Implementation ([LeetCode #208](https://leetcode.com/problems/implement-trie-prefix-tree/))
+### Trie Implementation ([LeetCode #208](https://leetcode.com/problems/implement-trie-prefix-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 ```python
 class TrieNode:
@@ -76,7 +76,7 @@ class Trie:
         return node
 ```
 
-### Word Search II ([LeetCode #212](https://leetcode.com/problems/word-search-ii/))
+### Word Search II ([LeetCode #212](https://leetcode.com/problems/word-search-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Build a Trie from all target words, then DFS through the grid. At each cell, follow the Trie — if the Trie has no branch for a character, prune that search path.
 
@@ -175,9 +175,13 @@ def bfs(graph, start):
                 q.append(nb)
 ```
 
-### Number of Islands ([LeetCode #200](https://leetcode.com/problems/number-of-islands/))
+### Number of Islands ([LeetCode #200](https://leetcode.com/problems/number-of-islands/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Iterate the grid; when you find a '1', increment count and BFS/DFS to mark all connected '1's as visited ('0').
+
+> **Common Pitfalls:**
+> 1. Forgetting to mark cells as visited before adding to the queue (causes duplicates)
+> 2. Using DFS on very large grids (can cause stack overflow — use BFS instead)
 
 ```python
 def numIslands(grid):
@@ -199,9 +203,13 @@ def numIslands(grid):
     return count
 ```
 
-### Rotting Oranges ([LeetCode #994](https://leetcode.com/problems/rotting-oranges/)) — Multi-source BFS
+### Rotting Oranges ([LeetCode #994](https://leetcode.com/problems/rotting-oranges/)) — Multi-source BFS | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Start BFS from all rotten oranges simultaneously. Each "level" = 1 minute.
+
+> **Common Pitfalls:**
+> 1. Not starting BFS from ALL rotten oranges simultaneously (multi-source BFS)
+> 2. Forgetting to check if there are any fresh oranges remaining at the end
 
 ```python
 def orangesRotting(grid):
@@ -243,9 +251,13 @@ Three states:
 Reaching a node in state 1 means you have found a CYCLE.
 ```
 
-### Course Schedule ([LeetCode #207](https://leetcode.com/problems/course-schedule/))
+### Course Schedule ([LeetCode #207](https://leetcode.com/problems/course-schedule/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Model as a directed graph. If there's a cycle, you can't finish all courses. Detect cycles with 3-state DFS.
+
+> **Common Pitfalls:**
+> 1. Using only 2 states (visited/not) — need 3 states to distinguish "currently exploring" from "fully explored"
+> 2. Building the graph in the wrong direction (prereq → course, not course → prereq)
 
 ```python
 def canFinish(n, prereqs):
@@ -263,7 +275,7 @@ def canFinish(n, prereqs):
     return not any(has_cycle(i) for i in range(n))
 ```
 
-### Course Schedule II ([LeetCode #210](https://leetcode.com/problems/course-schedule-ii/)) — Topological Sort
+### Course Schedule II ([LeetCode #210](https://leetcode.com/problems/course-schedule-ii/)) — Topological Sort | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
@@ -357,9 +369,13 @@ class UnionFind:
 - "Detect cycles in undirected graphs"
 - Problems where relationships grow over time
 
-### Redundant Connection ([LeetCode #684](https://leetcode.com/problems/redundant-connection/))
+### Redundant Connection ([LeetCode #684](https://leetcode.com/problems/redundant-connection/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Find the edge that creates a cycle. Add edges one by one — if union returns False (already connected), that edge is redundant.
+
+> **Common Pitfalls:**
+> 1. Off-by-one: nodes are 1-indexed but Union-Find is 0-indexed
+> 2. Not implementing path compression (causes TLE on large inputs)
 
 ```python
 def findRedundantConnection(edges):
@@ -369,7 +385,7 @@ def findRedundantConnection(edges):
             return [u, v]              # this edge created a cycle!
 ```
 
-### Accounts Merge ([LeetCode #721](https://leetcode.com/problems/accounts-merge/))
+### Accounts Merge ([LeetCode #721](https://leetcode.com/problems/accounts-merge/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Union-Find to group accounts by shared emails.
 
@@ -408,9 +424,13 @@ Greedy works when the problem has optimal substructure and the greedy choice pro
 
 ---
 
-### Jump Game ([LeetCode #55](https://leetcode.com/problems/jump-game/))
+### Jump Game ([LeetCode #55](https://leetcode.com/problems/jump-game/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Track the farthest position you can reach. If you can ever reach the end, return True.
+
+> **Common Pitfalls:**
+> 1. Thinking you need to track the exact path (you only need max reach)
+> 2. Not checking `if i > farthest` early — means you're at a position you can't reach
 
 ```python
 def canJump(nums):
@@ -421,7 +441,7 @@ def canJump(nums):
     return True
 ```
 
-### Jump Game II ([LeetCode #45](https://leetcode.com/problems/jump-game-ii/))
+### Jump Game II ([LeetCode #45](https://leetcode.com/problems/jump-game-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** BFS-like approach — each "level" is a jump. Track the current reachable end and the farthest from that level.
 
@@ -436,7 +456,7 @@ def jump(nums):
     return jumps
 ```
 
-### Non-overlapping Intervals ([LeetCode #435](https://leetcode.com/problems/non-overlapping-intervals/))
+### Non-overlapping Intervals ([LeetCode #435](https://leetcode.com/problems/non-overlapping-intervals/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sort by end time. Greedily keep intervals that end earliest.
 
@@ -457,9 +477,13 @@ def eraseOverlapIntervals(intervals):
     return count
 ```
 
-### Meeting Rooms II ([LeetCode #253](https://leetcode.com/problems/meeting-rooms-ii/))
+### Meeting Rooms II ([LeetCode #253](https://leetcode.com/problems/meeting-rooms-ii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sort meetings by start. Use a min-heap of end times to track active rooms. Reuse a room if a meeting starts after the earliest ending.
+
+> **Common Pitfalls:**
+> 1. Not sorting by start time first
+> 2. Using a regular list instead of a heap for tracking end times (O(n) vs O(log n))
 
 ```python
 def minMeetingRooms(intervals):
@@ -472,9 +496,13 @@ def minMeetingRooms(intervals):
     return len(heap)
 ```
 
-### Gas Station ([LeetCode #134](https://leetcode.com/problems/gas-station/))
+### Gas Station ([LeetCode #134](https://leetcode.com/problems/gas-station/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** If total gas ≥ total cost, a solution exists. Track current tank; whenever it goes negative, restart from the next station.
+
+> **Common Pitfalls:**
+> 1. Not checking the global sum first (if `sum(gas) < sum(cost)`, answer is -1)
+> 2. Trying to simulate the full circular trip instead of using the greedy restart trick
 
 ```python
 def canCompleteCircuit(gas, cost):
@@ -529,9 +557,13 @@ With DP:    each fib(i) computed ONCE -> O(n)
 
 ## Pattern 19: 1D DP — Linear Optimization
 
-### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/))
+### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** At step n, you could have come from step n-1 or n-2. So `dp[n] = dp[n-1] + dp[n-2]` — it's Fibonacci!
+
+> **Common Pitfalls:**
+> 1. Not recognizing this IS Fibonacci (many students overcomplicate it)
+> 2. Using O(n) space when O(1) is possible (only need last two values)
 
 ```python
 def climbStairs(n):
@@ -542,7 +574,7 @@ def climbStairs(n):
     return b
 ```
 
-### House Robber ([LeetCode #198](https://leetcode.com/problems/house-robber/))
+### House Robber ([LeetCode #198](https://leetcode.com/problems/house-robber/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** At each house: rob it (value + best from 2 ago) or skip it (best from previous).
 
@@ -559,7 +591,7 @@ def rob(nums):
     return b
 ```
 
-### Coin Change ([LeetCode #322](https://leetcode.com/problems/coin-change/))
+### Coin Change ([LeetCode #322](https://leetcode.com/problems/coin-change/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** `dp[amount] = 1 + min(dp[amount - coin])` for each coin.
 
@@ -578,9 +610,13 @@ def coinChange(coins, amount):
     return dp[amount] if dp[amount] != float('inf') else -1
 ```
 
-### Longest Increasing Subsequence ([LeetCode #300](https://leetcode.com/problems/longest-increasing-subsequence/))
+### Longest Increasing Subsequence ([LeetCode #300](https://leetcode.com/problems/longest-increasing-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** `dp[i]` = length of LIS ending at index i. For each j < i, if `nums[j] < nums[i]`, update `dp[i] = max(dp[i], dp[j] + 1)`.
+
+> **Common Pitfalls:**
+> 1. Not initializing all dp[i] to 1 (each element is a subsequence of length 1)
+> 2. Returning dp[-1] instead of max(dp) (LIS may not end at the last element)
 
 ```python
 def lengthOfLIS(nums):
@@ -593,9 +629,13 @@ def lengthOfLIS(nums):
 # O(n^2) -- optimizable to O(n log n) with binary search
 ```
 
-### Word Break ([LeetCode #139](https://leetcode.com/problems/word-break/))
+### Word Break ([LeetCode #139](https://leetcode.com/problems/word-break/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** `dp[i]` = can string `s[0:i]` be segmented using the dictionary? Check all possible last-word boundaries.
+
+> **Common Pitfalls:**
+> 1. Not converting wordDict to a set (O(1) lookup vs O(n))
+> 2. Forgetting `dp[0] = True` (empty string is always segmentable)
 
 ```python
 def wordBreak(s, wordDict):
@@ -614,7 +654,7 @@ def wordBreak(s, wordDict):
 
 ## Pattern 20: 2D DP — Grids and Two-Sequence Comparison
 
-### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/))
+### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Each cell can be reached from above or from the left: `dp[i][j] = dp[i-1][j] + dp[i][j-1]`.
 
@@ -627,7 +667,7 @@ def uniquePaths(m, n):
     return dp[m-1][n-1]
 ```
 
-### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/))
+### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** If characters match, take diagonal + 1. Otherwise, take max of skipping from either string.
 
@@ -653,7 +693,7 @@ def longestCommonSubsequence(s1, s2):
     return dp[m][n]
 ```
 
-### Edit Distance ([LeetCode #72](https://leetcode.com/problems/edit-distance/))
+### Edit Distance ([LeetCode #72](https://leetcode.com/problems/edit-distance/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** `dp[i][j]` = min operations to convert `word1[:i]` to `word2[:j]`. If characters match, no cost. Else min(insert, delete, replace) + 1.
 
@@ -676,9 +716,13 @@ def minDistance(w1, w2):
     return dp[m][n]
 ```
 
-### Partition Equal Subset Sum ([LeetCode #416](https://leetcode.com/problems/partition-equal-subset-sum/))
+### Partition Equal Subset Sum ([LeetCode #416](https://leetcode.com/problems/partition-equal-subset-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Reduce to: can we find a subset that sums to `total/2`? Use a set to track all reachable sums.
+
+> **Common Pitfalls:**
+> 1. Not checking if total is odd first (can't partition an odd sum into two equal halves)
+> 2. Using a list instead of a set for tracking reachable sums (O(n) vs O(1) lookup)
 
 ```python
 def canPartition(nums):
@@ -693,15 +737,29 @@ def canPartition(nums):
 
 ### 0/1 Knapsack Pattern
 
+The 0/1 Knapsack is a fundamental DP pattern where you have items with weights and values, and a capacity limit. For each item, you choose to **take it** (add its value, reduce remaining capacity) or **leave it** (keep current best).
+
+> **When to recognize it:** Any problem where you select from a set of items with a constraint (weight, capacity, budget) and want to maximize/minimize a value.
+>
+> **Examples:** Coin Change, Partition Equal Subset Sum, Target Sum
+
+> **Common Pitfalls:**
+> 1. Confusing 0/1 Knapsack (each item used once) with Unbounded Knapsack (unlimited use)
+> 2. Iterating items in the wrong order when using 1D space optimization
+
 ```python
+# 0/1 Knapsack: each item can be taken at most ONCE
+# State: dp[i][w] = max value using first i items with capacity w
+# Choice: take item i (if it fits) or leave it
 def knapsack(weights, values, capacity):
     n = len(weights)
     dp = [[0]*(capacity+1) for _ in range(n+1)]
     for i in range(1, n+1):
         for w in range(capacity+1):
-            dp[i][w] = dp[i-1][w]
+            dp[i][w] = dp[i-1][w]              # LEAVE item i
             if weights[i-1] <= w:
-                dp[i][w] = max(dp[i][w], dp[i-1][w-weights[i-1]] + values[i-1])
+                dp[i][w] = max(dp[i][w],
+                    dp[i-1][w-weights[i-1]] + values[i-1])  # TAKE item i
     return dp[n][capacity]
 ```
 
@@ -723,13 +781,13 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 
 | # | Pattern | Core Insight | Key Problem |
 |---|---------|-------------|-------------|
-| 17 | **BFS Graph** | Queue + visited = shortest path | Islands #200, Rotting Oranges #994 |
-| 18 | **DFS Graph** | 3-state cycle detection | Course Schedule #207 |
-| 19 | **1D DP** | dp[i] = f(previous values) | Coin Change #322, LIS #300 |
-| 20 | **2D DP** | dp[i][j] for grids/strings | LCS #1143, Edit Distance #72 |
-| -- | **Trie** | Prefix-based string operations | Word Search II #212 |
-| -- | **Union-Find** | Track connected components | Redundant Connection #684 |
-| -- | **Greedy** | Local optimal = global optimal | Jump Game #55, Meeting Rooms #253 |
+| 17 | **BFS Graph** | Queue + visited = shortest path | [Islands #200](https://leetcode.com/problems/number-of-islands/), [Rotting Oranges #994](https://leetcode.com/problems/rotting-oranges/) |
+| 18 | **DFS Graph** | 3-state cycle detection | [Course Schedule #207](https://leetcode.com/problems/course-schedule/) |
+| 19 | **1D DP** | dp[i] = f(previous values) | [Coin Change #322](https://leetcode.com/problems/coin-change/), [LIS #300](https://leetcode.com/problems/longest-increasing-subsequence/) |
+| 20 | **2D DP** | dp[i][j] for grids/strings | [LCS #1143](https://leetcode.com/problems/longest-common-subsequence/), [Edit Distance #72](https://leetcode.com/problems/edit-distance/) |
+| 21 | **Trie** | Prefix-based string operations | [Word Search II #212](https://leetcode.com/problems/word-search-ii/) |
+| 22 | **Union-Find** | Track connected components | [Redundant Connection #684](https://leetcode.com/problems/redundant-connection/) |
+| 23 | **Greedy** | Local optimal = global optimal | [Jump Game #55](https://leetcode.com/problems/jump-game/), [Meeting Rooms #253](https://leetcode.com/problems/meeting-rooms-ii/) |
 
 ### Practice Problems for Day 4
 

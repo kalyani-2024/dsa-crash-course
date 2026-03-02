@@ -2,7 +2,7 @@
 
 ## Building the Foundation
 
-**What this day covers:** Big-O thinking, Arrays ([two pointers](https://www.geeksforgeeks.org/two-pointers-technique/), [sliding window](https://www.geeksforgeeks.org/window-sliding-technique/), [prefix sum](https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/), Kadane's algorithm), and Strings (character frequency, palindromes, string manipulation).
+**What this day covers:** [Big-O thinking](https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/), [Arrays](https://www.geeksforgeeks.org/array-data-structure/) ([two pointers](https://www.geeksforgeeks.org/two-pointers-technique/), [sliding window](https://www.geeksforgeeks.org/window-sliding-technique/), [prefix sum](https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/), [Kadane's algorithm](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)), and [Strings](https://www.geeksforgeeks.org/string-data-structure/) ([character frequency](https://www.geeksforgeeks.org/print-characters-frequencies-order-occurrence/), [palindromes](https://www.geeksforgeeks.org/string-palindrome/), [string manipulation](https://www.geeksforgeeks.org/string-data-structure/)).
 
 By the end of this section, you should be comfortable with the most common data structures in coding interviews and the patterns built on top of them. Arrays and strings alone make up a huge chunk of interview problems, so this is where it all begins.
 
@@ -95,14 +95,26 @@ Index:   0    1    2    3    4
 
 > "Use two indices that move through the data intelligently, skipping unnecessary comparisons."
 
-![Two Pointers](https://upload.wikimedia.org/wikipedia/commons/2/2c/Depiction_of_a_two_pointer_technique_to_find_the_pair_with_the_maximum_sum_less_than_X.png)
+> 🔗 **Learn more:** [Two Pointers Technique — GeeksForGeeks](https://www.geeksforgeeks.org/two-pointers-technique/) | [Visualize Two Pointers](https://algorithm-visualizer.org/)
+
+```
+Two Pointers — Opposite End:
+
+  [1, 2, 3, 4, 5, 6, 7, 8, 9]
+   ^                       ^
+   L                       R
+   
+   L moves →     ← R moves
+   
+   Meet in the middle → O(n) instead of O(n²)
+```
 
 Instead of checking every pair (O(n^2)), set up two pointers that converge based on a condition. There are two flavors:
 
 **1. Opposite-end pointers** — start from both ends, move inward (works on sorted data)
 **2. Same-direction pointers** — both start at beginning, one moves faster
 
-### Two Sum ([LeetCode #1](https://leetcode.com/problems/two-sum/))
+### Two Sum ([LeetCode #1](https://leetcode.com/problems/two-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python) | [Approach](https://algomaster.io/practice/dsa-patterns)
 
 **The Concept:** For each number, check if its complement (`target - num`) exists. Use a [HashMap](https://www.geeksforgeeks.org/hashing-data-structure/) for O(1) lookup, or sort + two pointers.
 
@@ -122,7 +134,7 @@ def twoSum(nums, target):
 # O(n) time, O(n) space
 ```
 
-### Container With Most Water ([LeetCode #11](https://leetcode.com/problems/container-with-most-water/))
+### Container With Most Water ([LeetCode #11](https://leetcode.com/problems/container-with-most-water/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Start with the widest container (both ends). The shorter bar is the bottleneck — move that pointer inward to find potentially taller bars.
 
@@ -147,7 +159,7 @@ def maxArea(height):
 # O(n) time, O(1) space
 ```
 
-### 3Sum ([LeetCode #15](https://leetcode.com/problems/3sum/))
+### 3Sum ([LeetCode #15](https://leetcode.com/problems/3sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sort first. Fix one number, then use two pointers on the rest (sorted two-sum).
 
@@ -176,9 +188,20 @@ def threeSum(nums):
 # O(n^2) -- much better than O(n^3) brute force
 ```
 
-### Trapping Rain Water ([LeetCode #42](https://leetcode.com/problems/trapping-rain-water/))
+### Trapping Rain Water ([LeetCode #42](https://leetcode.com/problems/trapping-rain-water/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Water at any position = `min(max_left, max_right) - height`. Use two pointers: the shorter side determines the water, so process that side.
+
+```
+Elevation Map:          Water Trapped:
+
+    █                       █
+█   ██ █                █≈≈≈██≈█
+██ ███ █                ██≈███≈█
+████████                ████████
+
+Water[i] = min(max_left, max_right) - height[i]
+```
 
 > **Common Pitfalls:**
 > 1. Not updating `lo_max` / `hi_max` before calculating water
@@ -209,7 +232,20 @@ def trap(height):
 
 > "Maintain a window [left, right] that expands and shrinks to track the best valid subarray."
 
-![Sliding Window](https://upload.wikimedia.org/wikipedia/commons/e/e4/Sliding_window_protocol_%28en%29.png)
+> 🔗 **Learn more:** [Sliding Window — GeeksForGeeks](https://www.geeksforgeeks.org/window-sliding-technique/) | [Visualize](https://algorithm-visualizer.org/)
+
+```
+Sliding Window Animation:
+
+Step 1:  [a b c] d e f g     window = "abc", expand right →
+Step 2:   a [b c d] e f g     window = "bcd", expand right →
+Step 3:   a b [c d e] f g     window = "cde", expand right →
+Step 4:   a b c [d e f] g     window = "def", expand right →
+Step 5:   a b c d [e f g]     window = "efg", done!
+
+→ Shrink left when window becomes invalid
+→ Always track the best valid window
+```
 
 Think of it like looking through a telescoping window — widen to see more, narrow when you see something invalid. Always track the best view.
 
@@ -235,7 +271,7 @@ def sliding_window(arr):
     return best
 ```
 
-### Longest Substring Without Repeating Characters ([LeetCode #3](https://leetcode.com/problems/longest-substring-without-repeating-characters/))
+### Longest Substring Without Repeating Characters ([LeetCode #3](https://leetcode.com/problems/longest-substring-without-repeating-characters/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sliding window with a set. Expand right to add new characters; when you encounter a duplicate, shrink from the left until the duplicate is removed. The set tracks what's in the current window.
 
@@ -258,9 +294,13 @@ def lengthOfLongestSubstring(s):
 # O(n)
 ```
 
-### Maximum Consecutive Ones III ([LeetCode #1004](https://leetcode.com/problems/max-consecutive-ones-iii/))
+### Maximum Consecutive Ones III ([LeetCode #1004](https://leetcode.com/problems/max-consecutive-ones-iii/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Window with at most `k` zeros. When zeros exceed `k`, shrink.
+
+> **Common Pitfalls:**
+> 1. Not tracking the number of zeros correctly when shrinking
+> 2. Forgetting to update `best` after each valid window state
 
 ```python
 def longestOnes(nums, k):
@@ -278,6 +318,8 @@ def longestOnes(nums, k):
 
 ## Pattern 3: Prefix Sum and Kadane's Algorithm
 
+> 🔗 **Learn more:** [Prefix Sum — GeeksForGeeks](https://www.geeksforgeeks.org/prefix-sum-array-implementation-applications-competitive-programming/) | [Kadane's Algorithm — GeeksForGeeks](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)
+
 ### Prefix Sum — Answer Subarray Sum Queries in O(1)
 
 > "Pre-compute cumulative sums so that any subarray sum becomes a single subtraction."
@@ -290,9 +332,13 @@ prefix =  [0, 1,  3,  6, 10, 15]
 Sum(i..j) = prefix[j+1] - prefix[i]
 ```
 
-### Subarray Sum Equals K ([LeetCode #560](https://leetcode.com/problems/subarray-sum-equals-k/))
+### Subarray Sum Equals K ([LeetCode #560](https://leetcode.com/problems/subarray-sum-equals-k/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Use a running prefix sum and a HashMap to count how many previous prefix sums equal `current_prefix - k`. Each such occurrence represents a valid subarray.
+
+> **Common Pitfalls:**
+> 1. Forgetting to initialize `seen = {0: 1}` (handles subarrays starting at index 0)
+> 2. Adding current prefix to the map before checking (would count self)
 
 ```python
 def subarraySum(nums, k):
@@ -306,9 +352,13 @@ def subarraySum(nums, k):
 # O(n)
 ```
 
-### Kadane's Algorithm — Maximum Subarray ([LeetCode #53](https://leetcode.com/problems/maximum-subarray/))
+### Kadane's Algorithm — Maximum Subarray ([LeetCode #53](https://leetcode.com/problems/maximum-subarray/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 > "At each step: extend the current subarray, or start fresh?"
+
+> **Common Pitfalls:**
+> 1. Initializing `best` to 0 instead of `nums[0]` (fails for all-negative arrays)
+> 2. Starting the loop from index 0 instead of index 1 when using `nums[0]` as initial value
 
 If the running sum goes negative, starting fresh is always better.
 
@@ -327,6 +377,8 @@ def maxSubArray(nums):
 # Strings
 
 ## What is a String?
+
+> 🔗 **Learn more:** [String Data Structure — GeeksForGeeks](https://www.geeksforgeeks.org/string-data-structure/) | [String Problems — GeeksForGeeks](https://www.geeksforgeeks.org/string-data-structure/)
 
 A string is an array of characters. This means most array techniques (two pointers, sliding window, [hashing](https://www.geeksforgeeks.org/hashing-data-structure/)) apply directly. But strings have unique properties:
 
@@ -361,11 +413,13 @@ result = ''.join(chars)
 
 ## Pattern 4: Character Frequency Counting
 
+> 🔗 **Learn more:** [Frequency Counting — GeeksForGeeks](https://www.geeksforgeeks.org/print-characters-frequencies-order-occurrence/)
+
 ### The Core Idea
 
 > "Many string problems reduce to: do two strings have the same character frequencies?"
 
-### Valid Anagram ([LeetCode #242](https://leetcode.com/problems/valid-anagram/))
+### Valid Anagram ([LeetCode #242](https://leetcode.com/problems/valid-anagram/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Two strings are anagrams if they have identical character counts.
 
@@ -376,9 +430,13 @@ def isAnagram(s, t):
 # O(n), O(1) space (at most 26 keys)
 ```
 
-### Group Anagrams ([LeetCode #49](https://leetcode.com/problems/group-anagrams/))
+### Group Anagrams ([LeetCode #49](https://leetcode.com/problems/group-anagrams/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sorting the letters of any anagram produces the same key. Use that as a [HashMap](https://www.geeksforgeeks.org/hashing-data-structure/) key to group them.
+
+> **Common Pitfalls:**
+> 1. Not handling empty strings correctly
+> 2. Using sorted string directly as dict key (must convert to tuple for hashability)
 
 ```python
 from collections import defaultdict
@@ -391,7 +449,7 @@ def groupAnagrams(strs):
 # O(n * k log k) where k = max string length
 ```
 
-### Valid Palindrome ([LeetCode #125](https://leetcode.com/problems/valid-palindrome/))
+### Valid Palindrome ([LeetCode #125](https://leetcode.com/problems/valid-palindrome/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** A palindrome reads the same forwards and backwards. Use two pointers from both ends, skipping non-alphanumeric characters.
 
@@ -414,11 +472,27 @@ def isPalindrome(s):
 
 ## Pattern 5: Palindrome Techniques
 
+> 🔗 **Learn more:** [Palindrome Problems — GeeksForGeeks](https://www.geeksforgeeks.org/string-palindrome/) | [Expand Around Center — GeeksForGeeks](https://www.geeksforgeeks.org/longest-palindromic-substring/)
+
 ### The Core Idea
 
 > "To find palindromes, either expand outward from a center, or use DP to track palindrome boundaries."
 
-### Longest Palindromic Substring ([LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/)) — Expand Around Center
+```
+Expand Around Center:
+
+   Input: "babad"
+
+   Center 'a' (index 2):      Center 'b' (index 1):
+   Expand: b [a] b            Expand: [b] a
+   Expand: [b a b] ✓          No match → stop
+   Expand: a [b a b] a
+   'a' ≠ 'd' → stop
+   
+   Longest = "bab" (length 3)
+```
+
+### Longest Palindromic Substring ([LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/)) — Expand Around Center | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Start at each character (and each pair), expand outward as long as characters match. Check both odd-length ("aba") and even-length ("abba").
 
@@ -440,7 +514,7 @@ def longestPalindrome(s):
 # O(n^2) time, O(1) space
 ```
 
-### Palindromic Substrings ([LeetCode #647](https://leetcode.com/problems/palindromic-substrings/))
+### Palindromic Substrings ([LeetCode #647](https://leetcode.com/problems/palindromic-substrings/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Count all palindromic substrings. Same expand-around-center idea, but count instead of tracking the longest.
 
@@ -462,7 +536,9 @@ def countSubstrings(s):
 
 ## Pattern 6: String Manipulation and Building
 
-### Reverse String ([LeetCode #344](https://leetcode.com/problems/reverse-string/))
+> 🔗 **Learn more:** [String Manipulation — GeeksForGeeks](https://www.geeksforgeeks.org/string-data-structure/)
+
+### Reverse String ([LeetCode #344](https://leetcode.com/problems/reverse-string/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Swap characters from both ends moving inward, or use the built-in `.reverse()` method.
 
@@ -476,7 +552,7 @@ def reverseString(s):
         l += 1; r -= 1
 ```
 
-### String to Integer — atoi ([LeetCode #8](https://leetcode.com/problems/string-to-integer-atoi/))
+### String to Integer — atoi ([LeetCode #8](https://leetcode.com/problems/string-to-integer-atoi/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Parse character by character, handle signs, whitespace, overflow. Tests your attention to edge cases.
 
@@ -499,7 +575,7 @@ def myAtoi(s):
     return max(-2**31, min(2**31 - 1, result))  # clamp to 32-bit
 ```
 
-### Minimum Window Substring ([LeetCode #76](https://leetcode.com/problems/minimum-window-substring/))
+### Minimum Window Substring ([LeetCode #76](https://leetcode.com/problems/minimum-window-substring/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Sliding window on a string — expand right until all required characters are present, then shrink left to find the minimum.
 
@@ -527,9 +603,13 @@ def minWindow(s, t):
 # O(|s| + |t|)
 ```
 
-### Longest Common Prefix ([LeetCode #14](https://leetcode.com/problems/longest-common-prefix/))
+### Longest Common Prefix ([LeetCode #14](https://leetcode.com/problems/longest-common-prefix/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/tree/main/python)
 
 **The Concept:** Compare characters of all strings position by position. Trim the prefix whenever a string doesn't match.
+
+> **Common Pitfalls:**
+> 1. Not handling empty input array
+> 2. Not considering that the prefix could be the entire first string
 
 ```python
 def longestCommonPrefix(strs):
