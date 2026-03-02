@@ -97,7 +97,7 @@ Index:   0    1    2    3    4
 
 > 🔗 **Learn more:** [Two Pointers Technique — GeeksForGeeks](https://www.geeksforgeeks.org/two-pointers-technique/)
 >
-> [![Visualize Two Pointers](https://img.shields.io/badge/▶_Visualize_Two_Pointers-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
+
 
 ![Two Pointers Technique](images/two-pointers.png)
 *Two pointers converge from opposite ends, reducing O(n²) to O(n)*
