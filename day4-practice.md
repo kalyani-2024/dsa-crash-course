@@ -1,4 +1,4 @@
-# 08: Day 4 Practice — Tries, Graphs, Greedy, and Dynamic Programming
+# Day 4 Practice — Tries, Graphs, Greedy, and Dynamic Programming
 
 ## 12 Must-Do Problems
 

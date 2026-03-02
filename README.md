@@ -2,7 +2,6 @@
 
 ## From Zero to Interview-Ready
 
-**Who is this for?** Complete beginners, college students preparing for placements, anyone who wants to crack coding interviews at top tech companies.
 
 **What you will learn:** Every major data structure, every core algorithm pattern, interview strategies, and — most importantly — how to think algorithmically.
 
@@ -28,7 +27,7 @@ Every topic follows a concept-first approach:
 
 ## 4-Day Schedule
 
-### 01: Day 1 — Arrays and Strings
+###  Day 1 — Arrays and Strings
 
 Learn the most fundamental data structures and the patterns built on top of them.
 
@@ -41,7 +40,7 @@ Learn the most fundamental data structures and the patterns built on top of them
 
 ---
 
-### 03: Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+### Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 Master the core data structures and essential searching/sorting techniques.
 
@@ -54,7 +53,7 @@ Master the core data structures and essential searching/sorting techniques.
 
 ---
 
-### 05: Day 3 — Recursion, Backtracking, Trees, and Heaps
+### Day 3 — Recursion, Backtracking, Trees, and Heaps
 
 Learn recursive thinking, then apply it to trees and priority queues.
 
@@ -67,7 +66,7 @@ Learn recursive thinking, then apply it to trees and priority queues.
 
 ---
 
-### 07: Day 4 — Tries, Graphs, Greedy, and Dynamic Programming
+### Day 4 — Tries, Graphs, Greedy, and Dynamic Programming
 
 The most advanced material — graph algorithms and algorithm paradigms.
 
@@ -89,40 +88,7 @@ The most advanced material — graph algorithms and algorithm paradigms.
 
 ---
 
-## Complete Topic Coverage
 
-```
-Day 1 -- ARRAYS AND STRINGS          Day 2 -- DATA STRUCTURES + SEARCH
-+-------------------------+          +-------------------------+
-| Arrays                  |          | Hash Maps / Sets        |
-| Strings                 |          | Linked Lists            |
-| Two Pointers            |          | Stacks / Queues         |
-| Sliding Window          |          | Monotonic Stack         |
-| Prefix Sum / Kadane's   |          | Slow/Fast Pointers      |
-| Palindrome Techniques   |          | Sorting (preprocessing) |
-|                         |          | Binary Search           |
-| 6 Patterns              |          | Bit Manipulation        |
-| 15+ Problems            |          |                         |
-+-------------------------+          | 6 Patterns              |
-                                     | 16+ Problems            |
-                                     +-------------------------+
-
-Day 3 -- RECURSION + TREES           Day 4 -- GRAPHS + PARADIGMS
-+-------------------------+          +-------------------------+
-| Recursion               |          | Tries (Prefix Trees)    |
-| Backtracking            |          | Graphs (BFS/DFS)        |
-| Trees (Binary, BST)     |          | Topological Sort        |
-| Tree Traversals         |          | Dijkstra's Algorithm    |
-| Heaps / Priority Q      |          | Union-Find              |
-|                         |          | Greedy Algorithms       |
-| 4 Patterns              |          | Dynamic Programming     |
-| 15+ Problems            |          |                         |
-+-------------------------+          | 4+ Patterns             |
-                                     | 12+ Problems            |
-                                     +-------------------------+
-```
-
----
 
 ## Visual Learning Tools (Bookmark These)
 

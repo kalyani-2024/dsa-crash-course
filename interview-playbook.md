@@ -1,4 +1,4 @@
-# 10: Interview Playbook — How to Crack Any Coding Interview
+# Interview Playbook — How to Crack Any Coding Interview
 
 Read this the night before your interview. This is your game plan.
 
@@ -294,19 +294,11 @@ Step 6: Ask the interviewer for a HINT. This is OK!
 | **Amazon** | [Number of Islands](https://leetcode.com/problems/number-of-islands/), [LRU Cache](https://leetcode.com/problems/lru-cache/), [Best Time Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/) |
 | **Microsoft** | [Two Sum](https://leetcode.com/problems/two-sum/), [Reverse LL](https://leetcode.com/problems/reverse-linked-list/), [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) |
 
-### College Placement Favorites (India)
-
-| Company | Focus Areas |
-|---------|------------|
-| **TCS/Infosys** | [Two Sum](https://leetcode.com/problems/two-sum/), [Valid Palindrome](https://leetcode.com/problems/valid-palindrome/), Sorting algorithms |
-| **Wipro/HCL** | [Arrays](https://www.geeksforgeeks.org/array-data-structure/), [Strings](https://www.geeksforgeeks.org/string-data-structure/), [Basic recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) |
-| **Flipkart** | [DP problems](https://www.geeksforgeeks.org/dynamic-programming/), [Graph BFS/DFS](https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/) |
-| **PhonePe/Razorpay** | System Design + Medium LeetCode |
-| **Google/Microsoft** | Hard LeetCode + System Design |
+### College Placement Favorites 
 
 ### Company-Wise Problem Lists
 
-The lists above are just starting points. For a **comprehensive, regularly updated** collection of LeetCode problems tagged by company (400+ companies, with 30/60/90-day and all-time frequency data), use this community resource:
+ For a **comprehensive, regularly updated** collection of LeetCode problems tagged by company (400+ companies, with 30/60/90-day and all-time frequency data), use this community resource:
 
 > **[liquidslr/interview-company-wise-problems](https://github.com/liquidslr/interview-company-wise-problems)** — 14k+ stars
 >

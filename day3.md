@@ -1,4 +1,4 @@
-# 05: Day 3 — Recursion, Backtracking, Trees, BST, and Heaps
+# Day 3 — Recursion, Backtracking, Trees, BST, and Heaps
 
 ## Recursive Thinking and Hierarchical Data Structures
 
@@ -77,6 +77,9 @@ Backtracking Template:
 ### The Core Idea
 
 > "For each element: include it or skip it. This creates 2^n subsets."
+
+![Backtracking Decision Tree](images/backtracking-tree.png)
+*Include/exclude each element to generate all subsets of [1,2,3]*
 
 ```
 Elements: [1, 2, 3]
@@ -371,6 +374,9 @@ def invertTree(root):
 ```
 
 ### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/lowest-common-ancestor-of-a-binary-tree.md)
+
+![Lowest Common Ancestor](images/lca-binary-tree.png)
+*Find the deepest node that is an ancestor of both target nodes*
 
 **The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
 

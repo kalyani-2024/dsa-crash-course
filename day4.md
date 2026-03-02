@@ -1,4 +1,4 @@
-# 07: Day 4 — Tries, Graphs, Union-Find, Greedy, and Dynamic Programming
+#  Day 4 — Tries, Graphs, Union-Find, Greedy, and Dynamic Programming
 
 ## Advanced Structures and Algorithm Paradigms
 
@@ -416,7 +416,12 @@ def accountsMerge(accounts):
 
 ## What is Greedy?
 
-A [greedy algorithm](https://www.geeksforgeeks.org/greedy-algorithms/) makes the locally optimal choice at each step, hoping it leads to a globally optimal solution. Unlike DP, greedy doesn't reconsider past choices.
+[Greedy algorithms](https://www.geeksforgeeks.org/greedy-algorithms/) make the locally optimal choice at each step, hoping it leads to a globally optimal solution.
+
+![Greedy Interval Scheduling](images/greedy-intervals.png)
+*Sort by end time, greedily pick non-overlapping intervals*
+
+Unlike DP, greedy doesn't reconsider past choices.
 
 > "At each step, take the best available option. Never look back."
 
@@ -565,6 +570,9 @@ With DP:    each fib(i) computed ONCE -> O(n)
 
 ### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/climbing-stairs.md)
 
+![DP Climbing Stairs](images/dp-climbing-stairs.png)
+*dp[i] = dp[i-1] + dp[i-2] — Fibonacci in disguise!*
+
 **The Concept:** At step n, you could have come from step n-1 or n-2. So `dp[n] = dp[n-1] + dp[n-2]` — it's Fibonacci!
 
 > **Common Pitfalls:**
@@ -662,6 +670,9 @@ def wordBreak(s, wordDict):
 
 ### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/unique-paths.md)
 
+![Unique Paths Grid](images/unique-paths-grid.png)
+*Robot can only move right or down — each cell = sum of cell above + cell to left*
+
 **The Concept:** Each cell can be reached from above or from the left: `dp[i][j] = dp[i-1][j] + dp[i][j-1]`.
 
 ```python
@@ -674,6 +685,9 @@ def uniquePaths(m, n):
 ```
 
 ### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-common-subsequence.md)
+
+![LCS DP Table](images/lcs-dp-table.png)
+*Match → diagonal+1, No match → max(left, above)*
 
 **The Concept:** If characters match, take diagonal + 1. Otherwise, take max of skipping from either string.
 

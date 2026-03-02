@@ -1,4 +1,4 @@
-# 03: Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+# Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 ## Core Data Structures and Searching Techniques
 
@@ -196,6 +196,9 @@ def hasCycle(head):
 
 ### Reverse Linked List ([LeetCode #206](https://leetcode.com/problems/reverse-linked-list/)) — Top 5 Interview Question | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/reverse-linked-list.md)
 
+![Linked List Reversal](images/linked-list-reversal.png)
+*Three pointers (prev, curr, next) flip each arrow one at a time*
+
 > **Common Pitfalls:**
 > 1. Forgetting to save `curr.next` before overwriting it
 > 2. Returning `curr` instead of `prev` at the end (curr is None when loop finishes)
@@ -351,6 +354,9 @@ def isValid(s):
 > "Maintain a stack in decreasing order. When a bigger element arrives, pop — the popped element just found its answer."
 
 **Why O(n)?** Each element is pushed at most once and popped at most once, giving O(2n) = O(n) total.
+
+![Monotonic Stack](images/monotonic-stack.png)
+*When a bigger element arrives, pop smaller elements — they just found their "next greater"*
 
 ### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/daily-temperatures.md)
 

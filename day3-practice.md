@@ -1,4 +1,4 @@
-# 06: Day 3 Practice — Recursion, Backtracking, Trees, BST, and Heaps
+# Day 3 Practice — Recursion, Backtracking, Trees, BST, and Heaps
 
 ## 12 Must-Do Problems
 

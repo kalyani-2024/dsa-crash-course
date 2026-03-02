@@ -1,4 +1,4 @@
-# 04: Day 2 Practice — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
+# Day 2 Practice — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search
 
 ## 12 Must-Do Problems
 

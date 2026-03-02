@@ -1,4 +1,4 @@
-# 02: Day 1 Practice — Arrays and Strings
+# Day 1 Practice — Arrays and Strings
 
 ## 10 Must-Do Problems
 
