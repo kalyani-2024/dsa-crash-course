@@ -430,9 +430,11 @@ class MinStack:
 You rarely implement sorts yourself, but sorting as a preprocessing step unlocks many techniques:
 
 ![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
+
 *Merge Sort — divide, sort halves, merge back together (O(n log n))*
 
 ![Insertion Sort](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
 *Insertion Sort — insert each element into its correct position (O(n²))*
 
 ```

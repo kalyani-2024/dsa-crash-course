@@ -219,11 +219,13 @@ def exist(board, word):
 
 # Trees and BST
 
-## What is a Tree?
+## [What is a Tree?](https://www.geeksforgeeks.org/binary-tree-data-structure/)
 
 A tree is a hierarchical data structure — nodes connected by parent-child relationships. Think of a family tree or a folder structure.
 
-> [![Visualize Trees](https://img.shields.io/badge/▶_Visualize_Tree_Operations-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/bst)  [Binary Trees — GeeksForGeeks](https://www.geeksforgeeks.org/binary-tree-data-structure/)
+
+> [![Visualize Trees](https://img.shields.io/badge/▶_Visualize_Tree_Operations-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/bst) 
+
 
 ```
 Binary Tree:
@@ -376,6 +378,7 @@ def invertTree(root):
 ### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/lowest-common-ancestor-of-a-binary-tree.md)
 
 ![Lowest Common Ancestor](images/lca-binary-tree.png)
+
 *Find the deepest node that is an ancestor of both target nodes*
 
 **The Concept:** If both children return a result, this node is the LCA. If only one returns, pass it up.
@@ -513,6 +516,7 @@ max_val = -heapq.heappop(heap) # negate back
 > [![Visualize Heap](https://img.shields.io/badge/▶_Visualize_Heap_Operations-USFCA-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
 
 ![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
+
 *Heap Sort animation — shows how a heap maintains order*
 
 ### Kth Largest Element ([LeetCode #215](https://leetcode.com/problems/kth-largest-element-in-an-array/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/kth-largest-element-in-an-array.md)

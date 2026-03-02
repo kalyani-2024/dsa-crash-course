@@ -160,6 +160,7 @@ for u, v in edges:
 Think of ripples in a pond — expanding outward uniformly.
 
 ![BFS Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
+
 *BFS explores level by level — shortest path in unweighted graphs*
 
 > [![Simulate BFS/DFS/Dijkstra](https://img.shields.io/badge/▶_Simulate_BFS%2FDFS%2FDijkstra-PathFinding.js-2ea44f?style=for-the-badge)](https://qiao.github.io/PathFinding.js/visual/)
@@ -242,6 +243,7 @@ def orangesRotting(grid):
 > "Go as deep as possible, then backtrack. Use 3 states to detect cycles in directed graphs."
 
 ![DFS Animation](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
+
 *DFS goes as deep as possible before backtracking*
 
 ```
@@ -282,6 +284,7 @@ def canFinish(n, prereqs):
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
 ![Topological Sort](https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg)
+
 *A Directed Acyclic Graph (DAG) — topological sort gives a valid ordering*
 
 ```python
@@ -308,6 +311,7 @@ def findOrder(n, prereqs):
 **The Concept:** BFS finds shortest path in unweighted graphs. Dijkstra uses a min-heap to always process the closest unvisited node.
 
 ![Dijkstra Animation](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+
 *Dijkstra's algorithm — always processes the closest unvisited node*
 
 ```python
@@ -419,6 +423,7 @@ def accountsMerge(accounts):
 [Greedy algorithms](https://www.geeksforgeeks.org/greedy-algorithms/) make the locally optimal choice at each step, hoping it leads to a globally optimal solution.
 
 ![Greedy Interval Scheduling](images/greedy-intervals.png)
+
 *Sort by end time, greedily pick non-overlapping intervals*
 
 Unlike DP, greedy doesn't reconsider past choices.
@@ -671,6 +676,7 @@ def wordBreak(s, wordDict):
 ### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/unique-paths.md)
 
 ![Unique Paths Grid](images/unique-paths-grid.png)
+
 *Robot can only move right or down — each cell = sum of cell above + cell to left*
 
 **The Concept:** Each cell can be reached from above or from the left: `dp[i][j] = dp[i-1][j] + dp[i][j-1]`.
