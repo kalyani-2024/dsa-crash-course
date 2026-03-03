@@ -99,7 +99,12 @@ Index:   0    1    2    3    4
 >
 > [![Visualize Two Pointers](https://img.shields.io/badge/▶_Visualize_Two_Pointers-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Two Pointers Technique](images/two-pointers.png)
+
+</div>
+
 *Two pointers converge from opposite ends, reducing O(n²) to O(n)*
 
 ```
@@ -196,7 +201,12 @@ def threeSum(nums):
 
 **The Concept:** Water at any position = `min(max_left, max_right) - height`. Use two pointers: the shorter side determines the water, so process that side.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Trapping Rain Water](images/trapping-rain-water.png)
+
+</div>
+
 *Water at each position = min(max_left, max_right) - height[i]*
 
 > **Common Pitfalls:**
@@ -232,7 +242,12 @@ def trap(height):
 >
 > [![Visualize Sliding Window](https://img.shields.io/badge/▶_Visualize_Sliding_Window-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Sliding Window Technique](images/sliding-window.png)
+
+</div>
+
 *The window expands right and shrinks left to find optimal subarrays*
 
 ```
@@ -361,7 +376,12 @@ def subarraySum(nums, k):
 > 1. Initializing `best` to 0 instead of `nums[0]` (fails for all-negative arrays)
 > 2. Starting the loop from index 0 instead of index 1 when using `nums[0]` as initial value
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Kadane's Algorithm](images/kadanes-algorithm.png)
+
+</div>
+
 *At each step: extend the current subarray or start fresh?*
 
 ```
@@ -534,7 +554,12 @@ Expand Around Center:
    Longest = "bab" (length 3)
 ```
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Palindrome Expand Around Center](images/palindrome-expand.png)
+
+</div>
+
 *Expand outward from each center — stop when characters don't match*
 
 ### Longest Palindromic Substring ([LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/)) — Expand Around Center | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-palindromic-substring.md)

@@ -16,7 +16,11 @@ Hashing is arguably the single most important concept in DSA interviews. A [Hash
 
 Think of it like a library where every book has a shelf code. Instead of searching sequentially, you go directly to the right shelf.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Hash Table](https://upload.wikimedia.org/wikipedia/commons/7/7d/Hash_table_3_1_1_0_1_0_0_SP.svg)
+
+</div>
 
 ### Key Operations — All O(1) Average
 
@@ -112,7 +116,11 @@ def topKFrequent(nums, k):
 
 Unlike arrays (contiguous memory), a [linked list](https://www.geeksforgeeks.org/data-structures/linked-list/) stores elements scattered across memory, connected by pointers — each node knows where the next one is.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Linked List](https://upload.wikimedia.org/wikipedia/commons/6/6d/Singly-linked-list.svg)
+
+</div>
 
 ```
 Array:   [10][20][30][40]     -> accessed by index (O(1))
@@ -196,7 +204,12 @@ def hasCycle(head):
 
 ### Reverse Linked List ([LeetCode #206](https://leetcode.com/problems/reverse-linked-list/)) — Top 5 Interview Question | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/reverse-linked-list.md)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Linked List Reversal](images/linked-list-reversal.png)
+
+</div>
+
 *Three pointers (prev, curr, next) flip each arrow one at a time*
 
 > **Common Pitfalls:**
@@ -289,7 +302,11 @@ Both are restricted access data structures — you can only add or remove from s
 
 ### Stack = LIFO (Last In, First Out)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Stack](https://upload.wikimedia.org/wikipedia/commons/e/e4/Lifo_stack.svg)
+
+</div>
 
 **Analogy:** Stack of plates — add and remove from the top only.
 
@@ -297,7 +314,11 @@ Both are restricted access data structures — you can only add or remove from s
 
 ### Queue = FIFO (First In, First Out)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Queue](https://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg)
+
+</div>
 
 **Analogy:** Line at a theater — first person in line is served first.
 
@@ -355,7 +376,12 @@ def isValid(s):
 
 **Why O(n)?** Each element is pushed at most once and popped at most once, giving O(2n) = O(n) total.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Monotonic Stack](images/monotonic-stack.png)
+
+</div>
+
 *When a bigger element arrives, pop smaller elements — they just found their "next greater"*
 
 ### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/daily-temperatures.md)
@@ -429,11 +455,19 @@ class MinStack:
 
 You rarely implement sorts yourself, but sorting as a preprocessing step unlocks many techniques:
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Merge Sort](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
+
+</div>
 
 *Merge Sort — divide, sort halves, merge back together (O(n log n))*
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Insertion Sort](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
+</div>
 
 *Insertion Sort — insert each element into its correct position (O(n²))*
 
@@ -488,7 +522,11 @@ def merge(intervals):
 
 > "If you can determine which half contains the answer, throw away the other half. Repeat. O(log n)."
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Binary Search](https://upload.wikimedia.org/wikipedia/commons/8/83/Binary_Search_Depiction.svg)
+
+</div>
 
 > 🔗 **Simulate:** [Binary Search step-by-step on VisuAlgo](https://visualgo.net/en/sorting)
 

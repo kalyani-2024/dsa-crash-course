@@ -14,7 +14,11 @@ This final day ties everything together with the most advanced material. After c
 
 A [Trie](https://www.geeksforgeeks.org/trie-insert-and-search/) (pronounced "try") is a tree where each node represents a character, and paths from root to nodes spell out prefixes. It's the ultimate data structure for prefix-based operations.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Trie](https://upload.wikimedia.org/wikipedia/commons/b/be/Trie_example.svg)
+
+</div>
 
 ```
 Insert: "cat", "car", "card", "dog"
@@ -159,7 +163,11 @@ for u, v in edges:
 
 Think of ripples in a pond — expanding outward uniformly.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![BFS Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
+
+</div>
 
 *BFS explores level by level — shortest path in unweighted graphs*
 
@@ -242,7 +250,11 @@ def orangesRotting(grid):
 
 > "Go as deep as possible, then backtrack. Use 3 states to detect cycles in directed graphs."
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![DFS Animation](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
+
+</div>
 
 *DFS goes as deep as possible before backtracking*
 
@@ -283,7 +295,11 @@ def canFinish(n, prereqs):
 
 **The Concept:** A topological ordering = valid course order. Use DFS postorder (add to result when done), then reverse.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Topological Sort](https://upload.wikimedia.org/wikipedia/commons/0/03/Directed_acyclic_graph_2.svg)
+
+</div>
 
 *A Directed Acyclic Graph (DAG) — topological sort gives a valid ordering*
 
@@ -310,7 +326,11 @@ def findOrder(n, prereqs):
 
 **The Concept:** BFS finds shortest path in unweighted graphs. Dijkstra uses a min-heap to always process the closest unvisited node.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Dijkstra Animation](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+
+</div>
 
 *Dijkstra's algorithm — always processes the closest unvisited node*
 
@@ -422,7 +442,11 @@ def accountsMerge(accounts):
 
 [Greedy algorithms](https://www.geeksforgeeks.org/greedy-algorithms/) make the locally optimal choice at each step, hoping it leads to a globally optimal solution.
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Greedy Interval Scheduling](images/greedy-intervals.png)
+
+</div>
 
 *Sort by end time, greedily pick non-overlapping intervals*
 
@@ -542,7 +566,11 @@ DP is the most feared interview topic, but at its core:
 
 > "If you're solving the same subproblem multiple times, solve it once and save the answer."
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![DP Fibonacci](https://upload.wikimedia.org/wikipedia/commons/0/06/Fibonacci_dynamic_programming.svg)
+
+</div>
 
 ### DP = Recursion + Caching
 
@@ -575,7 +603,12 @@ With DP:    each fib(i) computed ONCE -> O(n)
 
 ### Climbing Stairs ([LeetCode #70](https://leetcode.com/problems/climbing-stairs/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/climbing-stairs.md)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![DP Climbing Stairs](images/dp-climbing-stairs.png)
+
+</div>
+
 *dp[i] = dp[i-1] + dp[i-2] — Fibonacci in disguise!*
 
 **The Concept:** At step n, you could have come from step n-1 or n-2. So `dp[n] = dp[n-1] + dp[n-2]` — it's Fibonacci!
@@ -675,7 +708,11 @@ def wordBreak(s, wordDict):
 
 ### Unique Paths ([LeetCode #62](https://leetcode.com/problems/unique-paths/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/unique-paths.md)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Unique Paths Grid](images/unique-paths-grid.png)
+
+</div>
 
 *Robot can only move right or down — each cell = sum of cell above + cell to left*
 
@@ -692,7 +729,12 @@ def uniquePaths(m, n):
 
 ### Longest Common Subsequence ([LeetCode #1143](https://leetcode.com/problems/longest-common-subsequence/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-common-subsequence.md)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![LCS DP Table](images/lcs-dp-table.png)
+
+</div>
+
 *Match → diagonal+1, No match → max(left, above)*
 
 **The Concept:** If characters match, take diagonal + 1. Otherwise, take max of skipping from either string.

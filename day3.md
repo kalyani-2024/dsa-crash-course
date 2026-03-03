@@ -18,7 +18,12 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 >
 > [![Visualize Recursion](https://img.shields.io/badge/▶_Visualize_Recursion-Python_Tutor-FF6F00?style=for-the-badge)](https://pythontutor.com/)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Recursion Tree](https://upload.wikimedia.org/wikipedia/commons/0/06/Fibonacci_dynamic_programming.svg)
+
+</div>
+
 *Recursive Fibonacci call tree — notice the repeated subproblems!*
 
 Every recursive solution has:
@@ -78,7 +83,12 @@ Backtracking Template:
 
 > "For each element: include it or skip it. This creates 2^n subsets."
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Backtracking Decision Tree](images/backtracking-tree.png)
+
+</div>
+
 *Include/exclude each element to generate all subsets of [1,2,3]*
 
 ```
@@ -168,7 +178,11 @@ def permute(nums):
 
 > [![See N-Queens Animation](https://img.shields.io/badge/▶_See_N--Queens_Animation-Wikipedia-blue?style=for-the-badge)](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![N-Queens](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
+
+</div>
 
 > **Common Pitfalls:**
 > 1. Not tracking anti-diagonals (`row + col`) separately from diagonals (`row - col`)
@@ -377,7 +391,11 @@ def invertTree(root):
 
 ### Lowest Common Ancestor ([LeetCode #236](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/lowest-common-ancestor-of-a-binary-tree.md)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Lowest Common Ancestor](images/lca-binary-tree.png)
+
+</div>
 
 *Find the deepest node that is an ancestor of both target nodes*
 
@@ -468,7 +486,11 @@ class Codec:
 
 A heap is a complete binary tree where every parent is smaller (min-heap) or larger (max-heap) than its children. The root is always the min (or max).
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Heap](https://upload.wikimedia.org/wikipedia/commons/3/38/Max-Heap.svg)
+
+</div>
 
 ```
 Min-Heap:       1          -> root is always the minimum
@@ -515,7 +537,11 @@ max_val = -heapq.heappop(heap) # negate back
 
 > [![Visualize Heap](https://img.shields.io/badge/▶_Visualize_Heap_Operations-USFCA-E53935?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Heap.html)
 
+<div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
+
 ![Heap Sort](https://upload.wikimedia.org/wikipedia/commons/4/4d/Heapsort-example.gif)
+
+</div>
 
 *Heap Sort animation — shows how a heap maintains order*
 
