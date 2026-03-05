@@ -103,11 +103,8 @@ Index:   0    1    2    3    4
 
 ![Two Pointers Technique](images/two-pointers.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Two pointers converge from opposite ends, reducing O(n²) to O(n)*
 
 ```
@@ -208,11 +205,8 @@ def threeSum(nums):
 
 ![Trapping Rain Water](images/trapping-rain-water.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Water at each position = min(max_left, max_right) - height[i]*
 
 > **Common Pitfalls:**
@@ -252,11 +246,8 @@ def trap(height):
 
 ![Sliding Window Technique](images/sliding-window.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *The window expands right and shrinks left to find optimal subarrays*
 
 ```
@@ -389,11 +380,8 @@ def subarraySum(nums, k):
 
 ![Kadane's Algorithm](images/kadanes-algorithm.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *At each step: extend the current subarray or start fresh?*
 
 ```
@@ -570,11 +558,8 @@ Expand Around Center:
 
 ![Palindrome Expand Around Center](images/palindrome-expand.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Expand outward from each center — stop when characters don't match*
 
 ### Longest Palindromic Substring ([LeetCode #5](https://leetcode.com/problems/longest-palindromic-substring/)) — Expand Around Center | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/longest-palindromic-substring.md)

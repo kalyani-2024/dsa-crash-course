@@ -85,11 +85,8 @@ Backtracking Template:
 
 ![Backtracking Decision Tree](images/backtracking-tree.png)
 
-<<<<<<< HEAD
 </div>
 
-=======
->>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Include/exclude each element to generate all subsets of [1,2,3]*
 
 ```
