@@ -157,7 +157,6 @@ Visualize linked list operations:
 
 > "Two pointers at different speeds: fast reaches the end in half the time, so slow is at the middle. On a cycle, fast laps slow, so a cycle is detected."
 
-> [![Visualize Linked List Ops](https://img.shields.io/badge/▶_See_Animated_Demo-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/list)
 
 ### Middle of Linked List ([LeetCode #876](https://leetcode.com/problems/middle-of-the-linked-list/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/middle-of-the-linked-list.md)
 
@@ -208,8 +207,11 @@ def hasCycle(head):
 
 ![Linked List Reversal](images/linked-list-reversal.png)
 
+<<<<<<< HEAD
 </div>
 
+=======
+>>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Three pointers (prev, curr, next) flip each arrow one at a time*
 
 > **Common Pitfalls:**
@@ -380,8 +382,11 @@ def isValid(s):
 
 ![Monotonic Stack](images/monotonic-stack.png)
 
+<<<<<<< HEAD
 </div>
 
+=======
+>>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *When a bigger element arrives, pop smaller elements — they just found their "next greater"*
 
 ### Daily Temperatures ([LeetCode #739](https://leetcode.com/problems/daily-temperatures/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/daily-temperatures.md)
@@ -479,7 +484,7 @@ Sorted -> Greedy decisions   O(n log n + n)
 Sorted -> Duplicates adjacent
 ```
 
-### Dutch National Flag ([LeetCode #75](https://leetcode.com/problems/sort-colors/)) — Sort 0s, 1s, 2s in One Pass | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/sort-colors.md)
+### Dutch National Flag — Sort 0s, 1s, 2s in One Pass ([LeetCode #75](https://leetcode.com/problems/sort-colors/))  | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/sort-colors.md)
 
 **The Concept:** Three pointers (lo, mid, hi) partition the array into regions of 0s, 1s, and 2s in a single pass.
 
@@ -526,9 +531,13 @@ def merge(intervals):
 
 ![Binary Search](https://upload.wikimedia.org/wikipedia/commons/8/83/Binary_Search_Depiction.svg)
 
+<<<<<<< HEAD
 </div>
 
 > 🔗 **Simulate:** [Binary Search step-by-step on VisuAlgo](https://visualgo.net/en/sorting)
+=======
+> [![Binary Search Simulation](https://img.shields.io/badge/Simulate-Binary_Search-green?style=for-the-badge)](https://www.cs.usfca.edu/~galles/visualization/Search.html)
+>>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 
 ### Standard Binary Search
 

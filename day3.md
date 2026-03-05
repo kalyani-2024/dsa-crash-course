@@ -15,8 +15,7 @@ Recursion is the foundation for understanding trees and graphs. Once you learn t
 [Recursion](https://www.geeksforgeeks.org/introduction-to-recursion-2/) is when a function calls itself to solve a smaller version of the same problem. It's not a data structure — it's a way of thinking.
 
 > 🔗 **Learn more:** [Recursion — GeeksForGeeks](https://www.geeksforgeeks.org/introduction-to-recursion-2/)
->
-> [![Visualize Recursion](https://img.shields.io/badge/▶_Visualize_Recursion-Python_Tutor-FF6F00?style=for-the-badge)](https://pythontutor.com/)
+
 
 <div style="background-color: white; padding: 16px; border-radius: 8px; display: inline-block;">
 
@@ -51,8 +50,7 @@ def factorial(n):
 Backtracking is recursion with undo. You make a choice, explore it fully, then undo and try the next option. It systematically explores all possibilities.
 
 > 🔗 **Learn more:** [Backtracking — GeeksForGeeks](https://www.geeksforgeeks.org/backtracking-algorithms/)
->
-> [![Visualize Backtracking](https://img.shields.io/badge/▶_Visualize_Backtracking-Algorithm_Visualizer-2ea44f?style=for-the-badge)](https://algorithm-visualizer.org/)
+
 
 Think of solving a maze — at each fork, pick a path. Dead end? Walk back and try another.
 
@@ -87,8 +85,11 @@ Backtracking Template:
 
 ![Backtracking Decision Tree](images/backtracking-tree.png)
 
+<<<<<<< HEAD
 </div>
 
+=======
+>>>>>>> 8404586bad9cb3a23f215caa7e8129c9eb46819a
 *Include/exclude each element to generate all subsets of [1,2,3]*
 
 ```
@@ -238,8 +239,6 @@ def exist(board, word):
 A tree is a hierarchical data structure — nodes connected by parent-child relationships. Think of a family tree or a folder structure.
 
 
-> [![Visualize Trees](https://img.shields.io/badge/▶_Visualize_Tree_Operations-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/bst) 
-
 
 ```
 Binary Tree:
@@ -275,7 +274,7 @@ class TreeNode:
 ---
 
 ## Pattern 14: Tree Traversals — Four Ways to Visit Nodes
-
+[![Visualize](https://img.shields.io/badge/▶_Visualize_BFS_DFS-VisuAlgo-007EC6?style=for-the-badge)](https://visualgo.net/en/dfsbfs)
 ### DFS (Depth-First) — Go deep before going wide
 
 ```
