@@ -85,13 +85,13 @@ Sliding window: expand right until all characters of `t` are present, then shrin
 
 ## Self-Check: Day 1
 
-- [ ] Can you explain Big-O notation and compare O(n) vs O(n^2)?
+- [ ] Can you explain Big-O notation and compare O(n) vs O(n²)?
 - [ ] Can you write the Two Pointers template for sorted arrays?
 - [ ] Can you write the Sliding Window template from memory?
 - [ ] Can you explain when to use Kadane's algorithm vs Prefix Sum?
 - [ ] Can you expand around center to find palindromes?
 
-If you checked most boxes, move on to [Day 2](day2-2hrs.md).
+If you checked most boxes, move on to [Day 2](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md).
 
 ---
 
@@ -107,4 +107,4 @@ Need a detailed walkthrough after attempting a problem? Check these editorial re
 
 ---
 
-[Back to Day 1](day1-2hrs.md) | [Back to Course](README.md)
+[Back to Day 1](Day%201%20%E2%80%94%20Arrays%20and%20Strings.md) | [Back to Course](README.md)

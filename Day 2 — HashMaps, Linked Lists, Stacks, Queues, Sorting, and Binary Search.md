@@ -649,7 +649,7 @@ n & 1 == 1  # odd
 | 11 | **Monotonic Stack** | Next greater/smaller | Daily Temps #739 |
 | 12 | **Binary Search** | Halve the search space | Rotated Array #33, Koko #875 |
 
-### [Practice Problems for Day 2](day2-practice.md)
+### [Practice Problems for Day 2](Day%202_practice.md)
 
 ```
 Easy:
@@ -677,4 +677,4 @@ Hard:
 
 ---
 
-*Next: Recursion, Backtracking, Trees, and Heaps — [day3.md](day3.md)*
+*Next: Recursion, Backtracking, Trees, and Heaps — [Day 3](Day%203%20%20%E2%80%94%20Recursion,%20Backtracking,%20Trees,%20BST,%20and%20Heaps.md)*

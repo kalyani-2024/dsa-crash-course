@@ -857,7 +857,7 @@ Can decompose to choices?-> DP        (if greedy doesn't work)
 | 22 | **Union-Find** | Track connected components | [Redundant Connection #684](https://leetcode.com/problems/redundant-connection/) |
 | 23 | **Greedy** | Local optimal = global optimal | [Jump Game #55](https://leetcode.com/problems/jump-game/), [Meeting Rooms #253](https://leetcode.com/problems/meeting-rooms-ii/) |
 
-### [Practice Problems for Day 4](day4-practice.md)
+### [Practice Problems for Day 4](Day%204_practice.md)
 
 ```
 Easy:

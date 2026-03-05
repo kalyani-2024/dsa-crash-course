@@ -33,8 +33,8 @@ Learn the most fundamental data structures and the patterns built on top of them
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day1-2hrs.md](day1-2hrs.md) | Big-O, Arrays (Two Pointers, Sliding Window, Prefix Sum, Kadane's), Strings (Frequency Counting, Palindromes, String Manipulation) |
-| **Practice** | [day1-practice.md](day1-practice.md) | 10 Must-Do Problems with Hints |
+| **Course Content** | [Day 1 — Arrays and Strings](Day%201%20%E2%80%94%20Arrays%20and%20Strings.md) | Big-O, Arrays (Two Pointers, Sliding Window, Prefix Sum, Kadane's), Strings (Frequency Counting, Palindromes, String Manipulation) |
+| **Practice** | [Day 1_practice](Day%201_practice.md) | 10 Must-Do Problems with Hints |
 
 **Patterns Covered:** 6 | **Structures:** Arrays, Strings
 
@@ -46,8 +46,8 @@ Master the core data structures and essential searching/sorting techniques.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day2-2hrs.md](day2-2hrs.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search, Bit Manipulation |
-| **Practice** | [day2-practice.md](day2-practice.md) | 12 Must-Do Problems with Hints |
+| **Course Content** | [Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search, Bit Manipulation |
+| **Practice** | [Day 2_practice](Day%202_practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 6 | **Structures:** Hash Maps, Hash Sets, Linked Lists, Stacks, Queues
 
@@ -59,8 +59,8 @@ Learn recursive thinking, then apply it to trees and priority queues.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day3.md](day3.md) | Recursion, Backtracking (Subsets, Permutations, Combinations, N-Queens), Trees and BST (Traversals, Recursive Properties, Validation), Heaps and Priority Queues (Top-K, Merge K Sorted, Median) |
-| **Practice** | [day3-practice.md](day3-practice.md) | 12 Must-Do Problems with Hints |
+| **Course Content** | [Day 3 — Recursion, Backtracking, Trees, BST, and Heaps](Day%203%20%20%E2%80%94%20Recursion,%20Backtracking,%20Trees,%20BST,%20and%20Heaps.md) | Recursion, Backtracking (Subsets, Permutations, Combinations, N-Queens), Trees and BST (Traversals, Recursive Properties, Validation), Heaps and Priority Queues (Top-K, Merge K Sorted, Median) |
+| **Practice** | [Day 3_practice](Day%203_practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 4 | **Structures:** Trees, BST, Heaps
 
@@ -72,8 +72,8 @@ The most advanced material — graph algorithms and algorithm paradigms.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [day4.md](day4.md) | Tries (Prefix Trees), Graphs (BFS, DFS, Topological Sort, Dijkstra), Union-Find, Greedy Algorithms, Dynamic Programming (1D, 2D, Knapsack) |
-| **Practice** | [day4-practice.md](day4-practice.md) | 12 Must-Do Problems with Hints |
+| **Course Content** | [Day 4 — Tries, Graphs, Union-Find, Greedy, and Dynamic Programming](Day%204%20%E2%80%94%20Tries,%20Graphs,%20Union-Find,%20Greedy,%20and%20Dynamic%20Programming.md) | Tries (Prefix Trees), Graphs (BFS, DFS, Topological Sort, Dijkstra), Union-Find, Greedy Algorithms, Dynamic Programming (1D, 2D, Knapsack) |
+| **Practice** | [Day 4_practice](Day%204_practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 4+ | **Structures:** Tries, Graphs, Union-Find
 
@@ -215,4 +215,4 @@ The most advanced material — graph algorithms and algorithm paradigms.
 
 ---
 
-*Let's begin! Open [day1-2hrs.md](day1-2hrs.md) to start your journey.*
+*Let's begin! Open [Day 1 — Arrays and Strings](Day%201%20%E2%80%94%20Arrays%20and%20Strings.md) to start your journey.*

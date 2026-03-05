@@ -58,7 +58,7 @@ Use slow and fast pointers. Slow moves 1 step, fast moves 2 steps. If they ever 
 <details>
 <summary><b>Hint 8: Daily Temperatures (#739)</b></summary>
 
-Monotonic decreasing stack of indices. When a warmer temperature arrives, pop -- the popped index just found how many days until a warmer day.
+Monotonic decreasing stack of indices. When a warmer temperature arrives, pop — the popped index just found how many days until a warmer day.
 
 </details>
 
@@ -94,7 +94,7 @@ Three steps: (1) Find middle with slow/fast pointers. (2) Reverse the second hal
 - [ ] Can you explain what a monotonic stack does and why it's O(n)?
 - [ ] Can you explain sorting as a preprocessing step?
 
-If you checked most boxes, move on to [Day 3](day3.md).
+If you checked most boxes, move on to [Day 3](Day%203%20%20%E2%80%94%20Recursion,%20Backtracking,%20Trees,%20BST,%20and%20Heaps.md).
 
 ---
 
@@ -110,4 +110,4 @@ Need a detailed walkthrough after attempting a problem? Check these editorial re
 
 ---
 
-[Back to Day 2](day2-2hrs.md) | [Back to Course](README.md)
+[Back to Day 2](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md) | [Back to Course](README.md)

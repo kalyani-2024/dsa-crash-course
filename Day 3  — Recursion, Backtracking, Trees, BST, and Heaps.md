@@ -648,7 +648,7 @@ class MedianFinder:
 | 15 | **Recursive Tree** | Solve left + right, combine | LCA #236, Max Path Sum #124 |
 | 16 | **Top-K / Heap** | Min/max heap for streaming data | Kth Largest #215, Merge K #23 |
 
-### [Practice Problems for Day 3](day3-practice.md)
+### [Practice Problems for Day 3](Day%203_practice.md)
 
 ```
 Easy:
@@ -675,4 +675,4 @@ Hard:
 
 ---
 
-*Next: Tries, Graphs, Greedy, and Dynamic Programming — [day4.md](day4.md)*
+*Next: Tries, Graphs, Greedy, and Dynamic Programming — [Day 4](Day%204%20%E2%80%94%20Tries,%20Graphs,%20Union-Find,%20Greedy,%20and%20Dynamic%20Programming.md)*

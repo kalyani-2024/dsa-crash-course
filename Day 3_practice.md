@@ -101,7 +101,7 @@ Put the head of each list into a min-heap. Pop the smallest, append to result, p
 - [ ] Can you explain when to use a heap vs sorting?
 - [ ] Can you implement the "Top-K" pattern with a min-heap?
 
-If you checked most boxes, move on to [Day 4](day4.md).
+If you checked most boxes, move on to [Day 4](Day%204%20%E2%80%94%20Tries,%20Graphs,%20Union-Find,%20Greedy,%20and%20Dynamic%20Programming.md).
 
 ---
 
@@ -117,4 +117,4 @@ Need a detailed walkthrough after attempting a problem? Check these editorial re
 
 ---
 
-[Back to Day 3](day3.md) | [Back to Course](README.md)
+[Back to Day 3](Day%203%20%20%E2%80%94%20Recursion,%20Backtracking,%20Trees,%20BST,%20and%20Heaps.md) | [Back to Course](README.md)

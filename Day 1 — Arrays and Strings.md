@@ -30,16 +30,16 @@ O(n!)       Factorial      Brute-force permutations               Unusable for n
 
 ### Why Does This Matter?
 
-A computer does roughly 10^8 operations per second. So look at the constraint `n`:
+A computer does roughly 10⁸ operations per second. So look at the constraint `n`:
 
 | Constraint (n) | Max Complexity | What to Use |
 |----------------|---------------|-------------|
-| n <= 10 | O(n!) | Brute force, backtracking |
-| n <= 20 | O(2^n) | Bitmask, backtracking |
-| n <= 1,000 | O(n^2) | Nested loops OK |
-| n <= 100,000 | O(n log n) | Sort, binary search, heap |
-| n <= 10^7 | O(n) | Single pass, hash map |
-| n > 10^7 | O(log n) / O(1) | Math or binary search |
+| n ≤ 10 | O(n!) | Brute force, backtracking |
+| n ≤ 20 | O(2ⁿ) | Bitmask, backtracking |
+| n ≤ 1,000 | O(n²) | Nested loops OK |
+| n ≤ 100,000 | O(n log n) | Sort, binary search, heap |
+| n ≤ 10⁷ | O(n) | Single pass, hash map |
+| n > 10⁷ | O(log n) / O(1) | Math or binary search |
 
 **Golden Rule:** The first thing to do with any problem is check the constraint `n`. It tells you which complexity you need, which tells you which patterns to try.
 
@@ -119,7 +119,7 @@ Two Pointers — Opposite End:
    Meet in the middle → O(n) instead of O(n²)
 ```
 
-Instead of checking every pair (O(n^2)), set up two pointers that converge based on a condition. There are two flavors:
+Instead of checking every pair (O(n²)), set up two pointers that converge based on a condition. There are two flavors:
 
 **1. Opposite-end pointers** — start from both ends, move inward (works on sorted data)
 **2. Same-direction pointers** — both start at beginning, one moves faster
@@ -442,12 +442,12 @@ A string is an array of characters. This means most array techniques (two pointe
 |-----------|--------|------|
 | Access char | `s[i]` | O(1) |
 | Slice | `s[i:j]` | O(j-i) |
-| Concatenate | `s + t` | O(len(s) + len(t)) -- creates a new string |
-| Search | `t in s` | O(n*m) worst case |
+| Concatenate | `s + t` | O(len(s) + len(t)) — creates a new string |
+| Search | `t in s` | O(n·m) worst case |
 | Length | `len(s)` | O(1) |
 | Compare | `s == t` | O(min(n,m)) |
 
-**Common Pitfall:** Building a string with `+=` in a loop is O(n^2) because each concatenation creates a new string. Use `''.join(list)` instead.
+**Common Pitfall:** Building a string with `+=` in a loop is O(n²) because each concatenation creates a new string. Use `''.join(list)` instead.
 
 ```python
 # Slow: O(n^2) -- each += creates a new string
@@ -705,7 +705,7 @@ def longestCommonPrefix(strs):
 | 5 | **Palindrome Expand** | Expand from center | Longest Palindrome #5 |
 | 6 | **String Building** | Use list + join, not += | Various |
 
-### [Practice Problems for Day 1](day1-practice.md)
+### [Practice Problems for Day 1](Day%201_practice.md)
 
 ```
 Easy:
@@ -728,4 +728,4 @@ Hard:
 
 ---
 
-*Next: HashMaps, Linked Lists, Stacks, Queues, and more patterns — [day2-2hrs.md](day2-2hrs.md)*
+*Next: HashMaps, Linked Lists, Stacks, Queues, and more patterns — [Day 2](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md)*

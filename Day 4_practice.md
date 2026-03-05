@@ -72,7 +72,7 @@ Build a directed graph. Detect cycles using DFS with 3 states: unvisited(0), vis
 <details>
 <summary><b>Hint 9: Non-overlapping Intervals (#435)</b></summary>
 
-Sort by end time. Greedily keep intervals that end earliest -- they leave the most room for future intervals. Count the ones you have to remove.
+Sort by end time. Greedily keep intervals that end earliest — they leave the most room for future intervals. Count the ones you have to remove.
 
 </details>
 
@@ -133,7 +133,7 @@ If you checked most boxes, you are interview-ready.
 
 ---
 
-[Back to Day 4](day4.md) | [Back to Course](README.md) | [Cheatsheet](cheatsheet.md) | [Interview Playbook](interview-playbook.md)
+[Back to Day 4](Day%204%20%E2%80%94%20Tries,%20Graphs,%20Union-Find,%20Greedy,%20and%20Dynamic%20Programming.md) | [Back to Course](README.md) | [Cheatsheet](cheatsheet.md) | [Interview Playbook](interview-playbook.md)
 
 ---
 
