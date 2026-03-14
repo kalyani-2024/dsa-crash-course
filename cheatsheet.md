@@ -154,7 +154,6 @@ GIVEN A PROBLEM, ASK:
 
 | # | Problem | Pattern | LeetCode | Solution |
 |---|---------|---------|----------|----------|
-| 1 | Two Sum | HashMap | [LeetCode #1](https://leetcode.com/problems/two-sum/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/two-sum.md) |
 | 20 | Valid Parentheses | Stack | [LeetCode #20](https://leetcode.com/problems/valid-parentheses/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/valid-parentheses.md) |
 | 21 | Merge Two Sorted Lists | Linked List | [LeetCode #21](https://leetcode.com/problems/merge-two-sorted-lists/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/merge-two-sorted-lists.md) |
 | 70 | Climbing Stairs | DP | [LeetCode #70](https://leetcode.com/problems/climbing-stairs/) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/climbing-stairs.md) |

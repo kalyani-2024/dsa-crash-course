@@ -124,25 +124,6 @@ Instead of checking every pair (O(n²)), set up two pointers that converge based
 **1. Opposite-end pointers** — start from both ends, move inward (works on sorted data)
 **2. Same-direction pointers** — both start at beginning, one moves faster
 
-### Two Sum ([LeetCode #1](https://leetcode.com/problems/two-sum/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/two-sum.md) 
-**The Concept:** For each number, check if its complement (`target - num`) exists. Use a [HashMap](https://www.geeksforgeeks.org/hashing-data-structure/) for O(1) lookup, or sort + two pointers.
-
-> **Common Pitfalls:**
-> 1. Returning the number itself instead of its index
-> 2. Using the same element twice (e.g., `[3,3]` with target 6 — make sure you check `seen` before adding current)
-> 3. Forgetting to handle the case where no pair exists
-
-```python
-def twoSum(nums, target):
-    seen = {}                           # value -> index
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i
-# O(n) time, O(n) space
-```
-
 ### Container With Most Water ([LeetCode #11](https://leetcode.com/problems/container-with-most-water/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/container-with-most-water.md)
 
 **The Concept:** Start with the widest container (both ends). The shorter bar is the bottleneck — move that pointer inward to find potentially taller bars.
@@ -709,7 +690,6 @@ def longestCommonPrefix(strs):
 
 ```
 Easy:
-  #1    Two Sum
   #125  Valid Palindrome
   #344  Reverse String
 
