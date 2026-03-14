@@ -50,7 +50,7 @@ With HashMap:    For each element, check the map   -> O(n)
 
 ## Pattern 7: Frequency Counting and Lookup
 
-### Contains Duplicate ([LeetCode #217](https://leetcode.com/problems/contains-duplicate/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/contains-duplicate.md)
+### Contains Duplicate ([LeetCode #217](https://leetcode.com/problems/contains-duplicate/)) 
 
 **The Concept:** If the number of unique elements (set size) is less than total elements, duplicates exist.
 
