@@ -594,49 +594,7 @@ def minEatingSpeed(piles, h):
 
 ---
 
-# Bit Manipulation
 
-## Four Tricks Worth Knowing
-
-### 1. XOR Cancels Pairs — Single Number ([LeetCode #136](https://leetcode.com/problems/single-number/)) | [Solution](https://github.com/AlgoMaster-io/leetcode-solutions/blob/main/python/single-number.md)
-
-`a ^ a = 0` and `a ^ 0 = a`. XOR all numbers — pairs cancel, the unique one remains.
-
-```python
-def singleNumber(nums):
-    result = 0
-    for n in nums: result ^= n
-    return result
-```
-
-### 2. Check Power of 2
-
-Powers of 2 have exactly one bit set. `n & (n-1)` clears the lowest bit.
-
-```python
-def isPowerOfTwo(n):
-    return n > 0 and (n & (n-1)) == 0
-```
-
-### 3. Count Set Bits (Brian Kernighan)
-
-```python
-def countBits(n):
-    count = 0
-    while n:
-        n &= n - 1
-        count += 1
-    return count
-```
-
-### 4. Even/Odd
-
-```python
-n & 1 == 0  # even
-n & 1 == 1  # odd
-```
-
----
 
 # Day 2 Summary — 6 Patterns + Key Techniques
 

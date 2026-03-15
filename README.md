@@ -46,7 +46,7 @@ Master the core data structures and essential searching/sorting techniques.
 
 | Resource | File | Topics |
 |----------|------|--------|
-| **Course Content** | [Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search, Bit Manipulation |
+| **Course Content** | [Day 2 — HashMaps, Linked Lists, Stacks, Queues, Sorting, and Binary Search](Day%202%20%E2%80%94%20HashMaps,%20Linked%20Lists,%20Stacks,%20Queues,%20Sorting,%20and%20Binary%20Search.md) | Hash Maps and Sets, Linked Lists (Slow/Fast, Reversal, Merge), Stacks (Matching, Monotonic), Queues, Sorting, Binary Search |
 | **Practice** | [Day 2_practice](Day%202_practice.md) | 12 Must-Do Problems with Hints |
 
 **Patterns Covered:** 6 | **Structures:** Hash Maps, Hash Sets, Linked Lists, Stacks, Queues
